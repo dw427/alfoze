@@ -5,17 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>상세페이지 9</title>
   <style>
-    body { background-color: #ffffff; margin: 0; font-family: sans-serif; }
-    .container { padding: 0 20px; }
-    .header img { width: 100%; display: block; margin-bottom: 40px; }
-    .image { width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto; }
-    .wrapper { padding-left: 575px; padding-right: 575px; }
+    body {
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    .container {
+      max-width: 1270px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .main-image {
+      display: flex;
+      justify-content: center;
+    }
+    .main-image img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="header"><img src="header.jpg" alt="헤더 이미지" /></div>
-    <img src="images/thumb9.png" alt="상세 이미지 9" class="image" />
+  <div class="container">
+    <header>
+      <img src="images/header.png" alt="헤더 이미지" />
+    </header>
+    <div class="main-image">
+      <img src="images/thumb9.png" alt="상세 이미지 9" />
+    </div>
   </div>
 </body>
 </html>
