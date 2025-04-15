@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상세페이지</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #fff; }
+    header { background: #aaa; height: 200px; text-align: center; line-height: 200px; font-size: 24px; }
+    .container { display: flex; justify-content: center; padding: 40px 0; }
+    .side { width: 575px; background: #eee; }
+    .content { max-width: 770px; text-align: center; }
+    .content img { width: 100%; max-width: 770px; }
+    .caption { margin-top: 20px; font-size: 20px; }
+    @media (max-width: 768px) {
+      .side { display: none; }
+      .content img { width: 100%; }
+      .content { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>헤더 이미지</header>
+  <div class="container">
+    <div class="side"></div>
+    <div class="content">
+      <img src="sdsdf.png" alt="상세 이미지" />
+      <div class="caption">여기에 상세 설명이 들어갑니다.</div>
+    </div>
+    <div class="side"></div>
+  </div>
+</body>
+</html>
