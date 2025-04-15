@@ -69,15 +69,15 @@
 
   <script>
     const gallery = document.getElementById('gallery');
-    const numThumbnails = 13;
+    const numThumbnails = 14;
 
-    for (let i = 1; i <= numThumbnails; i++) {
-      gallery.innerHTML += `
+    for (let i = numThumbnails; i >= 1; i--) {
+      gallery.innerHTML = `
         <a href="detail${i}.html" class="thumbnail">
           <img src="images/thumb${i}.png" alt="썸네일${i}" />
           <div class="caption">썸네일 제목 ${i}</div>
         </a>
-      `;
+      ` + gallery.innerHTML;
     }
   </script>
 </body>
