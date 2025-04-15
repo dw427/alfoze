@@ -6,7 +6,7 @@
   <title>갤러리 메인페이지</title>
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: sans-serif; background: #fff; }
+    body { margin: 0; font-family: sans-serif; background: #ffffff; }
     header { background: #aaa; height: 200px; text-align: center; line-height: 200px; font-size: 24px; }
     .container { display: flex; justify-content: center; padding: 0; }
     .content { display: grid; grid-template-columns: repeat(3, 250px); column-gap: 10px; row-gap: 14px; margin-top: 0; }
@@ -53,87 +53,21 @@
   <header>헤더 이미지</header>
   <div class="container">
     <div class="side"></div>
-    <div class="content">
-      
-<a href="detail1.html" class="thumbnail">
-  <img src="images/thumb1.png" alt="썸네일1" />
-  <div class="caption">썸네일 제목 1</div>
-</a>
-
-
-<a href="detail2.html" class="thumbnail">
-  <img src="images/thumb2.png" alt="썸네일2" />
-  <div class="caption">썸네일 제목 2</div>
-</a>
-
-
-<a href="detail3.html" class="thumbnail">
-  <img src="images/thumb3.png" alt="썸네일3" />
-  <div class="caption">썸네일 제목 3</div>
-</a>
-
-
-<a href="detail4.html" class="thumbnail">
-  <img src="images/thumb4.png" alt="썸네일4" />
-  <div class="caption">썸네일 제목 4</div>
-</a>
-
-
-<a href="detail5.html" class="thumbnail">
-  <img src="images/thumb5.png" alt="썸네일5" />
-  <div class="caption">썸네일 제목 5</div>
-</a>
-
-
-<a href="detail6.html" class="thumbnail">
-  <img src="images/thumb6.png" alt="썸네일6" />
-  <div class="caption">썸네일 제목 6</div>
-</a>
-
-
-<a href="detail7.html" class="thumbnail">
-  <img src="images/thumb7.png" alt="썸네일7" />
-  <div class="caption">썸네일 제목 7</div>
-</a>
-
-
-<a href="detail8.html" class="thumbnail">
-  <img src="images/thumb8.png" alt="썸네일8" />
-  <div class="caption">썸네일 제목 8</div>
-</a>
-
-
-<a href="detail9.html" class="thumbnail">
-  <img src="images/thumb9.png" alt="썸네일9" />
-  <div class="caption">썸네일 제목 9</div>
-</a>
-
-
-<a href="detail10.html" class="thumbnail">
-  <img src="images/thumb10.png" alt="썸네일10" />
-  <div class="caption">썸네일 제목 10</div>
-</a>
-
-
-<a href="detail11.html" class="thumbnail">
-  <img src="images/thumb11.png" alt="썸네일11" />
-  <div class="caption">썸네일 제목 11</div>
-</a>
-
-
-<a href="detail12.html" class="thumbnail">
-  <img src="images/thumb12.png" alt="썸네일12" />
-  <div class="caption">썸네일 제목 12</div>
-</a>
-
-
-<a href="detail13.html" class="thumbnail">
-  <img src="images/thumb13.png" alt="썸네일13" />
-  <div class="caption">썸네일 제목 13</div>
-</a>
-
-    </div>
+    <div class="content" id="gallery"></div>
     <div class="side"></div>
   </div>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const numThumbnails = 13;
+
+    for (let i = numThumbnails; i >= 1; i--) {
+      gallery.innerHTML += `
+        <a href="detail${i}.html" class="thumbnail">
+          <img src="images/thumb${i}.png" alt="썸네일${i}" />
+          <div class="caption">썸네일 제목 ${i}</div>
+        </a>`;
+    }
+  </script>
 </body>
 </html>
