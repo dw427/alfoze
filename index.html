@@ -76,18 +76,18 @@
       }
 
       .thumbnail {
-        padding: 0 10px; /* ✅ 좌우 10px 여백 */
-        width: 100vw;
-        box-sizing: border-box;
+        width: 100%;
       }
 
       .thumbnail img {
-        width: 100%; /* ✅ 이미지가 여백 없이 꽉 채움 */
+        display: block;
+        width: 100%;
         height: auto;
       }
 
       .caption {
         width: 100%;
+        padding: 0 10px; /* ✅ 텍스트에만 좌우 여백 */
         margin: 13px 0 0 0;
         font-size: 12px;
         line-height: 12px;
