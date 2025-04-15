@@ -117,16 +117,31 @@
 </body>
 
   <script>
-    const gallery = document.getElementById('gallery');
-    const numThumbnails = 13;
+  const gallery = document.getElementById('gallery');
+  const titles = [
+    "첫 번째 이야기",
+    "햇살 가득한 오후",
+    "파란 하늘",
+    "조용한 거리",
+    "창밖의 풍경",
+    "따뜻한 햇살",
+    "나른한 오후",
+    "추억 한 조각",
+    "느린 걸음",
+    "그림자 속으로",
+    "노란 잎새",
+    "고요한 바람",
+    "안녕, 오늘"
+  ];
 
-    for (let i = numThumbnails; i >= 1; i--) {
-      gallery.innerHTML += `
-        <a href="detail${i}.html" class="thumbnail">
-          <img src="images/thumb${i}.png" alt="썸네일${i}" />
-          <div class="caption">썸네일 제목 ${i}</div>
-        </a>`;
-    }
-  </script>
+  for (let i = titles.length; i >= 1; i--) {
+    gallery.innerHTML += `
+      <a href="detail${i}.html" class="thumbnail">
+        <img src="images/thumb${i}.png" alt="썸네일${i}" />
+        <div class="caption">${titles[i - 1]}</div>
+      </a>`;
+  }
+</script>
+
 </body>
 </html>
