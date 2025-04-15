@@ -27,7 +27,7 @@
       display: grid;
       grid-template-columns: repeat(3, 250px);
       column-gap: 10px;
-      row-gap: 13px; /* ✅ 핵심 수정 */
+      row-gap: 13px;
       margin-top: 0;
       background-color: #ffffff;
     }
@@ -49,7 +49,7 @@
     }
 
     .caption {
-      margin: 13px 0 0 0; /* ✅ 텍스트 위 여백만 */
+      margin: 13px 0 0 0;
       font-size: 12px;
       line-height: 12px;
       background-color: #ffffff;
@@ -71,22 +71,23 @@
       .content {
         grid-template-columns: 1fr;
         padding: 0;
-        row-gap: 13px; /* ✅ 모바일도 동일하게 */
+        row-gap: 13px;
         background-color: #ffffff;
       }
 
       .thumbnail {
-        width: 100vw;
+        width: calc(100vw - 20px); /* ✅ 모바일에서 좌우 10px 여백 */
         max-width: 100vw;
+        margin: 0 auto;
       }
 
       .thumbnail img {
-        width: 100vw;
-        height: 100vw;
+        width: 100%;
+        height: auto;
       }
 
       .caption {
-        width: 100vw;
+        width: 100%;
         margin: 13px 0 0 0;
         font-size: 12px;
         line-height: 12px;
