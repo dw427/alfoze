@@ -26,7 +26,8 @@
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 40px 10px;
+      row-gap: 40px;
+      column-gap: 10px;
       width: 100%;
       max-width: 770px;
     }
@@ -39,9 +40,9 @@
       display: block;
     }
     .caption {
+      text-align: left;
       margin-top: 13px;
       margin-bottom: 13px;
-      text-align: left;
     }
     @media (max-width: 768px) {
       .gallery {
@@ -75,7 +76,7 @@
     for (let i = numThumbnails; i >= 1; i--) {
       gallery.innerHTML += `
         <a href="detail${i}.html" class="thumbnail">
-          <img src="images/thumb${i}.png" alt="썸네일${i}" />
+          <img src="images/thumb{i}.png" alt="썸네일${i}" />
           <div class="caption">썸네일 제목 ${i}</div>
         </a>
       `;
