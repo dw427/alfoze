@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>상세페이지 7</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상세 페이지 7</title>
   <style>
-    body {
-      background-color: #ffffff;
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-    }
+    body { margin: 0; font-family: sans-serif; background: #fff; }
+    header { background: #aaa; height: 200px; text-align: center; line-height: 200px; font-size: 24px; }
     .container {
-      max-width: 1270px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    header {
-      text-align: center;
-      margin: 40px 0;
-    }
-    .main-image {
       display: flex;
       justify-content: center;
+      padding: 0;
     }
-    .main-image img {
-      max-width: 100%;
+    .side { width: 575px; background: #eee; }
+    .content {
+      max-width: 770px;
+      text-align: center;
+    }
+    img {
+      width: 100%;
       height: auto;
+    }
+    @media (max-width: 768px) {
+      .side { display: none; }
+      .content { width: 100vw; }
+      img { width: 100vw; }
     }
   </style>
 </head>
 <body>
+  <header>상세페이지 7</header>
   <div class="container">
-    <header>
-      <img src="images/header.png" alt="헤더 이미지" />
-    </header>
-    <div class="main-image">
-      <img src="images/thumb7.png" alt="상세 이미지 7" />
+    <div class="side"></div>
+    <div class="content">
+      <img src="images/thumb7.png" alt="상세 이미지 7">
     </div>
+    <div class="side"></div>
   </div>
 </body>
 </html>
