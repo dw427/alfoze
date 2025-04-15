@@ -9,30 +9,33 @@
     body { margin: 0; font-family: sans-serif; background: #fff; }
     header { background: #aaa; height: 200px; text-align: center; line-height: 200px; font-size: 24px; }
     .container { display: flex; justify-content: center; padding: 0; }
-    .content { display: grid; grid-template-columns: repeat(3, 250px); gap: 0 10px; margin-top: 0; }
+    .content { display: grid; grid-template-columns: repeat(3, 250px); column-gap: 10px; row-gap: 14px; margin-top: 0; }
     .thumbnail {
       display: block;
       width: 250px;
       background: #ddd;
       text-align: left;
-      margin-bottom: 14px;
       color: inherit;
       text-decoration: none;
     }
-    .thumbnail img { width: 250px; height: 250px; object-fit: cover; }
+    .thumbnail img { width: 250px; height: 250px; object-fit: cover; display: block; }
     .caption { padding: 13px 0; text-align: left; width: 250px; margin: 0; }
     .side { width: 575px; background: #eee; }
+
     @media (max-width: 1200px) {
       .content { grid-template-columns: repeat(2, 250px); }
     }
     @media (max-width: 768px) {
       .side { display: none; }
       .container { padding: 0; }
-      .content { grid-template-columns: 1fr; padding: 0; }
+      .content {
+        grid-template-columns: 1fr;
+        padding: 0;
+        row-gap: 40px;
+      }
       .thumbnail {
         width: 100vw;
         max-width: 100vw;
-        margin-bottom: 14px;
       }
       .thumbnail img {
         width: 100vw;
@@ -52,57 +55,81 @@
     <div class="side"></div>
     <div class="content">
       
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail1.html" class="thumbnail">
+  <img src="images/thumb1.png" alt="썸네일1" />
   <div class="caption">썸네일 제목 1</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail2.html" class="thumbnail">
+  <img src="images/thumb2.png" alt="썸네일2" />
   <div class="caption">썸네일 제목 2</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail3.html" class="thumbnail">
+  <img src="images/thumb3.png" alt="썸네일3" />
   <div class="caption">썸네일 제목 3</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail4.html" class="thumbnail">
+  <img src="images/thumb4.png" alt="썸네일4" />
   <div class="caption">썸네일 제목 4</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail5.html" class="thumbnail">
+  <img src="images/thumb5.png" alt="썸네일5" />
   <div class="caption">썸네일 제목 5</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail6.html" class="thumbnail">
+  <img src="images/thumb6.png" alt="썸네일6" />
   <div class="caption">썸네일 제목 6</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail7.html" class="thumbnail">
+  <img src="images/thumb7.png" alt="썸네일7" />
   <div class="caption">썸네일 제목 7</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail8.html" class="thumbnail">
+  <img src="images/thumb8.png" alt="썸네일8" />
   <div class="caption">썸네일 제목 8</div>
 </a>
 
 
-<a href="detail.html" class="thumbnail">
-  <img src="images/sdsdf.png" alt="썸네일" />
+<a href="detail9.html" class="thumbnail">
+  <img src="images/thumb9.png" alt="썸네일9" />
   <div class="caption">썸네일 제목 9</div>
+</a>
+
+
+<a href="detail10.html" class="thumbnail">
+  <img src="images/thumb10.png" alt="썸네일10" />
+  <div class="caption">썸네일 제목 10</div>
+</a>
+
+
+<a href="detail11.html" class="thumbnail">
+  <img src="images/thumb11.png" alt="썸네일11" />
+  <div class="caption">썸네일 제목 11</div>
+</a>
+
+
+<a href="detail12.html" class="thumbnail">
+  <img src="images/thumb12.png" alt="썸네일12" />
+  <div class="caption">썸네일 제목 12</div>
+</a>
+
+
+<a href="detail13.html" class="thumbnail">
+  <img src="images/thumb13.png" alt="썸네일13" />
+  <div class="caption">썸네일 제목 13</div>
 </a>
 
     </div>
