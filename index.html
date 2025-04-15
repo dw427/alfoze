@@ -152,11 +152,16 @@
     ];
 
     for (let i = titles.length; i >= 1; i--) {
-      gallery.innerHTML += `
-        <a href="detail${i}.html" class="thumbnail">
-          <img src="images/thumb${i}.png" alt="썸네일${i}" />
-          <div class="caption">${titles[i - 1]}</div>
-        </a>`;
+      const index = i;
+      const title = titles[i - 1];
+      const item = document.createElement('a');
+      item.href = `detail${index}.html`;
+      item.className = 'thumbnail';
+      item.innerHTML = `
+        <img src="images/thumb${index}.png" alt="썸네일${index}" />
+        <div class="caption">${title}</div>
+      `;
+      gallery.appendChild(item);
     }
   </script>
 </body>
