@@ -148,6 +148,24 @@
         height: 80px;
       }
     }
+
+    .footer {
+      width: 100%;
+      height: 150px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        height: 80px;
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -159,6 +177,10 @@
     <div class="side"></div>
     <div class="content" id="gallery"></div>
     <div class="side"></div>
+  </div>
+
+  <div class="footer">
+    <p>푸터 텍스트</p>
   </div>
 
   <script>
@@ -218,8 +240,8 @@
       const category = categories[i - 1];
       const year = years[i - 1];
 
-      const item = document.createElement('a'); // ✅ a 태그
-      item.href = `detail${index}.html`;        // ✅ 상세페이지 링크
+      const item = document.createElement('a');
+      item.href = `detail${index}.html`;
       item.className = `thumbnail thumb${index}`;
       item.innerHTML = `
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
