@@ -116,7 +116,7 @@
       }
 
       .caption .category {
-        /* 바로 붙음 */
+        /* 붙음 */
       }
 
       .caption .year {
@@ -218,7 +218,8 @@
       const category = categories[i - 1];
       const year = years[i - 1];
 
-      const item = document.createElement('div');
+      const item = document.createElement('a'); // ✅ a 태그
+      item.href = `detail${index}.html`;        // ✅ 상세페이지 링크
       item.className = `thumbnail thumb${index}`;
       item.innerHTML = `
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
