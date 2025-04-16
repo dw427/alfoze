@@ -47,15 +47,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .header img {
       height: 100%;
       width: auto;
       max-height: 100%;
+      display: block;
     }
 
     .footer-bar {
@@ -116,9 +114,7 @@
       .content { width: 100vw; }
       img { width: 100vw; }
 
-      .header {
-        height: 80px;
-      }
+      .header { height: 80px; }
 
       .header img {
         height: 80px;
@@ -150,7 +146,7 @@
 </head>
 <body>
   <div class="header">
-    <img src="images/header0.png" alt="header" />
+    <img src="images/header0.png" alt="header" draggable="false" />
   </div>
 
   <div class="container">
