@@ -4,21 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>alfoze</title>
-
-  <!-- ✅ 폰트 추가 -->
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
+
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: "minion-pro", serif;
       background: #ffffff;
+      font-size: 12px;          /* ✅ 전체 기본 폰트 크기 */
+      color: #222222;           /* ✅ 전체 기본 폰트 색상 */
     }
 
-    .container { display: flex; justify-content: center; padding: 0; }
-    .side { width: 575px; background: #ffffff; }
-    .content { max-width: 770px; text-align: center; }
-    img { width: 100%; height: auto; }
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+    .side {
+      width: 575px;
+      background: #ffffff;
+    }
+
+    .content {
+      max-width: 770px;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
 
     .header {
       width: 100%;
@@ -106,7 +127,8 @@
       .footer-inner .text3,
       .footer-inner .text4 {
         margin-right: 0;
-        font-size: 10px;
+        font-size: 10px;        /* ✅ 모바일 폰트 크기 */
+        color: #222222;
       }
     }
   </style>
