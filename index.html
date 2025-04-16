@@ -102,12 +102,18 @@
       background: #ffffff;
       display: flex;
       align-items: flex-end;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 0 80px;
     }
 
-    .footer div {
-      margin-bottom: 30px;
+    .footer-left, .footer-right {
       font-size: 12px;
+      margin-bottom: 30px;
+    }
+
+    .footer-right a {
+      text-decoration: none;
+      color: inherit;
     }
 
     @media (max-width: 1200px) {
@@ -161,12 +167,12 @@
 
       .footer {
         height: 80px;
-        margin-top: 40px; /* ✅ 여백 추가 */
+        padding: 0 20px;
       }
 
-      .footer div {
-        margin-bottom: 20px;
+      .footer-left, .footer-right {
         font-size: 12px;
+        margin-bottom: 20px;
       }
     }
   </style>
@@ -183,7 +189,8 @@
   </div>
 
   <div class="footer">
-    <div>footertest</div>
+    <div class="footer-left">footertest</div>
+    <div class="footer-right"><a href="https://example.com" target="_blank">linktext</a></div>
   </div>
 
   <script>
