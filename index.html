@@ -87,7 +87,7 @@
 
       .caption {
         width: 100%;
-        padding: 0 10px; /* ✅ 텍스트에만 좌우 여백 */
+        padding: 0 10px;
         margin: 13px 0 0 0;
         font-size: 12px;
         line-height: 12px;
@@ -132,7 +132,6 @@
   </div>
 
   <script>
-    const gallery = document.getElementById('gallery');
     const titles = [
       "blish",
       "lost romance",
@@ -149,15 +148,55 @@
       "Lov"
     ];
 
+    const categories = [
+      "brand design",
+      "branding",
+      "illustration",
+      "ux/ui",
+      "editorial",
+      "photo",
+      "motion",
+      "graphic",
+      "package",
+      "visual",
+      "identity",
+      "poster",
+      "etc"
+    ];
+
+    const years = [
+      "2025",
+      "2024",
+      "2024",
+      "2023",
+      "2022",
+      "2023",
+      "2025",
+      "2024",
+      "2022",
+      "2023",
+      "2025",
+      "2023",
+      "2022"
+    ];
+
+    const gallery = document.getElementById('gallery');
+
     for (let i = titles.length; i >= 1; i--) {
       const index = i;
       const title = titles[i - 1];
-      const item = document.createElement('a');
-      item.href = `detail${index}.html`;
-      item.className = 'thumbnail';
+      const category = categories[i - 1];
+      const year = years[i - 1];
+
+      const item = document.createElement('div');
+      item.className = `thumbnail thumb${index}`;
       item.innerHTML = `
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
-        <div class="caption">${title}</div>
+        <div class="caption caption-thumb${index}">
+          <span class="title">${title}</span>
+          <span class="category">${category}</span>
+          <span class="year">${year}</span>
+        </div>
       `;
       gallery.appendChild(item);
     }
