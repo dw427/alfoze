@@ -10,6 +10,7 @@
     .side { width: 575px; background: #ffffff; }
     .content { max-width: 770px; text-align: center; }
     img { width: 100%; height: auto; }
+
     .header {
       width: 100%;
       height: 150px;
@@ -23,11 +24,55 @@
       width: auto;
       max-height: 100%;
     }
+
+    .footer-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 80px;
+      font-size: 14px;
+      z-index: 1000;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .footer-bar span, .footer-bar img {
+      pointer-events: auto;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .back-icon {
+      margin-right: 14px;
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+    }
+
+    .footer-right {
+      margin-left: auto;
+    }
+
     @media (max-width: 768px) {
       .side { display: none; }
       .content { width: 100vw; }
       img { width: 100vw; }
       .header { height: 80px; }
+      .footer-bar {
+        padding: 0 20px;
+        font-size: 12px;
+      }
+      .footer-left {
+        gap: 20px;
+      }
     }
   </style>
 </head>
@@ -35,12 +80,24 @@
   <div class="header">
     <img src="images/header0.png" alt="header" />
   </div>
+
   <div class="container">
     <div class="side"></div>
     <div class="content">
       <img src="images/thumb9.png" alt="상세 이미지 9">
     </div>
     <div class="side"></div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="footer-left">
+      <img src="images/back.png" alt="뒤로가기" class="back-icon">
+      <span>te cura</span>
+      <span>brand design</span>
+    </div>
+    <div class="footer-right">
+      <span>personal project · 2022</span>
+    </div>
   </div>
 </body>
 </html>
