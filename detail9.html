@@ -7,7 +7,9 @@
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -39,6 +41,7 @@
       height: auto;
     }
 
+    /* ✅ 인덱스 스타일과 동일한 헤더 */
     .header {
       width: 100%;
       height: 150px;
@@ -56,12 +59,12 @@
       height: 100%;
     }
 
-    .header img {
+    .header a img {
       height: 100%;
       width: auto;
       max-height: 100%;
+      display: block;
       cursor: pointer;
-      pointer-events: auto;
     }
 
     .footer-bar {
@@ -83,10 +86,6 @@
       box-sizing: border-box;
       padding-left: 0;
       padding-right: 80px;
-    }
-
-    .footer-inner a {
-      pointer-events: auto;
     }
 
     .footer-inner img {
@@ -117,16 +116,10 @@
       pointer-events: auto;
     }
 
-    /* 링크 hover 시 텍스트 박스 없애기 */
     a {
       text-decoration: none;
     }
-    a img {
-      pointer-events: auto;
-    }
-    a[href] {
-      cursor: pointer;
-    }
+
     a:hover {
       text-decoration: none;
     }
@@ -171,15 +164,14 @@
   <div class="container">
     <div class="side"></div>
     <div class="content">
-      <img src="images/thumb9.png" alt="">
+      <img src="images/thumb9.png" alt="상세 이미지 9">
     </div>
     <div class="side"></div>
   </div>
-
   <div class="footer-bar">
     <div class="footer-inner">
       <a href="index.html">
-        <img src="images/back.png" alt="">
+        <img src="images/back.png" alt="" />
       </a>
       <span class="text1">monster</span>
       <span class="text2">graphic design</span>
