@@ -49,10 +49,25 @@
     }
 
     .caption {
-      margin: 13px 0 0 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 13px;
       font-size: 12px;
       line-height: 12px;
       background-color: #ffffff;
+    }
+
+    .caption .title {
+      margin-right: 20px;
+    }
+
+    .caption .category {
+      margin-right: 60px;
+    }
+
+    .caption .year {
+      /* 붙임 */
     }
 
     .side {
@@ -86,12 +101,27 @@
       }
 
       .caption {
-        width: 100%;
-        padding: 0 10px;
-        margin: 13px 0 0 0;
+        display: flex;
+        align-items: center;
+        margin-top: 13px;
         font-size: 12px;
         line-height: 12px;
         background-color: #ffffff;
+        width: 100%;
+      }
+
+      .caption .title {
+        margin-left: 10px;
+        margin-right: 45px;
+      }
+
+      .caption .category {
+        /* 바로 붙음 */
+      }
+
+      .caption .year {
+        margin-left: auto;
+        margin-right: 10px;
       }
     }
 
