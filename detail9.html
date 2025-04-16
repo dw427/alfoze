@@ -7,9 +7,7 @@
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -39,9 +37,9 @@
     img {
       width: 100%;
       height: auto;
+      display: block;
     }
 
-    /* ✅ 인덱스 스타일과 동일한 헤더 */
     .header {
       width: 100%;
       height: 150px;
@@ -49,13 +47,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .header a {
-      display: block;
+      display: inline-block;
       height: 100%;
     }
 
@@ -64,7 +59,7 @@
       width: auto;
       max-height: 100%;
       display: block;
-      cursor: pointer;
+      pointer-events: auto;
     }
 
     .footer-bar {
@@ -86,6 +81,10 @@
       box-sizing: border-box;
       padding-left: 0;
       padding-right: 80px;
+    }
+
+    .footer-inner a {
+      pointer-events: auto;
     }
 
     .footer-inner img {
@@ -116,19 +115,15 @@
       pointer-events: auto;
     }
 
-    a {
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: none;
-    }
-
     @media (max-width: 768px) {
       .side { display: none; }
       .content { width: 100vw; }
       img { width: 100vw; }
       .header { height: 80px; }
+
+      .header a img {
+        height: 80px;
+      }
 
       .footer-inner {
         width: 100vw;
@@ -157,21 +152,22 @@
 <body>
   <div class="header">
     <a href="index.html">
-      <img src="images/header0.png" alt="" />
+      <img src="images/header0.png" alt="" draggable="false" />
     </a>
   </div>
 
   <div class="container">
     <div class="side"></div>
     <div class="content">
-      <img src="images/thumb9.png" alt="상세 이미지 9">
+      <img src="images/thumb9.png" alt="상세 이미지 9" />
     </div>
     <div class="side"></div>
   </div>
+
   <div class="footer-bar">
     <div class="footer-inner">
       <a href="index.html">
-        <img src="images/back.png" alt="" />
+        <img src="images/back.png" alt="" draggable="false" />
       </a>
       <span class="text1">monster</span>
       <span class="text2">graphic design</span>
