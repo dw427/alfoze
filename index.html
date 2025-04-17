@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>alfoze</title>
-
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
@@ -22,8 +21,7 @@
       transition: color 0.3s;
     }
 
-    a:hover,
-    #listButton:hover {
+    a:hover {
       color: #a3a3a3;
     }
 
@@ -31,7 +29,6 @@
       display: flex;
       justify-content: center;
       padding: 0;
-      background-color: #ffffff;
     }
 
     .content {
@@ -39,15 +36,12 @@
       grid-template-columns: repeat(3, 250px);
       column-gap: 10px;
       row-gap: 13px;
-      margin-top: 0;
-      background-color: #ffffff;
     }
 
     .thumbnail {
       display: flex;
       flex-direction: column;
       width: 250px;
-      text-align: left;
       text-decoration: none;
       color: inherit;
     }
@@ -68,12 +62,8 @@
 
     .caption {
       display: flex;
-      flex-direction: row;
-      align-items: flex-start;
       margin-top: 13px;
       font-size: 12px;
-      line-height: 12px;
-      background-color: #ffffff;
     }
 
     .caption .title {
@@ -86,7 +76,6 @@
 
     .side {
       width: 575px;
-      background-color: #ffffff;
     }
 
     .header {
@@ -104,7 +93,6 @@
     .header img {
       height: 100%;
       width: auto;
-      max-height: 100%;
     }
 
     .footer {
@@ -113,10 +101,6 @@
       background: #ffffff;
       position: relative;
       z-index: 10;
-    }
-
-    .footer .center-text {
-      display: none;
     }
 
     .footer .right-link {
@@ -133,14 +117,17 @@
       font-size: 12px;
     }
 
-    #listButton {
-      position: fixed;
+    .footer #listButton {
+      position: absolute;
       bottom: 10px;
       right: 30px;
       font-size: 12px;
       cursor: pointer;
-      z-index: 4000;
-      background: transparent;
+      transition: color 0.3s;
+    }
+
+    .footer #listButton:hover {
+      color: #a3a3a3;
     }
 
     .slide-box {
@@ -159,19 +146,25 @@
       transform: translateX(0%);
     }
 
-    @media (max-width: 1200px) {
-      .content { grid-template-columns: repeat(2, 250px); }
+    .slide-box .slide-list {
+      position: absolute;
+      bottom: 10px;
+      right: 30px;
+      font-size: 12px;
+      cursor: pointer;
+      z-index: 4001;
+      transition: color 0.3s;
+    }
+
+    .slide-box .slide-list:hover {
+      color: #a3a3a3;
     }
 
     @media (max-width: 768px) {
       .side { display: none; }
-      .container { padding: 0; }
 
       .content {
         grid-template-columns: 1fr;
-        padding: 0;
-        row-gap: 13px;
-        background-color: #ffffff;
       }
 
       .thumbnail {
@@ -179,18 +172,12 @@
       }
 
       .thumbnail img {
-        display: block;
         width: 100%;
         height: auto;
       }
 
       .caption {
-        display: flex;
-        align-items: flex-start;
-        margin-top: 13px;
         font-size: 12px;
-        line-height: 12px;
-        background-color: #ffffff;
         width: 100%;
       }
 
@@ -222,13 +209,18 @@
         left: 160px;
       }
 
-      #listButton {
+      .footer #listButton {
         bottom: 20px;
         right: 20px;
       }
 
       .slide-box {
         width: 100%;
+      }
+
+      .slide-box .slide-list {
+        bottom: 20px;
+        right: 20px;
       }
     }
   </style>
@@ -251,54 +243,48 @@
     <div class="contact-link">
       <a href="mailto:uxxwd9@gmail.com">contact</a>
     </div>
+    <div id="listButton" onclick="toggleSlideBox()">list</div>
   </div>
 
-  <!-- list 버튼: 슬라이드박스보다 위에 고정됨 -->
-  <div id="listButton" onclick="toggleSlideBox()">list</div>
-
   <div class="slide-box" id="slideBox">
-    <!-- 슬라이딩 콘텐츠 추가 가능 -->
+    <div class="slide-list" onclick="toggleSlideBox()">list</div>
+    <!-- 슬라이드 안 내용 필요 시 추가 -->
   </div>
 
   <script>
     const titles = [
-      "te cura", "lost romance", "blish", 
-      "An inverted realtionship", "Immortality : The Death of Death", "Heaven", 
-      "Everybody", "Ideal Expression", "Monster", 
-      "alfoze", "Valentine"
+      "te cura", "lost romance", "blish", "An inverted realtionship",
+      "Immortality : The Death of Death", "Heaven", "Everybody",
+      "Ideal Expression", "Monster", "alfoze",
+      "Valentine", "Forever", "Lov"
     ];
 
     const categories = [
-      "brand design", "graphic design", "brand design", 
-      "editorial", "brand design", "graphic design", 
-      "graphic design", "graphic design", "graphic design", 
-      "brand design", "graphic design"
+      "brand design", "graphic design", "brand design", "editorial",
+      "brand design", "graphic design", "graphic design",
+      "graphic design", "graphic design", "brand design",
+      "graphic design", "graphic design", "brand design"
     ];
 
     const years = [
-      "2022", "2023", "2023", 
-      "2023", "2024", "2024", 
-      "2024", "2024", "2024", 
-      "2025", "2025"
+      "2022", "2023", "2023", "2023",
+      "2024", "2024", "2024", "2024",
+      "2024", "2025", "2025", "2025", "2025"
     ];
 
     const gallery = document.getElementById('gallery');
 
     for (let i = titles.length; i >= 1; i--) {
       const index = i;
-      const title = titles[i - 1];
-      const category = categories[i - 1];
-      const year = years[i - 1];
-
       const item = document.createElement('a');
       item.href = `detail${index}.html`;
       item.className = `thumbnail thumb${index}`;
       item.innerHTML = `
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
         <div class="caption caption-thumb${index}">
-          <span class="title">${title}</span>
-          <span class="category">${category}</span>
-          <span class="year">${year}</span>
+          <span class="title">${titles[i - 1]}</span>
+          <span class="category">${categories[i - 1]}</span>
+          <span class="year">${years[i - 1]}</span>
         </div>
       `;
       gallery.appendChild(item);
