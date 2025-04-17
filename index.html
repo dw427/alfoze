@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>alfoze</title>
+
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
@@ -100,35 +101,20 @@
       height: 150px;
       background: #ffffff;
       position: relative;
-    }
-
-    .footer .left-link {
-      position: absolute;
-      bottom: 10px;
-      left: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
       font-size: 12px;
     }
 
-    .footer .left-link a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .footer .contact-link {
-      position: absolute;
-      bottom: 10px;
-      font-size: 12px;
-    }
-
+    .footer .left-link a,
     .footer .contact-link a {
       color: inherit;
       text-decoration: none;
     }
 
     .footer .slide-button {
-      position: absolute;
-      bottom: 10px;
-      right: 30px;
       cursor: pointer;
       z-index: 4000;
     }
@@ -144,7 +130,7 @@
       right: -575px;
       width: 575px;
       height: 100%;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.7);
       transition: right 0.3s ease;
       z-index: 3000;
     }
@@ -204,29 +190,13 @@
 
       .footer {
         height: 80px;
-        display: flex;
-        align-items: center;
+        flex-direction: row;
         justify-content: space-between;
         padding: 0 20px;
       }
 
-      .footer .left-link,
-      .footer .contact-link {
-        position: static;
-        font-size: 12px;
-      }
-
-      .footer .contact-link {
-        margin-left: 10px;
-      }
-
       .footer .slide-button {
         position: static;
-      }
-
-      .footer .slide-button img {
-        width: 10px;
-        height: 10px;
       }
     }
   </style>
@@ -292,22 +262,6 @@
       `;
       gallery.appendChild(item);
     }
-
-    // contact 위치 계산 (PC 전용)
-    window.addEventListener('DOMContentLoaded', () => {
-      const leftLink = document.querySelector('.left-link');
-      const contactLink = document.querySelector('.contact-link');
-
-      if (window.innerWidth > 768) {
-        const rect = leftLink.getBoundingClientRect();
-        const parentRect = leftLink.offsetParent.getBoundingClientRect();
-        const left = rect.left - parentRect.left;
-        const width = rect.width;
-
-        contactLink.style.left = (left + width + 140) + 'px';
-        contactLink.style.position = 'absolute';
-      }
-    });
 
     // 슬라이드 토글
     const slideBtn = document.querySelector('.slide-button');
