@@ -106,7 +106,7 @@
     .footer .right-link {
       position: absolute;
       bottom: 10px;
-      left: 30px;
+      right: 30px;
       font-size: 12px;
     }
 
@@ -181,7 +181,7 @@
 
       .footer .right-link {
         bottom: 20px;
-        left: 20px;
+        right: 20px;
         font-size: 12px;
       }
 
@@ -214,24 +214,23 @@
 
   <script>
     const titles = [
-      "te cura", "lost romance", "blish",
-      "An inverted realtionship", "Immortality : The Death of Death", "Heaven",
-      "Everybody", "Ideal Expression", "Monster",
-      "alfoze", "Valentine", "Forever"
+      "te cura", "lost romance", "blish", "An inverted realtionship",
+      "Immortality : The Death of Death", "Heaven", "Everybody",
+      "Ideal Expression", "Monster", "alfoze",
+      "Valentine", "Forever", "Lov"
     ];
 
     const categories = [
-      "brand design", "graphic design", "brand design",
-      "editorial", "brand design", "graphic design",
-      "graphic design", "graphic design", "graphic design",
-      "brand design", "graphic design", "graphic design"
+      "brand design", "graphic design", "brand design", "editorial",
+      "brand design", "graphic design", "graphic design",
+      "graphic design", "graphic design", "brand design",
+      "graphic design", "graphic design", "brand design"
     ];
 
     const years = [
-      "2022", "2023", "2023",
-      "2023", "2024", "2024",
-      "2024", "2024", "2024",
-      "2025", "2025", "2025"
+      "2022", "2023", "2023", "2023",
+      "2024", "2024", "2024", "2024",
+      "2024", "2025", "2025", "2025", "2025"
     ];
 
     const gallery = document.getElementById('gallery');
@@ -256,15 +255,17 @@
       gallery.appendChild(item);
     }
 
-    // 📌 contact 위치: right-link 기준 + 200px
+    // contact 위치: right-link 기준 오른쪽으로 정확히 200px
     window.addEventListener('DOMContentLoaded', () => {
       const rightLink = document.querySelector('.right-link');
       const contactLink = document.querySelector('.contact-link');
 
-      const offsetLeft = rightLink.offsetLeft;
-      const width = rightLink.offsetWidth;
+      const rightRect = rightLink.getBoundingClientRect();
+      const parentRect = rightLink.offsetParent.getBoundingClientRect();
+      const offsetRight = window.innerWidth - (rightRect.right - parentRect.left);
 
-      contactLink.style.left = (offsetLeft + width + 200) + 'px';
+      // 계산: 오른쪽 여백에서 -200px 만큼 왼쪽으로 contact 위치
+      contactLink.style.right = (offsetRight - 200) + 'px';
     });
   </script>
 </body>
