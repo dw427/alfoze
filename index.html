@@ -126,68 +126,20 @@
       text-decoration: none;
     }
 
-    @media (max-width: 1200px) {
-      .content { grid-template-columns: repeat(2, 250px); }
-    }
-
     @media (max-width: 768px) {
-      .side { display: none; }
-      .container { padding: 0; }
-
-      .content {
-        grid-template-columns: 1fr;
-        padding: 0;
-        row-gap: 13px;
-        background-color: #ffffff;
-      }
-
-      .thumbnail {
-        width: 100%;
-      }
-
-      .thumbnail img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      .caption {
-        display: flex;
-        align-items: flex-start;
-        margin-top: 13px;
-        font-size: 12px;
-        line-height: 12px;
-        background-color: #ffffff;
-        width: 100%;
-      }
-
-      .caption .title {
-        margin-left: 10px;
-        margin-right: 45px;
-      }
-
-      .caption .year {
-        margin-left: auto;
-        margin-right: 10px;
-      }
-
-      .header {
-        height: 80px;
-      }
-
       .footer {
-        height: 80px;
+        height: auto;
+        padding: 20px 20px;
       }
 
       .footer .right-link {
-        bottom: 20px;
-        left: 20px;
-        font-size: 12px;
+        position: static;
+        margin-bottom: 5px;
       }
 
       .footer .contact-link {
-        bottom: 20px;
-        font-size: 12px;
+        position: static;
+        margin-top: 5px;
       }
     }
   </style>
@@ -261,12 +213,14 @@
       const rightLink = document.querySelector('.right-link');
       const contactLink = document.querySelector('.contact-link');
 
-      const rect = rightLink.getBoundingClientRect();
-      const parentRect = rightLink.offsetParent.getBoundingClientRect();
-      const left = rect.left - parentRect.left;
-      const width = rect.width;
+      if (window.innerWidth > 768) {
+        const rect = rightLink.getBoundingClientRect();
+        const parentRect = rightLink.offsetParent.getBoundingClientRect();
+        const left = rect.left - parentRect.left;
+        const width = rect.width;
 
-      contactLink.style.left = (left + width + 200) + 'px';
+        contactLink.style.left = (left + width + 200) + 'px';
+      }
     });
   </script>
 </body>
