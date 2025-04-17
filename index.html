@@ -103,15 +103,6 @@
       position: relative;
     }
 
-    .footer .center-text {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
-      text-align: center;
-    }
-
     .footer .right-link {
       position: absolute;
       bottom: 10px;
@@ -121,6 +112,18 @@
     }
 
     .footer .right-link a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .footer .contact-link {
+      position: absolute;
+      bottom: 10px;
+      left: 230px; /* 30px (@alfoze) + 200px 여백 */
+      font-size: 12px;
+    }
+
+    .footer .contact-link a {
       color: inherit;
       text-decoration: none;
     }
@@ -178,15 +181,16 @@
         height: 80px;
       }
 
-      .footer .center-text {
-        bottom: 20px;
-        font-size: 12px;
-      }
-
       .footer .right-link {
         bottom: 20px;
         left: 20px;
         right: auto;
+        font-size: 12px;
+      }
+
+      .footer .contact-link {
+        bottom: 20px;
+        left: 220px; /* 모바일은 조금 더 좁게 */
         font-size: 12px;
       }
     }
@@ -204,8 +208,12 @@
   </div>
 
   <div class="footer">
-    <div class="center-text">footertest</div>
-    <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
+    <div class="right-link">
+      <a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a>
+    </div>
+    <div class="contact-link">
+      <a href="mailto:uxxwd9@gmail.com">contact</a>
+    </div>
   </div>
 
   <script>
