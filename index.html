@@ -101,7 +101,7 @@
       height: 150px;
       background: #ffffff;
       position: relative;
-      z-index: 500;
+      z-index: 100;
     }
 
     .footer .left-link {
@@ -111,13 +111,15 @@
       font-size: 12px;
     }
 
-    .footer .left-link a {
-      color: inherit;
-      text-decoration: none;
-      margin-right: 140px;
+    .footer .contact-link {
+      position: absolute;
+      bottom: 10px;
+      left: 170px;
+      font-size: 12px;
     }
 
-    .footer .left-link .contact a {
+    .footer .left-link a,
+    .footer .contact-link a {
       color: inherit;
       text-decoration: none;
     }
@@ -126,31 +128,24 @@
       position: absolute;
       bottom: 10px;
       right: 30px;
-      width: 10px;
-      height: 10px;
+      font-size: 12px;
       cursor: pointer;
-      z-index: 1100;
+      z-index: 999;
     }
 
-    .footer .list-button img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .slide-box {
+    .sliding-box {
       position: fixed;
       top: 0;
       right: 0;
       width: 575px;
-      height: 100vh;
+      height: 100%;
       background-color: rgba(255, 255, 255, 0.7);
       transform: translateX(100%);
-      transition: transform 0.3s ease;
-      z-index: 1050;
+      transition: transform 0.4s ease-in-out;
+      z-index: 998;
     }
 
-    .slide-box.open {
+    .sliding-box.open {
       transform: translateX(0);
     }
 
@@ -210,7 +205,11 @@
       .footer .left-link {
         bottom: 20px;
         left: 20px;
-        font-size: 12px;
+      }
+
+      .footer .contact-link {
+        bottom: 20px;
+        left: 160px;
       }
 
       .footer .list-button {
@@ -218,7 +217,7 @@
         right: 20px;
       }
 
-      .slide-box {
+      .sliding-box {
         width: 100%;
       }
     }
@@ -238,15 +237,14 @@
   <div class="footer">
     <div class="left-link">
       <a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a>
-      <span class="contact"><a href="mailto:uxxwd9@gmail.com">contact</a></span>
     </div>
-    <div class="list-button">
-      <img src="images/list.png" alt="list" />
+    <div class="contact-link">
+      <a href="mailto:uxxwd9@gmail.com">contact</a>
     </div>
-    <div class="slide-box" id="slideBox">
-      <!-- 슬라이드 박스 내부 콘텐츠 작성하세요 -->
-    </div>
+    <div class="list-button">list</div>
   </div>
+
+  <div class="sliding-box" id="slideBox"></div>
 
   <script>
     const titles = [
@@ -291,10 +289,10 @@
       gallery.appendChild(item);
     }
 
-    const listBtn = document.querySelector(".list-button");
+    const listButton = document.querySelector(".list-button");
     const slideBox = document.getElementById("slideBox");
 
-    listBtn.addEventListener("click", () => {
+    listButton.addEventListener("click", () => {
       slideBox.classList.toggle("open");
     });
   </script>
