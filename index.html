@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>alfoze</title>
-
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
@@ -145,7 +144,7 @@
       right: -575px;
       width: 575px;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: #ffffff;
       transition: right 0.3s ease;
       z-index: 3000;
     }
@@ -205,31 +204,29 @@
 
       .footer {
         height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
       }
 
-      .footer .left-link {
-        bottom: 20px;
-        left: 20px;
+      .footer .left-link,
+      .footer .contact-link {
+        position: static;
         font-size: 12px;
       }
 
       .footer .contact-link {
-        bottom: 20px;
-        font-size: 12px;
+        margin-left: 10px;
       }
 
       .footer .slide-button {
-        bottom: 20px;
-        right: 20px;
+        position: static;
       }
 
-      .slide-panel {
-        width: 100%;
-        right: -100%;
-      }
-
-      .slide-panel.open {
-        right: 0;
+      .footer .slide-button img {
+        width: 10px;
+        height: 10px;
       }
     }
   </style>
@@ -296,7 +293,7 @@
       gallery.appendChild(item);
     }
 
-    // contact 위치 계산
+    // contact 위치 계산 (PC 전용)
     window.addEventListener('DOMContentLoaded', () => {
       const leftLink = document.querySelector('.left-link');
       const contactLink = document.querySelector('.contact-link');
@@ -308,6 +305,7 @@
         const width = rect.width;
 
         contactLink.style.left = (left + width + 140) + 'px';
+        contactLink.style.position = 'absolute';
       }
     });
 
