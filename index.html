@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -103,6 +104,15 @@
       position: relative;
     }
 
+    .footer .center-text {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      text-align: center;
+    }
+
     .footer .right-link {
       position: absolute;
       bottom: 10px;
@@ -111,17 +121,6 @@
     }
 
     .footer .right-link a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .footer .contact-link {
-      position: absolute;
-      bottom: 10px;
-      font-size: 12px;
-    }
-
-    .footer .contact-link a {
       color: inherit;
       text-decoration: none;
     }
@@ -179,14 +178,14 @@
         height: 80px;
       }
 
-      .footer .right-link {
+      .footer .center-text {
         bottom: 20px;
-        right: 20px;
         font-size: 12px;
       }
 
-      .footer .contact-link {
+      .footer .right-link {
         bottom: 20px;
+        right: 20px;
         font-size: 12px;
       }
     }
@@ -204,12 +203,8 @@
   </div>
 
   <div class="footer">
-    <div class="right-link">
-      <a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a>
-    </div>
-    <div class="contact-link">
-      <a href="mailto:uxxwd9@gmail.com">contact</a>
-    </div>
+    <div class="center-text">footertest</div>
+    <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
   </div>
 
   <script>
@@ -254,19 +249,6 @@
       `;
       gallery.appendChild(item);
     }
-
-    // contact 위치: right-link 기준 오른쪽으로 정확히 200px
-    window.addEventListener('DOMContentLoaded', () => {
-      const rightLink = document.querySelector('.right-link');
-      const contactLink = document.querySelector('.contact-link');
-
-      const rightRect = rightLink.getBoundingClientRect();
-      const parentRect = rightLink.offsetParent.getBoundingClientRect();
-      const offsetRight = window.innerWidth - (rightRect.right - parentRect.left);
-
-      // 계산: 오른쪽 여백에서 -200px 만큼 왼쪽으로 contact 위치
-      contactLink.style.right = (offsetRight - 200) + 'px';
-    });
   </script>
 </body>
 </html>
