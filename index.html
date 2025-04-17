@@ -16,6 +16,17 @@
       background: #ffffff;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover,
+    #listButton:hover {
+      color: #a3a3a3;
+    }
+
     .container {
       display: flex;
       justify-content: center;
@@ -101,35 +112,35 @@
       height: 150px;
       background: #ffffff;
       position: relative;
-      z-index: 1001;
+      z-index: 10;
     }
 
-    .footer .left-link {
+    .footer .center-text {
+      display: none;
+    }
+
+    .footer .right-link {
       position: absolute;
       bottom: 10px;
       left: 30px;
       font-size: 12px;
     }
 
-    .footer .contact {
+    .footer .contact-link {
       position: absolute;
       bottom: 10px;
-      left: 200px;
+      left: 170px;
       font-size: 12px;
     }
 
-    .footer .list-button {
-      position: absolute;
+    #listButton {
+      position: fixed;
       bottom: 10px;
       right: 30px;
       font-size: 12px;
       cursor: pointer;
-      z-index: 9999; /* 최상단 고정 */
-    }
-
-    .footer a {
-      color: inherit;
-      text-decoration: none;
+      z-index: 4000;
+      background: transparent;
     }
 
     .slide-box {
@@ -137,22 +148,35 @@
       top: 0;
       right: 0;
       width: 575px;
-      height: 100vh;
+      height: 100%;
       background-color: rgba(255, 255, 255, 0.7);
-      z-index: 1001;
+      z-index: 3000;
       transform: translateX(100%);
-      transition: transform 0.4s ease-in-out;
+      transition: transform 0.3s ease-in-out;
     }
 
-    .slide-box.open {
+    .slide-box.active {
       transform: translateX(0%);
     }
 
-    @media (max-width: 768px) {
-      .content { grid-template-columns: 1fr; }
-      .side { display: none; }
+    @media (max-width: 1200px) {
+      .content { grid-template-columns: repeat(2, 250px); }
+    }
 
-      .thumbnail { width: 100%; }
+    @media (max-width: 768px) {
+      .side { display: none; }
+      .container { padding: 0; }
+
+      .content {
+        grid-template-columns: 1fr;
+        padding: 0;
+        row-gap: 13px;
+        background-color: #ffffff;
+      }
+
+      .thumbnail {
+        width: 100%;
+      }
 
       .thumbnail img {
         display: block;
@@ -180,12 +204,28 @@
         margin-right: 10px;
       }
 
-      .header { height: 80px; }
-      .footer { height: 80px; }
+      .header {
+        height: 80px;
+      }
 
-      .footer .left-link { bottom: 20px; left: 20px; font-size: 12px; }
-      .footer .contact { bottom: 20px; left: 160px; font-size: 12px; }
-      .footer .list-button { bottom: 20px; right: 20px; font-size: 12px; }
+      .footer {
+        height: 80px;
+      }
+
+      .footer .right-link {
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .footer .contact-link {
+        bottom: 20px;
+        left: 160px;
+      }
+
+      #listButton {
+        bottom: 20px;
+        right: 20px;
+      }
 
       .slide-box {
         width: 100%;
@@ -205,13 +245,19 @@
   </div>
 
   <div class="footer">
-    <div class="left-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
-    <div class="contact"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
-    <div class="list-button" onclick="toggleSlide()">list</div>
+    <div class="right-link">
+      <a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a>
+    </div>
+    <div class="contact-link">
+      <a href="mailto:uxxwd9@gmail.com">contact</a>
+    </div>
   </div>
 
+  <!-- list 버튼: 슬라이드박스보다 위에 고정됨 -->
+  <div id="listButton" onclick="toggleSlideBox()">list</div>
+
   <div class="slide-box" id="slideBox">
-    <!-- 누님이 원하시는 내용 채워 넣으시면 됩니다 -->
+    <!-- 슬라이딩 콘텐츠 추가 가능 -->
   </div>
 
   <script>
@@ -257,9 +303,9 @@
       gallery.appendChild(item);
     }
 
-    function toggleSlide() {
-      const slideBox = document.getElementById('slideBox');
-      slideBox.classList.toggle('open');
+    function toggleSlideBox() {
+      const slideBox = document.getElementById("slideBox");
+      slideBox.classList.toggle("active");
     }
   </script>
 </body>
