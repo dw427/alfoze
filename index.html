@@ -103,14 +103,14 @@
       position: relative;
     }
 
-    .footer .right-link {
+    .footer .left-link {
       position: absolute;
       bottom: 10px;
       left: 30px;
       font-size: 12px;
     }
 
-    .footer .right-link a {
+    .footer .left-link a {
       color: inherit;
       text-decoration: none;
     }
@@ -126,12 +126,13 @@
       text-decoration: none;
     }
 
+    @media (max-width: 1200px) {
+      .content { grid-template-columns: repeat(2, 250px); }
+    }
+
     @media (max-width: 768px) {
       .side { display: none; }
-
-      .container {
-        padding: 0;
-      }
+      .container { padding: 0; }
 
       .content {
         grid-template-columns: 1fr;
@@ -178,7 +179,7 @@
         height: 80px;
       }
 
-      .footer .right-link {
+      .footer .left-link {
         bottom: 20px;
         left: 20px;
         font-size: 12px;
@@ -203,7 +204,7 @@
   </div>
 
   <div class="footer">
-    <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a></div>
+    <div class="left-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a></div>
     <div class="contact-link"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
   </div>
 
@@ -250,14 +251,14 @@
       gallery.appendChild(item);
     }
 
-    // contact 위치: right-link 기준 오른쪽 200px
+    // contact 위치: left-link 기준 오른쪽 200px
     window.addEventListener('DOMContentLoaded', () => {
-      const rightLink = document.querySelector('.right-link');
+      const leftLink = document.querySelector('.left-link');
       const contactLink = document.querySelector('.contact-link');
 
       if (window.innerWidth > 768) {
-        const rect = rightLink.getBoundingClientRect();
-        const parentRect = rightLink.offsetParent.getBoundingClientRect();
+        const rect = leftLink.getBoundingClientRect();
+        const parentRect = leftLink.offsetParent.getBoundingClientRect();
         const left = rect.left - parentRect.left;
         const width = rect.width;
 
