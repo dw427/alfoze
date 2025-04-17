@@ -107,7 +107,6 @@
       position: absolute;
       bottom: 10px;
       left: 30px;
-      right: auto;
       font-size: 12px;
     }
 
@@ -119,7 +118,6 @@
     .footer .contact-link {
       position: absolute;
       bottom: 10px;
-      left: 230px; /* 30px (@alfoze) + 200px 여백 */
       font-size: 12px;
     }
 
@@ -184,13 +182,11 @@
       .footer .right-link {
         bottom: 20px;
         left: 20px;
-        right: auto;
         font-size: 12px;
       }
 
       .footer .contact-link {
         bottom: 20px;
-        left: 220px; /* 모바일은 조금 더 좁게 */
         font-size: 12px;
       }
     }
@@ -218,23 +214,23 @@
 
   <script>
     const titles = [
-      "te cura", "lost romance", "blish", 
-      "An inverted realtionship", "Immortality : The Death of Death", "Heaven", 
-      "Everybody", "Ideal Expression", "Monster", 
+      "te cura", "lost romance", "blish",
+      "An inverted realtionship", "Immortality : The Death of Death", "Heaven",
+      "Everybody", "Ideal Expression", "Monster",
       "alfoze", "Valentine", "Forever"
     ];
 
     const categories = [
-      "brand design", "graphic design", "brand design", 
-      "editorial", "brand design", "graphic design", 
+      "brand design", "graphic design", "brand design",
+      "editorial", "brand design", "graphic design",
       "graphic design", "graphic design", "graphic design",
       "brand design", "graphic design", "graphic design"
     ];
 
     const years = [
-      "2022", "2023", "2023", 
-      "2023", "2024", "2024", 
-      "2024", "2024", "2024", 
+      "2022", "2023", "2023",
+      "2023", "2024", "2024",
+      "2024", "2024", "2024",
       "2025", "2025", "2025"
     ];
 
@@ -259,6 +255,17 @@
       `;
       gallery.appendChild(item);
     }
+
+    // 📌 contact 위치: right-link 기준 + 200px
+    window.addEventListener('DOMContentLoaded', () => {
+      const rightLink = document.querySelector('.right-link');
+      const contactLink = document.querySelector('.contact-link');
+
+      const offsetLeft = rightLink.offsetLeft;
+      const width = rightLink.offsetWidth;
+
+      contactLink.style.left = (offsetLeft + width + 200) + 'px';
+    });
   </script>
 </body>
 </html>
