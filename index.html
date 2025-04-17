@@ -126,6 +126,34 @@
       text-decoration: none;
     }
 
+    .footer .slide-button {
+      position: absolute;
+      bottom: 10px;
+      right: 30px;
+      cursor: pointer;
+      z-index: 4000;
+    }
+
+    .footer .slide-button img {
+      width: 10px;
+      height: 10px;
+    }
+
+    .slide-panel {
+      position: fixed;
+      top: 0;
+      right: -575px;
+      width: 575px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      transition: right 0.3s ease;
+      z-index: 3000;
+    }
+
+    .slide-panel.open {
+      right: 0;
+    }
+
     @media (max-width: 1200px) {
       .content { grid-template-columns: repeat(2, 250px); }
     }
@@ -189,6 +217,20 @@
         bottom: 20px;
         font-size: 12px;
       }
+
+      .footer .slide-button {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .slide-panel {
+        width: 100%;
+        right: -100%;
+      }
+
+      .slide-panel.open {
+        right: 0;
+      }
     }
   </style>
 </head>
@@ -206,7 +248,10 @@
   <div class="footer">
     <div class="left-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a></div>
     <div class="contact-link"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
+    <div class="slide-button"><img src="images/list.png" alt="list" /></div>
   </div>
+
+  <div class="slide-panel" id="slidePanel"></div>
 
   <script>
     const titles = [
@@ -251,7 +296,7 @@
       gallery.appendChild(item);
     }
 
-    // contact 위치: left-link 기준 오른쪽 170px
+    // contact 위치 계산
     window.addEventListener('DOMContentLoaded', () => {
       const leftLink = document.querySelector('.left-link');
       const contactLink = document.querySelector('.contact-link');
@@ -262,8 +307,16 @@
         const left = rect.left - parentRect.left;
         const width = rect.width;
 
-        contactLink.style.left = (left + width + 170) + 'px';
+        contactLink.style.left = (left + width + 140) + 'px';
       }
+    });
+
+    // 슬라이드 토글
+    const slideBtn = document.querySelector('.slide-button');
+    const slidePanel = document.getElementById('slidePanel');
+
+    slideBtn.addEventListener('click', () => {
+      slidePanel.classList.toggle('open');
     });
   </script>
 </body>
