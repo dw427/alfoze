@@ -101,45 +101,62 @@
       height: 150px;
       background: #ffffff;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 30px;
+      z-index: 900;
+    }
+
+    .footer .right-link {
+      position: absolute;
+      bottom: 10px;
+      left: 30px;
       font-size: 12px;
-      box-sizing: border-box;
     }
 
-    .footer .left-link,
-    .footer .contact-link,
-    .footer .slide-button {
-      position: static;
-      margin: 0;
+    .footer .right-link a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .footer .left-link a,
+    .footer .contact-link {
+      position: absolute;
+      bottom: 10px;
+      left: 170px; /* 30px + 140px */
+      font-size: 12px;
+    }
+
     .footer .contact-link a {
       color: inherit;
       text-decoration: none;
     }
 
-    .footer .slide-button img {
+    .list-button {
+      position: absolute;
+      bottom: 10px;
+      right: 30px;
       width: 10px;
       height: 10px;
+      z-index: 1002;
+      cursor: pointer;
     }
 
-    .slide-panel {
+    .list-button img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sliding-box {
       position: fixed;
       top: 0;
-      right: -575px;
+      right: 0;
       width: 575px;
-      height: 100%;
+      height: 100vh;
       background-color: rgba(255, 255, 255, 0.7);
-      transition: right 0.3s ease;
-      z-index: 3000;
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
     }
 
-    .slide-panel.open {
-      right: 0;
+    .sliding-box.active {
+      transform: translateX(0);
     }
 
     @media (max-width: 1200px) {
@@ -193,15 +210,25 @@
 
       .footer {
         height: 80px;
-        padding: 0 20px;
-        font-size: 12px;
       }
 
-      .footer .left-link,
-      .footer .contact-link,
-      .footer .slide-button {
-        position: static;
-        margin: 0;
+      .footer .right-link {
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .footer .contact-link {
+        bottom: 20px;
+        left: 160px;
+      }
+
+      .list-button {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .sliding-box {
+        width: 100%;
       }
     }
   </style>
@@ -218,12 +245,17 @@
   </div>
 
   <div class="footer">
-    <div class="left-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a></div>
-    <div class="contact-link"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
-    <div class="slide-button"><img src="images/list.png" alt="list" /></div>
+    <div class="right-link">
+      <a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a>
+    </div>
+    <div class="contact-link">
+      <a href="mailto:uxxwd9@gmail.com">contact</a>
+    </div>
+    <div class="list-button" id="toggleSlide">
+      <img src="images/list.png" alt="list" />
+    </div>
+    <div class="sliding-box" id="slideBox"></div>
   </div>
-
-  <div class="slide-panel" id="slidePanel"></div>
 
   <script>
     const titles = [
@@ -268,26 +300,11 @@
       gallery.appendChild(item);
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const leftLink = document.querySelector('.left-link');
-      const contactLink = document.querySelector('.contact-link');
-
-      if (window.innerWidth > 768) {
-        const rect = leftLink.getBoundingClientRect();
-        const parentRect = leftLink.offsetParent.getBoundingClientRect();
-        const left = rect.left - parentRect.left;
-        const width = rect.width;
-
-        contactLink.style.position = 'absolute';
-        contactLink.style.left = (left + width + 140) + 'px';
-      }
-    });
-
-    const slideBtn = document.querySelector('.slide-button');
-    const slidePanel = document.getElementById('slidePanel');
-
-    slideBtn.addEventListener('click', () => {
-      slidePanel.classList.toggle('open');
+    // 슬라이딩 박스 toggle
+    const toggleBtn = document.getElementById('toggleSlide');
+    const slideBox = document.getElementById('slideBox');
+    toggleBtn.addEventListener('click', () => {
+      slideBox.classList.toggle('active');
     });
   </script>
 </body>
