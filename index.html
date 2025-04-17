@@ -103,26 +103,32 @@
       position: relative;
     }
 
-    .footer .center-text {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    .footer .right-link {
+    .footer .right-area {
       position: absolute;
       bottom: 10px;
       left: 30px;
-      right: auto;
+      display: flex;
+      align-items: center;
+      gap: 40px;
       font-size: 12px;
     }
 
-    .footer .right-link a {
+    .footer .right-area a {
       color: inherit;
       text-decoration: none;
+    }
+
+    .footer .mail-button {
+      padding: 2px 8px;
+      border: 1px solid #000;
+      background: transparent;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .footer .mail-button:hover {
+      background: #000;
+      color: #fff;
     }
 
     @media (max-width: 1200px) {
@@ -178,15 +184,15 @@
         height: 80px;
       }
 
-      .footer .center-text {
-        bottom: 20px;
-        font-size: 12px;
-      }
-
-      .footer .right-link {
+      .footer .right-area {
         bottom: 20px;
         left: 20px;
-        right: auto;
+        font-size: 12px;
+        gap: 20px;
+      }
+
+      .footer .mail-button {
+        padding: 2px 8px;
         font-size: 12px;
       }
     }
@@ -204,8 +210,10 @@
   </div>
 
   <div class="footer">
-    <div class="center-text">footertest</div>
-    <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
+    <div class="right-area">
+      <a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a>
+      <button class="mail-button" onclick="location.href='mailto:uxxwd9@gmail.com'">메일</button>
+    </div>
   </div>
 
   <script>
