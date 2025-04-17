@@ -126,10 +126,58 @@
       text-decoration: none;
     }
 
+    @media (max-width: 1200px) {
+      .content { grid-template-columns: repeat(2, 250px); }
+    }
+
     @media (max-width: 768px) {
+      .side { display: none; }
+      .container { padding: 0; }
+
+      .content {
+        grid-template-columns: 1fr;
+        padding: 0;
+        row-gap: 13px;
+        background-color: #ffffff;
+      }
+
+      .thumbnail {
+        width: 100%;
+      }
+
+      .thumbnail img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .caption {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 13px;
+        font-size: 12px;
+        line-height: 12px;
+        background-color: #ffffff;
+        width: 100%;
+      }
+
+      .caption .title {
+        margin-left: 10px;
+        margin-right: 45px;
+      }
+
+      .caption .year {
+        margin-left: auto;
+        margin-right: 10px;
+      }
+
+      .header {
+        height: 80px;
+      }
+
       .footer {
         height: auto;
-        padding: 20px 20px;
+        padding: 20px;
       }
 
       .footer .right-link {
@@ -156,34 +204,29 @@
   </div>
 
   <div class="footer">
-    <div class="right-link">
-      <a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a>
-    </div>
-    <div class="contact-link">
-      <a href="mailto:uxxwd9@gmail.com">contact</a>
-    </div>
+    <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoze</a></div>
+    <div class="contact-link"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
   </div>
 
   <script>
     const titles = [
-      "te cura", "lost romance", "blish",
-      "An inverted realtionship", "Immortality : The Death of Death", "Heaven",
-      "Everybody", "Ideal Expression", "Monster",
-      "alfoze", "Valentine", "Forever", "Lov"
+      "te cura", "lost romance", "blish", "An inverted realtionship",
+      "Immortality : The Death of Death", "Heaven", "Everybody",
+      "Ideal Expression", "Monster", "alfoze",
+      "Valentine", "Forever", "Lov"
     ];
 
     const categories = [
-      "brand design", "graphic design", "brand design",
-      "editorial", "brand design", "graphic design",
-      "graphic design", "graphic design", "graphic design",
-      "brand design", "graphic design", "graphic design", "brand design"
+      "brand design", "graphic design", "brand design", "editorial",
+      "brand design", "graphic design", "graphic design",
+      "graphic design", "graphic design", "brand design",
+      "graphic design", "graphic design", "brand design"
     ];
 
     const years = [
-      "2022", "2023", "2023",
-      "2023", "2024", "2024",
-      "2024", "2024", "2024",
-      "2025", "2025", "2025", "2025"
+      "2022", "2023", "2023", "2023",
+      "2024", "2024", "2024", "2024",
+      "2024", "2025", "2025", "2025", "2025"
     ];
 
     const gallery = document.getElementById('gallery');
