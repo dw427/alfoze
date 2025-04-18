@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfoze</title>
+  <title>test</title>
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
@@ -134,12 +134,14 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: 480px;
+      width: 600px !important;
+      max-width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.7);
+      background-color: #ffffff;
       z-index: 3000;
       transform: translateX(100%);
       transition: transform 0.3s ease-in-out;
+      overflow-y: auto;
     }
 
     .slide-box.active {
@@ -158,6 +160,44 @@
 
     .slide-box .slide-list:hover {
       color: #a3a3a3;
+    }
+
+    .text-group {
+      display: flex;
+      padding: 10px 0;
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .text1 {
+      margin-left: 10px;
+      transition: color 0.3s;
+    }
+
+    .text1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .text1 a:hover {
+      color: #a3a3a3;
+    }
+
+    .text2 {
+      margin-left: auto;
+      margin-right: 60px;
+      text-align: right;
+    }
+
+    .text3 {
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    #slideContent {
+      padding-top: 13px;
     }
 
     @media (max-width: 768px) {
@@ -215,7 +255,7 @@
       }
 
       .slide-box {
-        width: 100%;
+        width: 100% !important;
       }
 
       .slide-box .slide-list {
@@ -247,8 +287,8 @@
   </div>
 
   <div class="slide-box" id="slideBox">
-    <div class="slide-list" onclick="toggleSlideBox()">list</div>
-    <!-- 슬라이드 안 내용 필요 시 추가 -->
+    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
+    <div id="slideContent"></div>
   </div>
 
   <script>
@@ -291,9 +331,38 @@
       gallery.appendChild(item);
     }
 
+    const slideData = [
+      ["te cura", "brand design", "2022"],
+      ["a generation that has lost romance", "graphic design", "2023"],
+      ["blish", "brand design", "2023"],
+      ["An inverted realtionship", "editorial", "2023"],
+      ["Immortality : The Death of Death", "brand design", "2024"],
+      ["Heaven", "graphic design", "2024"],
+      ["Everybody", "graphic design", "2024"],
+      ["Ideal Expression", "graphic design", "2024"],
+      ["Monster", "graphic design", "2024"],
+      ["alfoze", "brand design", "2025"],
+      ["Valentine", "graphic design", "2025"]
+    ];
+
+    const slideContent = document.getElementById("slideContent");
+
+    slideData.forEach(([text1, text2, text3], index) => {
+      const group = document.createElement("div");
+      group.className = "text-group";
+      group.innerHTML = `
+        <div class="text1"><a href="detail${index + 1}.html">${text1}</a></div>
+        <div class="text2">${text2}</div>
+        <div class="text3">${text3}</div>
+      `;
+      slideContent.appendChild(group);
+    });
+
     function toggleSlideBox() {
       const slideBox = document.getElementById("slideBox");
+      const toggleText = document.getElementById("slideToggleText");
       slideBox.classList.toggle("active");
+      toggleText.textContent = slideBox.classList.contains("active") ? "close" : "list";
     }
   </script>
 </body>
