@@ -134,7 +134,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: 600px !important;
+      width: 550px !important;
       max-width: 100%;
       height: 100%;
       background-color: #ffffff;
@@ -295,22 +295,25 @@
     const titles = [
       "te cura", "lost romance", "blish", 
       "An inverted realtionship", "Immortality : The Death of Death", "Heaven", 
-      "Everybody", "Ideal Expression", "Monster", 
-      "alfoze", "Valentine"
+      "Everybody", "Monster", "Ideal Expression", 
+      "alfoze", "Valentine", "Forever",
+      "Lov"
     ];
 
     const categories = [
       "brand design", "graphic design", "brand design", 
       "editorial", "brand design", "graphic design", 
       "graphic design", "graphic design", "graphic design", 
-      "brand design", "graphic design"
+      "brand design", "graphic design", "graphic design",
+      "brand design"
     ];
 
     const years = [
       "2022", "2023", "2023", 
       "2023", "2024", "2024", 
       "2024", "2024", "2024", 
-      "2025", "2025"
+      "2025", "2025", "2025",
+      "2025"
     ];
 
     const gallery = document.getElementById('gallery');
@@ -318,7 +321,7 @@
     for (let i = titles.length; i >= 1; i--) {
       const index = i;
       const item = document.createElement('a');
-      item.href = `detail${index}.html`;
+      item.href = `${index}/`;
       item.className = `thumbnail thumb${index}`;
       item.innerHTML = `
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
@@ -339,10 +342,12 @@
       ["Immortality : The Death of Death", "brand design", "2024"],
       ["Heaven", "graphic design", "2024"],
       ["Everybody", "graphic design", "2024"],
-      ["Ideal Expression", "graphic design", "2024"],
       ["Monster", "graphic design", "2024"],
+      ["Ideal Expression", "graphic design", "2024"],
       ["alfoze", "brand design", "2025"],
-      ["Valentine", "graphic design", "2025"]
+      ["Valentine", "graphic design", "2025"],
+      ["Forever", "graphic design", "2025"],
+      ["Lov", "graphic design", "2025"]
     ];
 
     const slideContent = document.getElementById("slideContent");
@@ -351,7 +356,7 @@
       const group = document.createElement("div");
       group.className = "text-group";
       group.innerHTML = `
-        <div class="text1"><a href="detail${index + 1}.html">${text1}</a></div>
+        <div class="text1"><a href="${index + 1}/">${text1}</a></div>
         <div class="text2">${text2}</div>
         <div class="text3">${text3}</div>
       `;
