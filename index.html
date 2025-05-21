@@ -234,13 +234,24 @@
       }
 
       .caption .category-year {
-        display: inline;
-      }
+  display: inline;
+}
 
-      .caption .category-year .category::after {
-        content: ", ";
-      }
+.caption .category {
+  display: inline;
+  position: relative;
+}
 
+.caption .category::after {
+  content: ",";
+  position: absolute;
+  right: -12px;
+}
+
+.caption .year {
+  display: inline-block;
+  margin-left: 12px;
+}
       .header {
         height: 80px;
       }
