@@ -221,22 +221,19 @@
       }
 
       .caption {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 8px;
+        font-size: 12px;
+      }
 
-.caption .title,
-.caption .category {
-  margin-bottom: 2px;
-}
-
-.caption .year {
-  margin-bottom: 0;
-}
-
-.thumbnail {
-  margin-bottom: 0;
-}
+      .caption .title,
+      .caption .category,
+      .caption .year {
+        display: block;
+        margin-bottom: 2px;
+      }
 
       .header {
         height: 80px;
