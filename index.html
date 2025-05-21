@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>test</title>
+  <title>alfoze</title>
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
@@ -212,11 +213,33 @@
 
       .thumbnail {
         width: 100%;
+        margin-bottom: 0;
       }
 
       .thumbnail img {
         width: 100%;
         height: auto;
+      }
+
+      .caption {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 8px 0;
+        font-size: 12px;
+      }
+
+      .caption .title {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .caption .category-year {
+        display: inline;
+      }
+
+      .caption .category-year .category::after {
+        content: ", ";
       }
 
       .header {
@@ -315,8 +338,9 @@
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
         <div class="caption caption-thumb${index}">
           <span class="title">${titles[i - 1]}</span>
-          <span class="category">${categories[i - 1]}</span>
-          <span class="year">${years[i - 1]}</span>
+          <span class="category-year">
+            <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
+          </span>
         </div>
       `;
       gallery.appendChild(item);
