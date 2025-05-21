@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -212,7 +213,7 @@
 
       .thumbnail {
         width: 100%;
-        margin-bottom: 16px;
+        margin-bottom: 0;
       }
 
       .thumbnail img {
@@ -233,17 +234,12 @@
         margin-bottom: 2px;
       }
 
-      .caption .category,
-      .caption .year {
+      .caption .category-year {
         display: inline;
       }
 
-      .caption .category::after {
+      .caption .category-year .category::after {
         content: ", ";
-      }
-
-      .caption .year {
-        margin-left: 0;
       }
 
       .header {
@@ -342,8 +338,9 @@
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
         <div class="caption caption-thumb${index}">
           <span class="title">${titles[i - 1]}</span>
-          <span class="category">${categories[i - 1]}</span>
-          <span class="year">${years[i - 1]}</span>
+          <span class="category-year">
+            <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
+          </span>
         </div>
       `;
       gallery.appendChild(item);
