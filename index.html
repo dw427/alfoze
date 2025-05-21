@@ -212,7 +212,7 @@
 
       .thumbnail {
         width: 100%;
-        margin-bottom: 9px;
+        margin-bottom: 16px;
       }
 
       .thumbnail img {
@@ -224,15 +224,26 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 8px;
+        margin: 8px 0;
         font-size: 12px;
       }
 
-      .caption .title,
-      .caption .category,
-      .caption .year {
+      .caption .title {
         display: block;
         margin-bottom: 2px;
+      }
+
+      .caption .category,
+      .caption .year {
+        display: inline;
+      }
+
+      .caption .category::after {
+        content: ", ";
+      }
+
+      .caption .year {
+        margin-left: 0;
       }
 
       .header {
