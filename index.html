@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -234,24 +235,13 @@
       }
 
       .caption .category-year {
-  display: inline;
-}
+        display: inline;
+      }
 
-.caption .category {
-  display: inline;
-  position: relative;
-}
+      .caption .category-year .category::after {
+        content: ", ";
+      }
 
-.caption .category::after {
-  content: ",";
-  position: absolute;
-  right: -3px;
-}
-
-.caption .year {
-  display: inline-block;
-  margin-left: 3px;
-}
       .header {
         height: 80px;
       }
