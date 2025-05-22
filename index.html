@@ -235,13 +235,14 @@
       }
 
       .caption .category-year {
-        display: inline;
-      }
+    display: flex;
+    gap: 10px;
+  }
 
-      .caption .category-year .category::after {
-        content: ", ";
-      }
-
+  .caption .category::after {
+    content: none;
+  }
+}
       .header {
         height: 80px;
       }
