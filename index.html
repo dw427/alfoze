@@ -234,14 +234,15 @@
         margin-bottom: 2px;
       }
 
-      .caption .category-year {
-        display: inline;
-      }
+     .caption .category-year {
+    display: flex;
+    gap: 10px; /* category와 year 사이 간격 */
+  }
 
-      .caption .category-year .category::after {
-        content: ", ";
-      }
-
+  .caption .category-year .category::after {
+    content: "";
+  }
+}
       .header {
         height: 80px;
       }
