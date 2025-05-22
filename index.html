@@ -234,14 +234,19 @@
         margin-bottom: 2px;
       }
 
-      .caption .category-year {
-    display: flex;
-    gap: 3px;
-  }
+    .caption .category-year {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .caption .category::after {
-    content: none;
-  }
+.caption .category,
+.caption .year {
+  display: inline-block;
+}
+
+.caption .category::after {
+  content: none;
 }
       .header {
         height: 80px;
