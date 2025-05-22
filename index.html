@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -61,23 +60,26 @@
       }
     }
 
+    /* ✅ 여기부터 정렬 수정 핵심 */
     .caption {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 110px 40px;
+      column-gap: 20px;
       margin-top: 13px;
       font-size: 12px;
-      align-items: baseline;
+      align-items: start;
     }
 
     .caption .title {
-      margin-right: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .caption .category {
-      margin-right: 60px;
-    }
-
+    .caption .category,
     .caption .year {
-  }
+      text-align: left;
+    }
 
     .side {
       width: 575px;
@@ -225,37 +227,37 @@
         height: auto;
       }
 
-  .caption {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 8px 0;
-    font-size: 12px;
-  }
+      .caption {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 8px 0;
+        font-size: 12px;
+      }
 
-  .caption .title {
-    display: block;
-    margin-bottom: 2px;
-  }
+      .caption .title {
+        display: block;
+        margin-bottom: 2px;
+      }
 
-  .caption .category-year {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+      .caption .category-year {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
 
-  .caption .category {
-    margin-right: 10px;
-  }
+      .caption .category {
+        margin-right: 10px;
+      }
 
-  .caption .year {
-    margin: 0;
-  }
+      .caption .year {
+        margin: 0;
+      }
 
-  .caption .category-year .category::after {
-    content: ",";
-  }
-}
+      .caption .category-year .category::after {
+        content: ",";
+      }
+
       .header {
         height: 80px;
       }
@@ -352,9 +354,8 @@
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
         <div class="caption caption-thumb${index}">
           <span class="title">${titles[i - 1]}</span>
-          <span class="category-year">
-            <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
-          </span>
+          <span class="category">${categories[i - 1]}</span>
+          <span class="year">${years[i - 1]}</span>
         </div>
       `;
       gallery.appendChild(item);
