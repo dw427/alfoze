@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>test</title>
+  <title>alfoze</title>
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
@@ -204,11 +205,15 @@
       .side { display: none; }
 
       .content {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0;
+        row-gap: 0;
+        padding: 0;
       }
 
       .thumbnail {
         width: 100%;
+        margin-bottom: 0;
       }
 
       .thumbnail img {
@@ -216,21 +221,37 @@
         height: auto;
       }
 
-      .caption {
-        font-size: 12px;
-        width: 100%;
-      }
+  .caption {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 8px 0;
+    font-size: 12px;
+  }
 
-      .caption .title {
-        margin-left: 10px;
-        margin-right: 45px;
-      }
+  .caption .title {
+    display: block;
+    margin-bottom: 2px;
+  }
 
-      .caption .year {
-        margin-left: auto;
-        margin-right: 10px;
-      }
+  .caption .category-year {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
+  .caption .category {
+    margin-right: 10px;
+  }
+
+  .caption .year {
+    margin: 0;
+  }
+
+  .caption .category-year .category::after {
+    content: ",";
+  }
+}
       .header {
         height: 80px;
       }
@@ -327,8 +348,9 @@
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
         <div class="caption caption-thumb${index}">
           <span class="title">${titles[i - 1]}</span>
-          <span class="category">${categories[i - 1]}</span>
-          <span class="year">${years[i - 1]}</span>
+          <span class="category-year">
+            <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
+          </span>
         </div>
       `;
       gallery.appendChild(item);
