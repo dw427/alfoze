@@ -215,23 +215,22 @@
     margin-bottom: 2px;
   }
 
-  /* ✅ 핵심 수정 */
   .caption .category-year {
-    display: flex;       /* flex로 바꿔야 gap 적용됨 */
-    gap: 6px;            /* 원하는 간격 설정 */
-    align-items: center; /* 세로 중앙 정렬 (옵션) */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
 
-  .caption .category,
+  .caption .category::after {
+    content: "";
+  }
+
   .caption .year {
-    display: inline; /* 유지하거나 지워도 됨 */
-  }
-
-  /* ❌ 쉼표 제거 */
-  .caption .category-year .category::after {
-    content: ""; /* 쉼표 제거 */
+    margin: 0
   }
 }
+
       .header {
         height: 80px;
       }
