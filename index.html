@@ -234,13 +234,19 @@
         margin-bottom: 2px;
       }
 
-     .caption .category-year {
+    .caption .category-year {
     display: flex;
-    gap: 1px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px; /* category와 year 사이 간격 */
   }
 
   .caption .category-year .category::after {
-    content: "";
+    content: ""; /* 쉼표 제거 */
+  }
+
+  .caption .category-year .year {
+    margin: 0; /* 혹시 기존 margin 있을 경우 제거 */
   }
 }
       .header {
