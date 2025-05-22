@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -201,35 +200,46 @@
       padding-top: 13px;
     }
 
-@media (max-width: 768px) {
-  .caption {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 8px 0;
-    font-size: 12px;
-  }
+    @media (max-width: 768px) {
+      .side { display: none; }
 
-  .caption .title {
-    display: block;
-    margin-bottom: 2px;
-  }
+      .content {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0;
+        row-gap: 0;
+        padding: 0;
+      }
 
-  .caption .category-year {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
+      .thumbnail {
+        width: 100%;
+        margin-bottom: 0;
+      }
 
-  .caption .category::after {
-    content: "";
-  }
+      .thumbnail img {
+        width: 100%;
+        height: auto;
+      }
 
-  .caption .year {
-    margin: 0
-  }
-}
+      .caption {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 8px 0;
+        font-size: 12px;
+      }
+
+      .caption .title {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .caption .category-year {
+        display: inline;
+      }
+
+      .caption .category-year .category::after {
+        content: ", ";
+      }
 
       .header {
         height: 80px;
@@ -321,9 +331,9 @@
     for (let i = titles.length; i >= 1; i--) {
       const index = i;
       const item = document.createElement('a');
-      item.href = `${index}/`;
-      item.className = `thumbnail thumb${index}`;
-      item.innerHTML = `
+      item.href = ${index}/;
+      item.className = thumbnail thumb${index};
+      item.innerHTML = 
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
         <div class="caption caption-thumb${index}">
           <span class="title">${titles[i - 1]}</span>
@@ -331,7 +341,7 @@
             <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
           </span>
         </div>
-      `;
+      ;
       gallery.appendChild(item);
     }
 
@@ -356,11 +366,11 @@
     slideData.forEach(([text1, text2, text3], index) => {
       const group = document.createElement("div");
       group.className = "text-group";
-      group.innerHTML = `
+      group.innerHTML = 
         <div class="text1"><a href="${index + 1}/">${text1}</a></div>
         <div class="text2">${text2}</div>
         <div class="text3">${text3}</div>
-      `;
+      ;
       slideContent.appendChild(group);
     });
 
