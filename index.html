@@ -221,32 +221,35 @@
         height: auto;
       }
 
-      .caption {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 8px 0;
-        font-size: 12px;
-      }
-
-      .caption .title {
-        display: block;
-        margin-bottom: 2px;
-      }
-
-    .caption .category-year {
+  .caption {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 8px 0;
+    font-size: 12px;
+  }
+
+  .caption .title {
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .caption .category-year {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 3px; /* category와 year 사이 간격 */
+  }
+
+  .caption .category {
+    margin-right: 10px; /* ✅ 여백 핵심 */
+  }
+
+  .caption .year {
+    margin: 0;
   }
 
   .caption .category-year .category::after {
     content: ""; /* 쉼표 제거 */
-  }
-
-  .caption .category-year .year {
-    margin: 0; /* 혹시 기존 margin 있을 경우 제거 */
   }
 }
       .header {
