@@ -11,7 +11,7 @@
     html {
       scrollbar-gutter: stable;
     }
-    
+
     html, body {
       margin: 0;
       padding: 0;
@@ -55,7 +55,7 @@
     }
 
     .content {
-      max-width: 500px;
+      max-width: 650px;
       margin: 0 auto;
       text-align: center;
     }
@@ -63,9 +63,21 @@
     .content img {
       max-width: 100%;
       height: auto;
-      display: block;
+      display: none;
       margin: 0 auto;
       cursor: pointer;
+    }
+
+    .content img.active {
+      display: block;
+    }
+
+    /* 모바일: 기본 스크롤 */
+    @media (max-width: 768px) {
+      .content img {
+        display: block !important;
+        margin-bottom: 10px;
+      }
     }
 
     .footer-bar {
@@ -85,20 +97,12 @@
       align-items: center;
       justify-content: flex-start;
       box-sizing: border-box;
-      padding-left: 0;
-      padding-right: 80px;
+      padding-left: 60px;
+      padding-right: 60px;
     }
 
-    .footer-inner a { pointer-events: auto; }
-    .footer-inner img {
-      width: 10px;
-      margin-left: 20px;
-      margin-right: 100px;
-      pointer-events: auto;
-    }
-
-    .footer-inner .text1 { margin-right: 50px; pointer-events: auto; }
-    .footer-inner .text2 { margin-right: 260px; pointer-events: auto; }
+    .footer-inner .text1 { margin-right: 90px; pointer-events: auto; }
+    .footer-inner .text2 { margin-right: 220px; pointer-events: auto; }
     .footer-inner .text3 { margin-right: auto; pointer-events: auto; }
     .footer-inner .text4 { margin-right: 0; pointer-events: auto; }
 
@@ -113,11 +117,6 @@
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 8px;
-      }
-
-      .footer-inner img {
-        margin-left: 0;
-        margin-right: 10px;
       }
 
       .footer-inner .text1,
@@ -157,30 +156,35 @@
       }
     }
   </style>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-image');
-      const closeBtn = document.getElementById('modal-close');
+      const images = document.querySelectorAll('.content img');
+      let current = 0;
 
-      document.querySelectorAll('.content img').forEach(img => {
-        img.addEventListener('click', function () {
-          modalImg.src = this.src;
-          modal.style.display = 'flex';
+      function showImage(index) {
+        images.forEach((img, i) => {
+          img.classList.toggle('active', i === index);
         });
-      });
+      }
 
-      closeBtn.addEventListener('click', function () {
-        modal.style.display = 'none';
-        modalImg.src = '';
-      });
-
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-          modalImg.src = '';
+      // PC 슬라이드용
+      function setupDesktopSlide() {
+        if (window.innerWidth > 768) {
+          showImage(current);
+          images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+              current = (index + 1) % images.length;
+              showImage(current);
+            });
+          });
+        } else {
+          images.forEach(img => img.classList.add('active')); // 모바일에서는 전부 보여줌
         }
-      });
+      }
+
+      setupDesktopSlide();
+      window.addEventListener('resize', setupDesktopSlide);
     });
   </script>
 </head>
@@ -196,24 +200,22 @@
 
   <div class="container">
     <div class="content">
-      <img src="/test/images/12-Forever/forever1.png" alt="forever1" />
-      <img src="/test/images/12-Forever/forever2.gif" alt="forever2" />
-      <img src="/test/images/12-Forever/forever3.png" alt="forever3" />
-      <img src="/test/images/12-Forever/forever4.png" alt="forever4" />
-      <img src="/test/images/12-Forever/forever5.png" alt="forever5" />
-      <img src="/test/images/12-Forever/forever6.png" alt="forever6" />
+      <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
+      <img src="/test/images/13-lov/lov2.png" alt="lov2" />
+      <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
+      <img src="/test/images/13-lov/lov8-1.png" alt="lov8" />
+      <img src="/test/images/13-lov/lov4.png" alt="lov4" />
+      <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
+      <img src="/test/images/13-lov/lov6.png" alt="lov6" />
     </div>
   </div>
 
   <div class="footer-bar">
     <div class="footer-inner">
-      <a href="/test/">
-        <img src="/test/images/back.png" alt="back" draggable="false" />
-      </a>
-      <span class="text1">2025</span>
-      <span class="text2">graphic design</span>
-      <span class="text3">interview task</span>
-      <span class="text4">Forever</span>
+      <span class="text1">Lov</span>
+      <span class="text2">brand design</span>
+      <span class="text3">client work</span>
+      <span class="text4">2025</span>
     </div>
   </div>
 
@@ -223,4 +225,3 @@
   </div>
 </body>
 </html>
-
