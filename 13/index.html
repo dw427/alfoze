@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfㅁoze</title>
+  <title>alfoze</title>
 
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
@@ -11,28 +11,108 @@
 
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: "minion-pro", serif;
       background: #ffffff;
     }
-
     a {
       color: inherit;
       text-decoration: none;
       transition: color 0.3s;
     }
-
     a:hover {
       color: #a3a3a3;
     }
 
+    .header {
+      width: 100%;
+      height: 100px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header img {
+      height: 100%;
+      width: auto;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: transparent;
+      z-index: 1000;
+    }
+    .footer .right-link {
+      position: absolute;
+      bottom: 10px;
+      left: 30px;
+      font-size: 12px;
+    }
+    .footer .contact-link {
+      position: absolute;
+      bottom: 10px;
+      left: 170px;
+      font-size: 12px;
+    }
+    .footer #listButton {
+      position: absolute;
+      bottom: 10px;
+      right: 800px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .footer #listButton:hover {
+      color: #a3a3a3;
+    }
+
+    .gallery-wrap {
+      display: flex;
+      width: 100%;
+      height: calc(100vh - 200px);
+    }
+
+    .left-panel {
+      width: calc(100% - 540px);
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      padding: 50px 0;
+    }
+
+    .main-content {
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .scroll-area {
+      width: 540px;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
     .content {
       display: grid;
-      grid-template-columns: repeat(3, 250px);
+      grid-template-columns: repeat(2, 250px);
       column-gap: 10px;
       row-gap: 13px;
     }
@@ -53,10 +133,8 @@
       transition: transform 0.3s ease;
     }
 
-    @media (min-width: 769px) {
-      .thumbnail:hover img {
-        transform: scale(1.05);
-      }
+    .thumbnail:hover img {
+      transform: scale(1.05);
     }
 
     .caption {
@@ -77,64 +155,6 @@
     .caption .category-year {
       display: flex;
       align-items: flex-start;
-    }
-
-    .side {
-      width: 575px;
-    }
-
-    .header {
-      width: 100%;
-      height: 100px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .header img {
-      height: 100%;
-      width: auto;
-    }
-
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: transparent;
-      z-index: 1000;
-    }
-
-    .footer .right-link {
-      position: absolute;
-      bottom: 10px;
-      left: 30px;
-      font-size: 12px;
-    }
-
-    .footer .contact-link {
-      position: absolute;
-      bottom: 10px;
-      left: 170px;
-      font-size: 12px;
-    }
-
-    .footer #listButton {
-      position: absolute;
-      bottom: 10px;
-      right: 800px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .footer #listButton:hover {
-      color: #a3a3a3;
     }
 
     .slide-box {
@@ -208,47 +228,55 @@
     }
 
     @media (max-width: 768px) {
-      .side { display: none; }
-      .fixed-image { display: none; }
+      .left-panel, .scroll-area {
+        width: 100%;
+        height: auto;
+        padding: 0;
+        display: block;
+        overflow: visible;
+      }
+
+      .gallery-wrap {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .main-content {
+        width: 100%;
+        padding: 0 10px;
+      }
+
       .content {
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 0;
-        row-gap: 0;
-        padding: 0;
+        padding: 10px;
       }
+
       .thumbnail {
         width: 100%;
-        margin-bottom: 0;
       }
+
       .thumbnail img {
         width: 100%;
         height: auto;
       }
+
       .caption {
-        display: flex;
         flex-direction: column;
-        align-items: flex-start;
         margin: 8px 0;
-        font-size: 12px;
       }
+
       .caption .title {
-        display: block;
         margin-bottom: 2px;
       }
-      .caption .category-year {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
+
       .caption .category {
         margin-right: 10px;
       }
-      .caption .year {
-        margin: 0;
-      }
-      .caption .category-year .category::after {
+
+      .caption .category::after {
         content: ",";
       }
+
       .header { height: 80px; }
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
@@ -257,70 +285,28 @@
       .slide-box { width: 100% !important; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
     }
-
-    @media (min-width: 769px) {
-      .gallery-wrap {
-        display: flex;
-        width: 100%;
-        height: calc(100vh - 200px);
-      }
-
-      .fixed-image {
-        width: calc(100% - 540px);
-        height: 100%;
-        overflow-y: auto;
-        display: flex;
-        justify-content: center;
-        padding: 50px 0;
-      }
-
-      .fixed-image .main-content {
-        width: 500px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 13px;
-      }
-
-      .fixed-image .main-content img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .scroll-area {
-        width: 540px;
-        height: 100%;
-        overflow-y: auto;
-        padding-right: 10px;
-      }
-
-      .content {
-        grid-template-columns: repeat(2, 250px);
-        column-gap: 10px;
-        row-gap: 13px;
-        padding: 0;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="header">
-    <img src="images/header0.png" alt="header" />
+    <img src="/test/images/header0.png" alt="header" />
   </div>
 
   <div class="gallery-wrap">
-    <div class="fixed-image">
+    <!-- 왼쪽 영역: 13.html의 본문 -->
+    <div class="left-panel">
       <div class="main-content">
-        <img src="images/13-lov/lov1-1.png" alt="lov1" />
-        <img src="images/13-lov/lov2.png" alt="lov2" />
-        <img src="images/13-lov/lov3-2.png" alt="lov3" />
-        <img src="images/13-lov/lov8-1.png" alt="lov8" />
-        <img src="images/13-lov/lov4.png" alt="lov4" />
-        <img src="images/13-lov/lov5-1.png" alt="lov5" />
-        <img src="images/13-lov/lov6.png" alt="lov6" />
+        <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
+        <img src="/test/images/13-lov/lov2.png" alt="lov2" />
+        <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
+        <img src="/test/images/13-lov/lov8-1.png" alt="lov8" />
+        <img src="/test/images/13-lov/lov4.png" alt="lov4" />
+        <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
+        <img src="/test/images/13-lov/lov6.png" alt="lov6" />
       </div>
     </div>
+
+    <!-- 오른쪽 영역: 기존 썸네일 -->
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
     </div>
@@ -347,26 +333,20 @@
         "te cura", "lost romance", "blish",
         "An inverted realtionship", "Immortality : The Death of Death", "Heaven",
         "Everybody", "Monster", "Ideal Expression",
-        "alfoze", "Valentine", "Forever",
-        "Lov"
+        "alfoze", "Valentine", "Forever", "Lov"
       ];
-
       const categories = [
         "brand design", "graphic design", "brand design",
         "editorial", "brand design", "graphic design",
         "graphic design", "graphic design", "graphic design",
-        "brand design", "graphic design", "graphic design",
-        "brand design"
+        "brand design", "graphic design", "graphic design", "brand design"
       ];
-
       const years = [
         "2022", "2023", "2023",
         "2023", "2024", "2024",
         "2024", "2024", "2024",
-        "2025", "2025", "2025",
-        "2025"
+        "2025", "2025", "2025", "2025"
       ];
-
       const gallery = document.getElementById('gallery');
       if (gallery) {
         for (let i = titles.length; i >= 1; i--) {
@@ -402,7 +382,6 @@
         ["Forever", "graphic design", "2025"],
         ["Lov", "graphic design", "2025"]
       ];
-
       const slideContent = document.getElementById("slideContent");
       slideData.forEach(([text1, text2, text3], index) => {
         const group = document.createElement("div");
@@ -415,14 +394,12 @@
         slideContent.appendChild(group);
       });
 
-      function toggleSlideBox() {
+      window.toggleSlideBox = function () {
         const slideBox = document.getElementById("slideBox");
         const toggleText = document.getElementById("slideToggleText");
         slideBox.classList.toggle("active");
         toggleText.textContent = slideBox.classList.contains("active") ? "close" : "list";
-      }
-
-      window.toggleSlideBox = toggleSlideBox;
+      };
     });
   </script>
 </body>
