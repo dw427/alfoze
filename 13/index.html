@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfoㄴㄴㅊze</title>
+  <title>alfoze</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -61,10 +61,11 @@
       position: sticky; top: 0;
       height: calc(100vh - 200px);
       flex: 0 0 clamp(600px, 70vw, 1152px);
-      display: flex; justify-content: center; align-items: center;
+      overflow-y: auto;
     }
 
     .fixed-image .content {
+      display: block;
       max-width: 700px;
       margin: 0 auto;
       text-align: center;
@@ -75,7 +76,6 @@
       height: auto;
       display: block;
       margin: 0 auto;
-      cursor: pointer;
     }
 
     .scroll-area {
