@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfoze</title>
+  <title>test</title>
+
+  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
+  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
+  <meta name="theme-color" content="#ffffff" />
+
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
 
@@ -25,12 +30,7 @@
       color: #a3a3a3;
     }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      padding: 0;
-    }
-
+    /* ▼ 원래의 content 영역은 그대로 유지 */
     .content {
       display: grid;
       grid-template-columns: repeat(3, 250px);
@@ -64,6 +64,7 @@
       display: flex;
       margin-top: 13px;
       font-size: 12px;
+      align-items: flex-start;
     }
 
     .caption .title {
@@ -74,13 +75,18 @@
       margin-right: 60px;
     }
 
+    .caption .category-year {
+      display: flex;            
+      align-items: flex-start;
+    }
+
     .side {
       width: 575px;
     }
 
     .header {
       width: 100%;
-      height: 150px;
+      height: 100px;
       background: #ffffff;
       display: flex;
       align-items: center;
@@ -200,15 +206,20 @@
       padding-top: 13px;
     }
 
+    /* ▼ 반응형 그대로 유지 */
     @media (max-width: 768px) {
       .side { display: none; }
 
       .content {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0;
+        row-gap: 0;
+        padding: 0;
       }
 
       .thumbnail {
         width: 100%;
+        margin-bottom: 0;
       }
 
       .thumbnail img {
@@ -217,50 +228,84 @@
       }
 
       .caption {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 8px 0;
         font-size: 12px;
-        width: 100%;
       }
 
       .caption .title {
-        margin-left: 10px;
-        margin-right: 45px;
+        display: block;
+        margin-bottom: 2px;
       }
 
-      .caption .year {
-        margin-left: auto;
+      .caption .category-year {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .caption .category {
         margin-right: 10px;
       }
 
-      .header {
-        height: 80px;
+      .caption .year {
+        margin: 0;
       }
 
-      .footer {
-        height: 80px;
+      .caption .category-year .category::after {
+        content: ",";
       }
 
-      .footer .right-link {
-        bottom: 20px;
-        left: 20px;
+      .header { height: 80px; }
+      .footer { height: 80px; }
+
+      .footer .right-link { bottom: 20px; left: 20px; }
+      .footer .contact-link { bottom: 20px; left: 160px; }
+      .footer #listButton { bottom: 20px; right: 20px; }
+
+      .slide-box { width: 100% !important; }
+      .slide-box .slide-list { bottom: 20px; right: 20px; }
+    }
+
+    /* ▼ 누님이 요청하신 웹형 구성 (1920px 기준) */
+    @media (min-width: 769px) {
+      .gallery-wrap {
+        display: flex;
+        width: 100%;
+        height: calc(100vh - 100px - 150px); /* header/footer 제외 */
       }
 
-      .footer .contact-link {
-        bottom: 20px;
-        left: 160px;
+      .fixed-image {
+        width: calc(100% - 540px); /* 오른쪽 썸네일 250*2 + gap 10 */
+        position: sticky;
+        top: 100px; /* header height */
+        height: calc(100vh - 100px - 150px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
       }
 
-      .footer #listButton {
-        bottom: 20px;
-        right: 20px;
+      .fixed-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
       }
 
-      .slide-box {
-        width: 100% !important;
+      .scroll-area {
+        width: 540px;
+        height: 100%;
+        overflow-y: scroll;
+        padding-right: 10px;
       }
 
-      .slide-box .slide-list {
-        bottom: 20px;
-        right: 20px;
+      .content {
+        grid-template-columns: repeat(2, 250px);
+        column-gap: 10px;
+        row-gap: 13px;
+        padding: 0;
       }
     }
   </style>
@@ -270,10 +315,14 @@
     <img src="images/header0.png" alt="header" />
   </div>
 
-  <div class="container">
-    <div class="side"></div>
-    <div class="content" id="gallery"></div>
-    <div class="side"></div>
+  <!-- 기존 .container → gallery-wrap 으로 대체 -->
+  <div class="gallery-wrap">
+    <div class="fixed-image">
+      <img src="images/index.png" alt="index" />
+    </div>
+    <div class="scroll-area">
+      <div class="content" id="gallery"></div>
+    </div>
   </div>
 
   <div class="footer">
@@ -327,8 +376,9 @@
         <img src="images/thumb${index}.png" alt="썸네일${index}" />
         <div class="caption caption-thumb${index}">
           <span class="title">${titles[i - 1]}</span>
-          <span class="category">${categories[i - 1]}</span>
-          <span class="year">${years[i - 1]}</span>
+          <span class="category-year">
+            <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
+          </span>
         </div>
       `;
       gallery.appendChild(item);
