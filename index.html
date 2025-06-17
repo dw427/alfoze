@@ -3,40 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfoze</title>
-
+  <title>alㄴㅊfoze</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
-
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: "minion-pro", serif;
       background: #ffffff;
     }
-
     a {
       color: inherit;
       text-decoration: none;
       transition: color 0.3s;
     }
-
-    a:hover {
-      color: #a3a3a3;
-    }
-
+    a:hover { color: #a3a3a3; }
     .content {
       display: grid;
       grid-template-columns: repeat(3, 250px);
       column-gap: 10px;
       row-gap: 13px;
     }
-
     .thumbnail {
       display: flex;
       flex-direction: column;
@@ -44,7 +34,6 @@
       text-decoration: none;
       color: inherit;
     }
-
     .thumbnail img {
       width: 250px;
       height: 250px;
@@ -52,37 +41,19 @@
       display: block;
       transition: transform 0.3s ease;
     }
-
-    @media (min-width: 769px) {
-      .thumbnail:hover img {
-        transform: scale(1.05);
-      }
-    }
-
     .caption {
       display: flex;
       margin-top: 13px;
       font-size: 12px;
       align-items: flex-start;
     }
-
-    .caption .title {
-      margin-right: 20px;
-    }
-
-    .caption .category {
-      margin-right: 60px;
-    }
-
+    .caption .title { margin-right: 20px; }
+    .caption .category { margin-right: 60px; }
     .caption .category-year {
       display: flex;
       align-items: flex-start;
     }
-
-    .side {
-      width: 575px;
-    }
-
+    .side { width: 575px; }
     .header {
       width: 100%;
       height: 100px;
@@ -94,12 +65,10 @@
       top: 0;
       z-index: 1000;
     }
-
     .header img {
       height: 100%;
       width: auto;
     }
-
     .footer {
       position: fixed;
       bottom: 0;
@@ -109,21 +78,18 @@
       background: transparent;
       z-index: 1000;
     }
-
     .footer .right-link {
       position: absolute;
       bottom: 10px;
       left: 30px;
       font-size: 12px;
     }
-
     .footer .contact-link {
       position: absolute;
       bottom: 10px;
       left: 170px;
       font-size: 12px;
     }
-
     .footer #listButton {
       position: absolute;
       bottom: 10px;
@@ -132,10 +98,7 @@
       cursor: pointer;
       transition: color 0.3s;
     }
-
-    .footer #listButton:hover {
-      color: #a3a3a3;
-    }
+    .footer #listButton:hover { color: #a3a3a3; }
 
     .slide-box {
       position: fixed;
@@ -150,11 +113,9 @@
       transition: transform 0.3s ease-in-out;
       overflow-y: auto;
     }
-
     .slide-box.active {
       transform: translateX(0%);
     }
-
     .slide-box .slide-list {
       position: absolute;
       bottom: 10px;
@@ -164,11 +125,9 @@
       z-index: 4001;
       transition: color 0.3s;
     }
-
     .slide-box .slide-list:hover {
       color: #a3a3a3;
     }
-
     .text-group {
       display: flex;
       padding: 10px 0;
@@ -177,35 +136,12 @@
       overflow: hidden;
       width: 100%;
     }
-
-    .text1 {
-      margin-left: 10px;
-      transition: color 0.3s;
-    }
-
-    .text1 a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .text1 a:hover {
-      color: #a3a3a3;
-    }
-
-    .text2 {
-      margin-left: auto;
-      margin-right: 60px;
-      text-align: right;
-    }
-
-    .text3 {
-      margin-right: 10px;
-      flex-shrink: 0;
-    }
-
-    #slideContent {
-      padding-top: 13px;
-    }
+    .text1 { margin-left: 10px; transition: color 0.3s; }
+    .text1 a { color: inherit; text-decoration: none; }
+    .text1 a:hover { color: #a3a3a3; }
+    .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
+    .text3 { margin-right: 10px; flex-shrink: 0; }
+    #slideContent { padding-top: 13px; }
 
     @media (max-width: 768px) {
       .side { display: none; }
@@ -216,14 +152,8 @@
         row-gap: 0;
         padding: 0;
       }
-      .thumbnail {
-        width: 100%;
-        margin-bottom: 0;
-      }
-      .thumbnail img {
-        width: 100%;
-        height: auto;
-      }
+      .thumbnail { width: 100%; margin-bottom: 0; }
+      .thumbnail img { width: 100%; height: auto; }
       .caption {
         display: flex;
         flex-direction: column;
@@ -231,24 +161,15 @@
         margin: 8px 0;
         font-size: 12px;
       }
-      .caption .title {
-        display: block;
-        margin-bottom: 2px;
-      }
+      .caption .title { display: block; margin-bottom: 2px; }
       .caption .category-year {
         display: flex;
         flex-direction: row;
         align-items: center;
       }
-      .caption .category {
-        margin-right: 10px;
-      }
-      .caption .year {
-        margin: 0;
-      }
-      .caption .category-year .category::after {
-        content: ",";
-      }
+      .caption .category { margin-right: 10px; }
+      .caption .year { margin: 0; }
+      .caption .category-year .category::after { content: ","; }
       .header { height: 80px; }
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
@@ -265,7 +186,7 @@
         min-height: calc(100vh - 100px - 100px);
       }
       .fixed-image {
-        width: calc(100% - 540px);
+        width: calc(100% - 500px);
         position: sticky;
         top: 100px;
         height: calc(100vh - 100px - 100px);
@@ -280,15 +201,17 @@
         object-fit: contain;
       }
       .scroll-area {
-        width: 540px;
-        padding-right: 10px;
+        width: 500px;
+        padding-right: 0;
       }
       .content {
         grid-template-columns: repeat(2, 250px);
-        column-gap: 10px;
+        column-gap: 0;
         row-gap: 13px;
         padding: 0;
+        width: 500px;
       }
+      .thumbnail:hover img { transform: none; }
     }
   </style>
 </head>
@@ -317,89 +240,8 @@
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
     <div id="slideContent"></div>
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const titles = [
-        "te cura", "lost romance", "blish",
-        "An inverted realtionship", "Immortality : The Death of Death", "Heaven",
-        "Everybody", "Monster", "Ideal Expression",
-        "alfoze", "Valentine", "Forever",
-        "Lov"
-      ];
 
-      const categories = [
-        "brand design", "graphic design", "brand design",
-        "editorial", "brand design", "graphic design",
-        "graphic design", "graphic design", "graphic design",
-        "brand design", "graphic design", "graphic design",
-        "brand design"
-      ];
-
-      const years = [
-        "2022", "2023", "2023",
-        "2023", "2024", "2024",
-        "2024", "2024", "2024",
-        "2025", "2025", "2025",
-        "2025"
-      ];
-
-      const gallery = document.getElementById('gallery');
-      if (gallery) {
-        for (let i = titles.length; i >= 1; i--) {
-          const index = i;
-          const item = document.createElement('a');
-          item.href = `${index}/`;
-          item.className = `thumbnail thumb${index}`;
-          item.innerHTML = `
-            <img src="images/thumb${index}.png" alt="썸네일${index}" />
-            <div class="caption caption-thumb${index}">
-              <span class="title">${titles[i - 1]}</span>
-              <span class="category-year">
-                <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
-              </span>
-            </div>
-          `;
-          gallery.appendChild(item);
-        }
-      }
-
-      const slideData = [
-        ["te cura", "brand design", "2022"],
-        ["a generation that has lost romance", "graphic design", "2023"],
-        ["blish", "brand design", "2023"],
-        ["An inverted realtionship", "editorial", "2023"],
-        ["Immortality : The Death of Death", "brand design", "2024"],
-        ["Heaven", "graphic design", "2024"],
-        ["Everybody", "graphic design", "2024"],
-        ["Monster", "graphic design", "2024"],
-        ["Ideal Expression", "graphic design", "2024"],
-        ["alfoze", "brand design", "2025"],
-        ["Valentine", "graphic design", "2025"],
-        ["Forever", "graphic design", "2025"],
-        ["Lov", "graphic design", "2025"]
-      ];
-
-      const slideContent = document.getElementById("slideContent");
-      slideData.forEach(([text1, text2, text3], index) => {
-        const group = document.createElement("div");
-        group.className = "text-group";
-        group.innerHTML = `
-          <div class="text1"><a href="${index + 1}/">${text1}</a></div>
-          <div class="text2">${text2}</div>
-          <div class="text3">${text3}</div>
-        `;
-        slideContent.appendChild(group);
-      });
-
-      function toggleSlideBox() {
-        const slideBox = document.getElementById("slideBox");
-        const toggleText = document.getElementById("slideToggleText");
-        slideBox.classList.toggle("active");
-        toggleText.textContent = slideBox.classList.contains("active") ? "close" : "list";
-      }
-
-      window.toggleSlideBox = toggleSlideBox;
-    });
-  </script>
+  <!-- ✅ 외부 JS 분리 -->
+  <script src="/test/thumbnails.js"></script>
 </body>
 </html>
