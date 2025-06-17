@@ -3,63 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>1</title>
-  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
-  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
-  <meta name="theme-color" content="#ffffff" />
+  <title>alfoze - Lov</title>
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: "minion-pro", serif;
+      padding: 0;
       background: #ffffff;
+      font-family: "minion-pro", serif;
       font-size: 12px;
       color: #a3a3a3;
-    }
-
-    .wrap {
-      display: flex;
+      overflow-x: hidden;
     }
 
     .header {
       width: 100%;
       height: 100px;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       position: sticky;
       top: 0;
-      background: #ffffff;
       z-index: 1000;
     }
 
     .header img {
       height: 100%;
+      width: auto;
     }
 
-    .left-content {
-      flex: 1;
-      padding: 0 30px;
+    .main-wrap {
+      display: flex;
+      width: 100%;
+      min-height: calc(100vh - 100px);
     }
 
-    .content img {
+    .project-content {
+      width: calc(100% - 540px);
+      padding: 0 20px;
+    }
+
+    .project-content img {
       max-width: 100%;
       height: auto;
       display: block;
-      margin: 20px auto;
+      margin: 0 auto 20px;
       cursor: pointer;
     }
 
-    .right-thumbs {
+    .scroll-area {
       width: 540px;
-      padding: 20px;
+      padding-right: 10px;
+      border-left: 1px solid #eee;
+      overflow-y: auto;
     }
 
-    .thumb-box {
+    .content {
       display: grid;
       grid-template-columns: repeat(2, 250px);
-      gap: 13px 10px;
+      column-gap: 10px;
+      row-gap: 13px;
+      padding: 13px 10px;
     }
 
     .thumbnail {
@@ -74,6 +81,7 @@
       width: 250px;
       height: 250px;
       object-fit: cover;
+      display: block;
       transition: transform 0.3s ease;
     }
 
@@ -82,17 +90,37 @@
     }
 
     .caption {
+      display: flex;
       margin-top: 8px;
       font-size: 12px;
+      align-items: flex-start;
+    }
+
+    .caption .title {
+      margin-right: 20px;
+    }
+
+    .caption .category {
+      margin-right: 60px;
+    }
+
+    .caption .category-year {
+      display: flex;
+      align-items: flex-start;
     }
 
     @media (max-width: 768px) {
-      .wrap {
+      .main-wrap {
         display: block;
       }
 
-      .right-thumbs {
+      .scroll-area {
         display: none;
+      }
+
+      .project-content {
+        width: 100%;
+        padding: 0 10px;
       }
 
       .header {
@@ -102,14 +130,51 @@
       .header img {
         height: 80px;
       }
-
-      .content img {
-        margin: 10px auto;
-      }
     }
   </style>
-  <script defer src="/test/thumbnails.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const gallery = document.getElementById('gallery');
+      const titles = [
+        "te cura", "lost romance", "blish",
+        "An inverted realtionship", "Immortality : The Death of Death", "Heaven",
+        "Everybody", "Monster", "Ideal Expression",
+        "alfoze", "Valentine", "Forever", "Lov"
+      ];
+      const categories = [
+        "brand design", "graphic design", "brand design",
+        "editorial", "brand design", "graphic design",
+        "graphic design", "graphic design", "graphic design",
+        "brand design", "graphic design", "graphic design", "brand design"
+      ];
+      const years = [
+        "2022", "2023", "2023",
+        "2023", "2024", "2024",
+        "2024", "2024", "2024",
+        "2025", "2025", "2025", "2025"
+      ];
+
+      for (let i = titles.length; i >= 1; i--) {
+        const index = i;
+        const item = document.createElement('a');
+        item.href = `/test/${index}/`;
+        item.className = `thumbnail thumb${index}`;
+        item.innerHTML = `
+          <img src="/test/images/thumb${index}.png" alt="썸네일${index}" />
+          <div class="caption caption-thumb${index}">
+            <span class="title">${titles[i - 1]}</span>
+            <span class="category-year">
+              <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
+            </span>
+          </div>
+        `;
+        gallery.appendChild(item);
+      }
+    });
+  </script>
 </head>
+
 <body>
   <div class="header">
     <a href="/test/">
@@ -117,21 +182,19 @@
     </a>
   </div>
 
-  <div class="wrap">
-    <div class="left-content">
-      <div class="content">
-        <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
-        <img src="/test/images/13-lov/lov2.png" alt="lov2" />
-        <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
-        <img src="/test/images/13-lov/lov8-1.png" alt="lov8" />
-        <img src="/test/images/13-lov/lov4.png" alt="lov4" />
-        <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
-        <img src="/test/images/13-lov/lov6.png" alt="lov6" />
-      </div>
+  <div class="main-wrap">
+    <div class="project-content">
+      <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
+      <img src="/test/images/13-lov/lov2.png" alt="lov2" />
+      <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
+      <img src="/test/images/13-lov/lov8-1.png" alt="lov8" />
+      <img src="/test/images/13-lov/lov4.png" alt="lov4" />
+      <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
+      <img src="/test/images/13-lov/lov6.png" alt="lov6" />
     </div>
 
-    <div class="right-thumbs">
-      <div class="thumb-box" id="thumbnailList"></div>
+    <div class="scroll-area">
+      <div class="content" id="gallery"></div>
     </div>
   </div>
 </body>
