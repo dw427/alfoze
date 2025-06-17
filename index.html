@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfozsae</title>
+  <title>alfoze</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -14,13 +14,6 @@
 
     a { color: inherit; text-decoration: none; transition: color .3s; }
     a:hover { color: #a3a3a3; }
-
-    .header {
-      width: 100%; height: 100px;
-      display: flex; align-items: center; justify-content: center;
-      position: sticky; top: 0; z-index: 1000;
-    }
-    .header img { height: 100%; width: auto; }
 
     .footer {
       position: fixed; bottom: 0; left: 0;
@@ -101,7 +94,6 @@
       .caption {
         margin: 8px 0;
       }
-      .header { height: 80px; }
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer .contact-link { bottom: 20px; left: 160px; }
@@ -116,7 +108,7 @@
         min-height: calc(100vh - 200px);
       }
       .fixed-image {
-        position: sticky; top: 100px;
+        position: sticky; top: 0;
         height: calc(100vh - 200px);
         flex: 0 0 clamp(600px, 70vw, 1152px);
         display: flex; justify-content: center; align-items: center;
@@ -138,9 +130,6 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <img src="images/header0.png" alt="header" />
-  </div>
   <div class="gallery-wrap">
     <div class="fixed-image">
       <img src="images/index.png" alt="index" />
