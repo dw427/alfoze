@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfoze</title>
+  <title>alfssoze</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -74,6 +74,15 @@
     }
     .caption .category { margin-right: 10px; }
 
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-area, .fixed-image {
+      scrollbar-width: none;       /* Firefox */
+      -ms-overflow-style: none;    /* IE and Edge */
+    }
+
     @media (max-width: 768px) {
       .side { display: none; }
       .fixed-image { display: none; }
@@ -112,6 +121,7 @@
         height: calc(100vh - 200px);
         flex: 0 0 clamp(600px, 70vw, 1152px);
         display: flex; justify-content: center; align-items: center;
+        overflow-y: auto;
       }
       .fixed-image img {
         max-width: 100%; max-height: 100%;
