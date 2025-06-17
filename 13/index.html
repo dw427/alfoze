@@ -2,65 +2,63 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>alfoze1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>alfozeㅈ</title>
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
-
     * { box-sizing: border-box; }
-
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: "minion-pro", serif;
       background: #ffffff;
+      color: #a3a3a3;
+      font-size: 12px;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
       overflow: hidden;
     }
 
-    .layout {
-      display: flex;
-      height: 100vh;
-    }
-
     .main-content {
-      flex: 1;
+      flex: 0 0 540px;
+      max-width: 540px;
+      height: 100%;
       overflow-y: auto;
-      padding: 100px 0 100px 0; /* header/footer 공간 */
-      display: flex;
-      justify-content: center;
+      padding: 100px 20px 120px; /* header + footer 고려 */
     }
 
-    .main-inner {
-      width: 500px;
-      padding: 0 20px;
+    .main-content .inner {
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    .main-inner img {
-      width: 100%;
+    .main-content img {
+      max-width: 100%;
       height: auto;
       display: block;
       margin-bottom: 20px;
       cursor: pointer;
     }
 
-    .thumbnail-area {
-      width: 540px;
+    .thumbnail-list {
+      flex: 1;
+      padding: 100px 30px 120px;
       overflow-y: auto;
-      border-left: 1px solid #ddd;
-      padding: 100px 10px 100px 10px;
     }
 
     .content {
       display: grid;
       grid-template-columns: repeat(2, 250px);
-      column-gap: 10px;
-      row-gap: 13px;
-      justify-content: center;
+      gap: 13px 10px;
+      justify-content: start;
     }
 
     .thumbnail {
       display: flex;
       flex-direction: column;
-      width: 250px;
       text-decoration: none;
       color: inherit;
     }
@@ -69,8 +67,8 @@
       width: 250px;
       height: 250px;
       object-fit: cover;
-      display: block;
       transition: transform 0.3s ease;
+      display: block;
     }
 
     .thumbnail:hover img {
@@ -78,17 +76,23 @@
     }
 
     .caption {
-      margin-top: 8px;
+      display: flex;
+      margin-top: 5px;
       font-size: 12px;
+      align-items: flex-start;
     }
 
     .caption .title {
-      display: block;
+      margin-right: 20px;
+    }
+
+    .caption .category {
+      margin-right: 60px;
     }
 
     .caption .category-year {
       display: flex;
-      gap: 5px;
+      align-items: flex-start;
     }
 
     .header {
@@ -96,77 +100,96 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 80px;
+      height: 100px;
       background: #fff;
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 1px solid #ddd;
     }
 
     .header img {
-      height: 80%;
+      height: 100%;
       width: auto;
     }
 
-    .footer {
+    .footer-bar {
       position: fixed;
-      bottom: 0;
+      bottom: 20px;
       left: 0;
       width: 100%;
-      height: 80px;
-      background: #fff;
       z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      border-top: 1px solid #ddd;
+      pointer-events: none;
     }
 
-    /* 반응형 유지 */
-    @media (max-width: 768px) {
-      body {
-        overflow-y: auto;
-      }
+    .footer-inner {
+      width: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      padding-left: 60px;
+      padding-right: 60px;
+    }
 
-      .layout {
+    .footer-inner .text1 { margin-right: 90px; pointer-events: auto; }
+    .footer-inner .text2 { margin-right: 220px; pointer-events: auto; }
+    .footer-inner .text3 { margin-right: auto; pointer-events: auto; }
+    .footer-inner .text4 { margin-right: 0; pointer-events: auto; }
+
+    @media (max-width: 768px) {
+      .container {
         display: block;
       }
 
-      .header,
-      .footer {
+      .main-content {
+        width: 100%;
+        padding: 80px 20px 120px;
+      }
+
+      .main-content .inner {
+        max-width: 100%;
+      }
+
+      .thumbnail-list {
+        display: none;
+      }
+
+      .header {
         height: 80px;
       }
 
-      .main-content {
-        padding: 80px 0;
-        width: 100%;
-        overflow-y: visible;
+      .header img {
+        height: 80px;
       }
 
-      .main-inner {
-        width: 100%;
-        padding: 0 10px;
+      .footer-inner {
+        padding: 0 20px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
-      .thumbnail-area {
-        display: none;
+      .footer-inner .text1,
+      .footer-inner .text2,
+      .footer-inner .text3,
+      .footer-inner .text4 {
+        margin-right: 0;
+        font-size: 10px;
       }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <a href="/test/">
-      <img src="/test/images/header0.png" alt="header" />
-    </a>
+    <a href="/test/"><img src="/test/images/header0.png" alt="header" /></a>
   </div>
 
-  <div class="layout">
+  <div class="container">
     <div class="main-content">
-      <div class="main-inner">
+      <div class="inner">
         <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
         <img src="/test/images/13-lov/lov2.png" alt="lov2" />
         <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
@@ -177,53 +200,20 @@
       </div>
     </div>
 
-    <div class="thumbnail-area">
+    <div class="thumbnail-list">
       <div class="content" id="gallery"></div>
     </div>
   </div>
 
-  <div class="footer">Lov / brand design / client work / 2025</div>
+  <div class="footer-bar">
+    <div class="footer-inner">
+      <span class="text1">Lov</span>
+      <span class="text2">brand design</span>
+      <span class="text3">client work</span>
+      <span class="text4">2025</span>
+    </div>
+  </div>
 
-  <script>
-    const titles = [
-      "te cura", "lost romance", "blish", 
-      "An inverted realtionship", "Immortality : The Death of Death", "Heaven", 
-      "Everybody", "Monster", "Ideal Expression", 
-      "alfoze", "Valentine", "Forever", "Lov"
-    ];
-
-    const categories = [
-      "brand design", "graphic design", "brand design", 
-      "editorial", "brand design", "graphic design", 
-      "graphic design", "graphic design", "graphic design", 
-      "brand design", "graphic design", "graphic design", "brand design"
-    ];
-
-    const years = [
-      "2022", "2023", "2023", 
-      "2023", "2024", "2024", 
-      "2024", "2024", "2024", 
-      "2025", "2025", "2025", "2025"
-    ];
-
-    const gallery = document.getElementById('gallery');
-    for (let i = titles.length; i >= 1; i--) {
-      const index = i;
-      const item = document.createElement('a');
-      item.href = `/test/${index}/`;
-      item.className = `thumbnail`;
-      item.innerHTML = `
-        <img src="/test/images/thumb${index}.png" alt="썸네일${index}" />
-        <div class="caption">
-          <span class="title">${titles[i - 1]}</span>
-          <span class="category-year">
-            <span class="category">${categories[i - 1]}</span>
-            <span class="year">${years[i - 1]}</span>
-          </span>
-        </div>
-      `;
-      gallery.appendChild(item);
-    }
-  </script>
+  <script src="/test/thumbnails.js"></script>
 </body>
 </html>
