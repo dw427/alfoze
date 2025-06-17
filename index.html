@@ -4,199 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>alfoze</title>
-
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
-
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "minion-pro", serif; background: #fff; }
 
-    body {
-      margin: 0;
-      font-family: "minion-pro", serif;
-      background: #ffffff;
-    }
+    a { color: inherit; text-decoration: none; transition: color .3s; }
+    a:hover { color: #a3a3a3; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.3s;
+    .header {
+      width: 100%; height: 100px;
+      display: flex; align-items: center; justify-content: center;
+      position: sticky; top: 0; z-index: 1000;
     }
+    .header img { height: 100%; width: auto; }
 
-    a:hover {
-      color: #a3a3a3;
+    .footer {
+      position: fixed; bottom: 0; left: 0;
+      width: 100%; height: 100px; background: transparent;
+      z-index: 1000;
     }
+    .footer .right-link,
+    .footer .contact-link,
+    .footer #listButton {
+      position: absolute; bottom: 10px; font-size: 12px;
+    }
+    .footer .right-link { left: 30px; }
+    .footer .contact-link { left: 170px; }
+    .footer #listButton { right: 800px; cursor: pointer; }
+    .footer #listButton:hover { color: #a3a3a3; }
+
+    .slide-box {
+      position: fixed; top: 0; right: 0;
+      width: 550px !important; max-width: 100%; height: 100%;
+      background: #fff; z-index: 3000;
+      transform: translateX(100%); transition: transform .3s;
+      overflow-y: auto;
+    }
+    .slide-box.active { transform: translateX(0); }
+    .slide-box .slide-list {
+      position: absolute; bottom: 10px; right: 30px;
+      font-size: 12px; cursor: pointer; transition: color .3s; z-index: 4001;
+    }
+    .slide-box .slide-list:hover { color: #a3a3a3; }
+
+    .text-group {
+      display: flex; align-items: center;
+      font-size: 12px; padding: 10px 0; white-space: nowrap;
+    }
+    .text1 { margin-left: 10px; }
+    .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
+    .text3 { margin-right: 10px; flex-shrink: 0; }
 
     .content {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      column-gap: 0;
-      row-gap: 0;
-      padding: 0;
+      gap: 0;
     }
-
     .thumbnail {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      text-decoration: none;
-      color: inherit;
+      display: flex; flex-direction: column; color: inherit;
     }
-
     .thumbnail img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: auto; object-fit: cover; display: block;
     }
-
     .caption {
-      display: flex;
-      margin-top: 8px;
-      font-size: 12px;
-      flex-direction: column;
+      display: flex; flex-direction: column;
+      margin-top: 8px; font-size: 12px;
       align-items: flex-start;
     }
-
-    .caption .title {
-      margin-bottom: 0px;
-    }
-
+    .caption .title { margin-bottom: 0; }
     .caption .category-year {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      display: flex; align-items: center;
     }
-
-    .caption .category {
-      margin-right: 10px;
-    }
-
-    .header {
-      width: 100%;
-      height: 100px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .header img {
-      height: 100%;
-      width: auto;
-    }
-
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: transparent;
-      z-index: 1000;
-    }
-
-    .footer .right-link {
-      position: absolute;
-      bottom: 10px;
-      left: 30px;
-      font-size: 12px;
-    }
-
-    .footer .contact-link {
-      position: absolute;
-      bottom: 10px;
-      left: 170px;
-      font-size: 12px;
-    }
-
-    .footer #listButton {
-      position: absolute;
-      bottom: 10px;
-      right: 800px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .footer #listButton:hover {
-      color: #a3a3a3;
-    }
-
-    .slide-box {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 550px !important;
-      max-width: 100%;
-      height: 100%;
-      background-color: #ffffff;
-      z-index: 3000;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      overflow-y: auto;
-    }
-
-    .slide-box.active {
-      transform: translateX(0%);
-    }
-
-    .slide-box .slide-list {
-      position: absolute;
-      bottom: 10px;
-      right: 30px;
-      font-size: 12px;
-      cursor: pointer;
-      z-index: 4001;
-      transition: color 0.3s;
-    }
-
-    .slide-box .slide-list:hover {
-      color: #a3a3a3;
-    }
-
-    .text-group {
-      display: flex;
-      padding: 10px 0;
-      font-size: 12px;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 100%;
-    }
-
-    .text1 {
-      margin-left: 10px;
-      transition: color 0.3s;
-    }
-
-    .text1 a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .text1 a:hover {
-      color: #a3a3a3;
-    }
-
-    .text2 {
-      margin-left: auto;
-      margin-right: 60px;
-      text-align: right;
-    }
-
-    .text3 {
-      margin-right: 10px;
-      flex-shrink: 0;
-    }
-
-    #slideContent {
-      padding-top: 13px;
-    }
+    .caption .category { margin-right: 10px; }
 
     @media (max-width: 768px) {
       .side { display: none; }
@@ -229,38 +112,28 @@
 
     @media (min-width: 769px) {
       .gallery-wrap {
-        display: flex;
-        width: 100%;
+        display: flex; width: 100%;
         min-height: calc(100vh - 200px);
       }
       .fixed-image {
-        width: 1152px;
-        position: sticky;
-        top: 100px;
+        position: sticky; top: 100px;
         height: calc(100vh - 200px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
+        flex: 0 0 clamp(600px, 70vw, 1152px);
+        display: flex; justify-content: center; align-items: center;
       }
       .fixed-image img {
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 100%; max-height: 100%;
         object-fit: contain;
       }
       .scroll-area {
-        width: 768px;
+        flex: 1;
         overflow-y: auto;
       }
       .content {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 0;
-        row-gap: 0;
-        padding: 0;
       }
-      .thumbnail {
-        margin-bottom: 8px;
-      }
+      .thumbnail { margin-bottom: 8px; }
     }
   </style>
 </head>
@@ -277,12 +150,8 @@
     </div>
   </div>
   <div class="footer">
-    <div class="right-link">
-      <a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a>
-    </div>
-    <div class="contact-link">
-      <a href="mailto:uxxwd9@gmail.com">contact</a>
-    </div>
+    <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
+    <div class="contact-link"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
     <div id="listButton" onclick="toggleSlideBox()">list</div>
   </div>
   <div class="slide-box" id="slideBox">
@@ -291,86 +160,36 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const titles = [
-        "te cura", "lost romance", "blish",
-        "An inverted realtionship", "Immortality : The Death of Death", "Heaven",
-        "Everybody", "Monster", "Ideal Expression",
-        "alfoze", "Valentine", "Forever",
-        "Lov"
-      ];
-
-      const categories = [
-        "brand design", "graphic design", "brand design",
-        "editorial", "brand design", "graphic design",
-        "graphic design", "graphic design", "graphic design",
-        "brand design", "graphic design", "graphic design",
-        "brand design"
-      ];
-
-      const years = [
-        "2022", "2023", "2023",
-        "2023", "2024", "2024",
-        "2024", "2024", "2024",
-        "2025", "2025", "2025",
-        "2025"
-      ];
-
+      const titles = ["te cura","lost romance","blish","An inverted realtionship","Immortality : The Death of Death","Heaven","Everybody","Monster","Ideal Expression","alfoze","Valentine","Forever","Lov"];
+      const categories = ["brand design","graphic design","brand design","editorial","brand design","graphic design","graphic design","graphic design","graphic design","brand design","graphic design","graphic design","brand design"];
+      const years = ["2022","2023","2023","2023","2024","2024","2024","2024","2024","2025","2025","2025","2025"];
       const gallery = document.getElementById('gallery');
-      if (gallery) {
-        for (let i = titles.length; i >= 1; i--) {
-          const index = i;
-          const item = document.createElement('a');
-          item.href = `${index}/`;
-          item.className = `thumbnail thumb${index}`;
-          item.innerHTML = `
-            <img src="images/thumb${index}.png" alt="썸네일${index}" />
-            <div class="caption caption-thumb${index}">
-              <span class="title">${titles[i - 1]}</span>
-              <span class="category-year">
-                <span class="category">${categories[i - 1]}</span><span class="year">${years[i - 1]}</span>
-              </span>
-            </div>
-          `;
-          gallery.appendChild(item);
-        }
+      for (let i = titles.length; i >= 1; i--) {
+        const item = document.createElement('a');
+        item.href = `${i}/`;
+        item.className = 'thumbnail thumb'+i;
+        item.innerHTML = `<img src="images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
+        gallery.append(item);
       }
-
       const slideData = [
-        ["te cura", "brand design", "2022"],
-        ["a generation that has lost romance", "graphic design", "2023"],
-        ["blish", "brand design", "2023"],
-        ["An inverted realtionship", "editorial", "2023"],
-        ["Immortality : The Death of Death", "brand design", "2024"],
-        ["Heaven", "graphic design", "2024"],
-        ["Everybody", "graphic design", "2024"],
-        ["Monster", "graphic design", "2024"],
-        ["Ideal Expression", "graphic design", "2024"],
-        ["alfoze", "brand design", "2025"],
-        ["Valentine", "graphic design", "2025"],
-        ["Forever", "graphic design", "2025"],
-        ["Lov", "graphic design", "2025"]
+        ["te cura","brand design","2022"],["a generation that has lost romance","graphic design","2023"],["blish","brand design","2023"],
+        ["An inverted realtionship","editorial","2023"],["Immortality : The Death of Death","brand design","2024"],["Heaven","graphic design","2024"],
+        ["Everybody","graphic design","2024"],["Monster","graphic design","2024"],["Ideal Expression","graphic design","2024"],
+        ["alfoze","brand design","2025"],["Valentine","graphic design","2025"],["Forever","graphic design","2025"],["Lov","graphic design","2025"]
       ];
-
-      const slideContent = document.getElementById("slideContent");
-      slideData.forEach(([text1, text2, text3], index) => {
-        const group = document.createElement("div");
-        group.className = "text-group";
-        group.innerHTML = `
-          <div class="text1"><a href="${index + 1}/">${text1}</a></div>
-          <div class="text2">${text2}</div>
-          <div class="text3">${text3}</div>
-        `;
-        slideContent.appendChild(group);
+      const slideContent = document.getElementById('slideContent');
+      slideData.forEach(([t,c,y], idx)=>{
+        const g = document.createElement('div');
+        g.className = 'text-group';
+        g.innerHTML = `<div class="text1"><a href="${idx+1}/">${t}</a></div><div class="text2">${c}</div><div class="text3">${y}</div>`;
+        slideContent.append(g);
       });
-
-      function toggleSlideBox() {
-        const slideBox = document.getElementById("slideBox");
-        const toggleText = document.getElementById("slideToggleText");
-        slideBox.classList.toggle("active");
-        toggleText.textContent = slideBox.classList.contains("active") ? "close" : "list";
-      }
-
-      window.toggleSlideBox = toggleSlideBox;
+      window.toggleSlideBox = ()=>{
+        const sb = document.getElementById('slideBox');
+        const txt = document.getElementById('slideToggleText');
+        sb.classList.toggle('active');
+        txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
+      };
     });
   </script>
 </body>
