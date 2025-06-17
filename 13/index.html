@@ -2,30 +2,24 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lov</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1</title>
+  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
+  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
+  <meta name="theme-color" content="#ffffff" />
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: "minion-pro", serif;
       background: #ffffff;
+      font-size: 12px;
       color: #a3a3a3;
     }
 
     .wrap {
       display: flex;
-      min-height: calc(100vh - 200px);
-    }
-
-    .left {
-      flex: 1;
-      padding: 20px;
-    }
-
-    .right {
-      width: 540px;
-      padding: 20px 10px 20px 0;
     }
 
     .header {
@@ -36,46 +30,36 @@
       justify-content: center;
       position: sticky;
       top: 0;
-      background: #fff;
+      background: #ffffff;
       z-index: 1000;
     }
 
     .header img {
       height: 100%;
-      width: auto;
     }
 
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
+    .left-content {
+      flex: 1;
+      padding: 0 30px;
     }
 
     .content img {
-      width: 100%;
+      max-width: 100%;
       height: auto;
-      margin-bottom: 10px;
+      display: block;
+      margin: 20px auto;
       cursor: pointer;
     }
 
-    .footer-bar {
-      height: 100px;
-      display: flex;
-      align-items: center;
-      padding: 0 60px;
-      justify-content: flex-start;
-      background: transparent;
+    .right-thumbs {
+      width: 540px;
+      padding: 20px;
     }
 
-    .footer-bar span {
-      margin-right: 60px;
-      font-size: 12px;
-    }
-
-    .thumbnail-list {
+    .thumb-box {
       display: grid;
       grid-template-columns: repeat(2, 250px);
-      column-gap: 10px;
-      row-gap: 13px;
+      gap: 13px 10px;
     }
 
     .thumbnail {
@@ -98,29 +82,43 @@
     }
 
     .caption {
-      display: flex;
       margin-top: 8px;
       font-size: 12px;
     }
 
-    .caption .title { margin-right: 20px; }
-    .caption .category-year { display: flex; gap: 8px; }
-
     @media (max-width: 768px) {
-      .wrap { flex-direction: column; }
-      .right { display: none; }
-      .header { height: 80px; }
-      .footer-bar { flex-wrap: wrap; gap: 8px; padding: 0 20px; height: auto; }
+      .wrap {
+        display: block;
+      }
+
+      .right-thumbs {
+        display: none;
+      }
+
+      .header {
+        height: 80px;
+      }
+
+      .header img {
+        height: 80px;
+      }
+
+      .content img {
+        margin: 10px auto;
+      }
     }
   </style>
+  <script defer src="/test/thumbnails.js"></script>
 </head>
 <body>
   <div class="header">
-    <a href="/test/"><img src="/test/images/header0.png" alt="header" /></a>
+    <a href="/test/">
+      <img src="/test/images/header0.png" alt="header" />
+    </a>
   </div>
 
   <div class="wrap">
-    <div class="left">
+    <div class="left-content">
       <div class="content">
         <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
         <img src="/test/images/13-lov/lov2.png" alt="lov2" />
@@ -131,18 +129,10 @@
         <img src="/test/images/13-lov/lov6.png" alt="lov6" />
       </div>
     </div>
-    <div class="right">
-      <div class="thumbnail-list" id="thumbnailList"></div>
+
+    <div class="right-thumbs">
+      <div class="thumb-box" id="thumbnailList"></div>
     </div>
   </div>
-
-  <div class="footer-bar">
-    <span class="text1">Lov</span>
-    <span class="text2">brand design</span>
-    <span class="text3">client work</span>
-    <span class="text4">2025</span>
-  </div>
-
-  <script src="/test/thumbnails.js"></script>
 </body>
 </html>
