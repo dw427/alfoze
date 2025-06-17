@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfoㄴㅊze</title>
+  <title>alfoㄴㄴㅇze</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -55,12 +55,12 @@
     .gallery-wrap {
       display: flex;
       width: 100%;
-      height: auto;
-      padding-bottom: 100px; /* footer가 겹치지 않도록 여유 공간 확보 */
+      height: 100vh;
     }
 
     .fixed-image {
       flex: 0 0 clamp(600px, 70vw, 1152px);
+      height: calc(100vh - 100px);
       overflow-y: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -83,6 +83,7 @@
 
     .scroll-area {
       flex: 1;
+      height: calc(100vh - 100px);
       overflow-y: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -146,7 +147,7 @@
 
       .gallery-wrap {
         display: block;
-        padding-bottom: 100px;
+        height: auto;
       }
 
       .fixed-image .content {
