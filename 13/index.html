@@ -2,65 +2,82 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>alfoze</title>
+  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
+  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
+  <meta name="theme-color" content="#ffffff" />
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "minion-pro", serif; background: #fff; }
 
-    * { box-sizing: border-box; }
-    html {
-      scrollbar-gutter: stable;
-    }
-    
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      font-family: "minion-pro", serif;
-      font-size: 12px;
-      color: #a3a3a3;
-      overflow-x: hidden;
-    }
-
-    .header-wrap, .container {
-      max-width: 1920px;
-      margin: 0 auto;
-      position: relative;
-    }
+    a { color: inherit; text-decoration: none; transition: color .3s; }
+    a:hover { color: #a3a3a3; }
 
     .header {
-      width: 100%;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      width: 100%; height: 100px;
+      display: flex; align-items: center; justify-content: center;
+      position: sticky; top: 0; z-index: 1000;
       background: #ffffff;
     }
+    .header img { height: 100%; width: auto; }
 
-    .header a {
-      display: block;
-      height: 100%;
+    .footer {
+      position: fixed; bottom: 0; left: 0;
+      width: 100%; height: 100px; background: transparent;
+      z-index: 1000;
     }
-
-    .header img {
-      height: 100%;
-      width: auto;
-      max-height: 100%;
-      display: block;
-      margin: 0 auto;
-      image-rendering: auto;
+    .footer .right-link,
+    .footer .contact-link,
+    .footer #listButton {
+      position: absolute; bottom: 10px; font-size: 12px;
     }
+    .footer .right-link { left: 30px; }
+    .footer .contact-link { left: 170px; }
+    .footer #listButton { right: 800px; cursor: pointer; }
+    .footer #listButton:hover { color: #a3a3a3; }
 
-    .content {
+    .slide-box {
+      position: fixed; top: 0; right: 0;
+      width: 550px !important; max-width: 100%; height: 100%;
+      background: #fff; z-index: 3000;
+      transform: translateX(100%); transition: transform .3s;
+      overflow-y: auto;
+    }
+    .slide-box.active { transform: translateX(0); }
+    .slide-box .slide-list {
+      position: absolute; bottom: 10px; right: 30px;
+      font-size: 12px; cursor: pointer; transition: color .3s; z-index: 4001;
+    }
+    .slide-box .slide-list:hover { color: #a3a3a3; }
+
+    .text-group {
+      display: flex; align-items: center;
+      font-size: 12px; padding: 10px 0; white-space: nowrap;
+    }
+    .text1 { margin-left: 10px; }
+    .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
+    .text3 { margin-right: 10px; flex-shrink: 0; }
+
+    .gallery-wrap {
+      display: flex; width: 100%;
+      min-height: calc(100vh - 200px);
+    }
+    .fixed-image {
+      position: sticky; top: 100px;
+      height: calc(100vh - 200px);
+      flex: 0 0 clamp(600px, 70vw, 1152px);
+      display: flex; justify-content: center; align-items: center;
+      background: #fff;
+    }
+    .fixed-image .content {
       max-width: 700px;
       margin: 0 auto;
       text-align: center;
     }
 
-    .content img {
+    .fixed-image .content img {
       max-width: 100%;
       height: auto;
       display: block;
@@ -68,53 +85,9 @@
       cursor: pointer;
     }
 
-.footer-bar {
-  position: fixed;
-  bottom: 20px;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  pointer-events: none;
-}
-
-.footer-inner {
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  padding-left: 60px;
-  padding-right: 60px;
-}
-
-.footer-inner .text1 { margin-right: 90px; pointer-events: auto; }
-.footer-inner .text2 { margin-right: 220px; pointer-events: auto; }
-.footer-inner .text3 { margin-right: auto; pointer-events: auto; }
-.footer-inner .text4 { margin-right: 0; pointer-events: auto; }
-
-    @media (max-width: 768px) {
-      .header { height: 80px; }
-      .header a { height: 80px; }
-      .header img { height: 80px; }
-
-      .footer-inner {
-    width: 100vw;
-    padding: 0 20px;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .footer-inner .text1,
-  .footer-inner .text2,
-  .footer-inner .text3,
-  .footer-inner .text4 {
-    margin-right: 0;
-    font-size: 10px;
-    color: #a3a3a3;
-      }
+    .scroll-area {
+      flex: 1;
+      overflow-y: auto;
     }
 
     .modal {
@@ -136,76 +109,144 @@
     }
 
     @media (max-width: 768px) {
+      .side, .fixed-image { display: none; }
+      .content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        padding: 0;
+      }
+      .thumbnail {
+        width: 100%;
+        margin-bottom: 0;
+      }
+      .thumbnail img {
+        width: 100%;
+        height: auto;
+      }
+      .caption {
+        margin: 8px 0;
+        font-size: 12px;
+      }
+      .header { height: 80px; }
+      .footer { height: 100px; }
+      .footer .right-link { bottom: 20px; left: 20px; }
+      .footer .contact-link { bottom: 20px; left: 160px; }
+      .footer #listButton { bottom: 20px; right: 20px; }
+      .slide-box { width: 100% !important; }
+      .slide-box .slide-list { bottom: 20px; right: 20px; }
+
       .modal img {
         max-width: 100vw;
         max-height: 100vh;
         width: 100%;
         height: auto;
       }
+
+      .gallery-wrap {
+        display: block;
+      }
+
+      .fixed-image .content {
+        padding: 20px;
+      }
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-image');
-      const closeBtn = document.getElementById('modal-close');
-
-      document.querySelectorAll('.content img').forEach(img => {
-        img.addEventListener('click', function () {
-          modalImg.src = this.src;
-          modal.style.display = 'flex';
-        });
-      });
-
-      closeBtn.addEventListener('click', function () {
-        modal.style.display = 'none';
-        modalImg.src = '';
-      });
-
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-          modalImg.src = '';
-        }
-      });
-    });
-  </script>
 </head>
-
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-  <div class="header-wrap">
-    <div class="header">
-      <a href="/test/">
-        <img src="/test/images/header0.png" alt="header" />
-      </a>
+  <div class="header">
+    <img src="/test/images/header0.png" alt="header" />
+  </div>
+
+  <div class="gallery-wrap">
+    <div class="fixed-image">
+      <div class="content">
+        <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
+        <img src="/test/images/13-lov/lov2.png" alt="lov2" />
+        <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
+        <img src="/test/images/13-lov/lov8-1.png" alt="lov8" />
+        <img src="/test/images/13-lov/lov4.png" alt="lov4" />
+        <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
+        <img src="/test/images/13-lov/lov6.png" alt="lov6" />
+      </div>
+    </div>
+    <div class="scroll-area">
+      <div class="content" id="gallery"></div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="content">
-      <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
-      <img src="/test/images/13-lov/lov2.png" alt="lov2" />
-      <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
-      <img src="/test/images/13-lov/lov8-1.png" alt="lov8" />
-      <img src="/test/images/13-lov/lov4.png" alt="lov4" />
-      <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
-      <img src="/test/images/13-lov/lov6.png" alt="lov6" />
-    </div>
+  <div class="footer">
+    <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
+    <div class="contact-link"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
+    <div id="listButton" onclick="toggleSlideBox()">list</div>
   </div>
 
-  <div class="footer-bar">
-    <div class="footer-inner">
-      <span class="text1">Lov</span>
-      <span class="text2">brand design</span>
-      <span class="text3">client work</span>
-      <span class="text4">2025</span>
-    </div>
+  <div class="slide-box" id="slideBox">
+    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
+    <div id="slideContent"></div>
   </div>
 
   <div id="modal" class="modal">
     <img id="modal-image" src="" alt="">
     <span id="modal-close" style="position:absolute;top:30px;right:40px;color:white;font-size:40px;cursor:pointer;">&times;</span>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.fixed-image .content img').forEach(img => {
+        img.addEventListener('click', function () {
+          const modal = document.getElementById('modal');
+          const modalImg = document.getElementById('modal-image');
+          modalImg.src = this.src;
+          modal.style.display = 'flex';
+        });
+      });
+
+      document.getElementById('modal-close').addEventListener('click', () => {
+        document.getElementById('modal').style.display = 'none';
+        document.getElementById('modal-image').src = '';
+      });
+
+      document.getElementById('modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('modal')) {
+          document.getElementById('modal').style.display = 'none';
+          document.getElementById('modal-image').src = '';
+        }
+      });
+
+      const titles = ["te cura","lost romance","blish","An inverted realtionship","Immortality : The Death of Death","Heaven","Everybody","Monster","Ideal Expression","alfoze","Valentine","Forever","Lov"];
+      const categories = ["brand design","graphic design","brand design","editorial","brand design","graphic design","graphic design","graphic design","graphic design","brand design","graphic design","graphic design","brand design"];
+      const years = ["2022","2023","2023","2023","2024","2024","2024","2024","2024","2025","2025","2025","2025"];
+      const gallery = document.getElementById('gallery');
+      for (let i = titles.length; i >= 1; i--) {
+        const item = document.createElement('a');
+        item.href = `${i}/`;
+        item.className = 'thumbnail thumb'+i;
+        item.innerHTML = `<img src="images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
+        gallery.append(item);
+      }
+
+      const slideData = [
+        ["te cura","brand design","2022"],["a generation that has lost romance","graphic design","2023"],["blish","brand design","2023"],
+        ["An inverted realtionship","editorial","2023"],["Immortality : The Death of Death","brand design","2024"],["Heaven","graphic design","2024"],
+        ["Everybody","graphic design","2024"],["Monster","graphic design","2024"],["Ideal Expression","graphic design","2024"],
+        ["alfoze","brand design","2025"],["Valentine","graphic design","2025"],["Forever","graphic design","2025"],["Lov","graphic design","2025"]
+      ];
+      const slideContent = document.getElementById('slideContent');
+      slideData.forEach(([t,c,y], idx)=>{
+        const g = document.createElement('div');
+        g.className = 'text-group';
+        g.innerHTML = `<div class="text1"><a href="${idx+1}/">${t}</a></div><div class="text2">${c}</div><div class="text3">${y}</div>`;
+        slideContent.append(g);
+      });
+
+      window.toggleSlideBox = ()=>{
+        const sb = document.getElementById('slideBox');
+        const txt = document.getElementById('slideToggleText');
+        sb.classList.toggle('active');
+        txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
+      };
+    });
+  </script>
 </body>
 </html>
-
