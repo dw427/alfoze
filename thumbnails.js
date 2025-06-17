@@ -74,3 +74,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderGallery();
   renderSlideList();
 });
+console.log("🔥 gallery =", document.getElementById("gallery"));
+console.log("🔥 location.pathname =", location.pathname);
