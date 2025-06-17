@@ -6,42 +6,38 @@
   <title>alfoze - Lov</title>
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
-
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
       font-family: "minion-pro", serif;
-      font-size: 12px;
+      background: #ffffff;
       color: #a3a3a3;
-      background: #fff;
     }
 
     .wrap {
       display: flex;
-      min-height: 100vh;
+      min-height: calc(100vh - 200px);
     }
 
     .left {
       flex: 1;
-      padding: 100px 40px 120px;
+      padding: 20px;
     }
 
     .right {
       width: 540px;
-      padding: 100px 10px 120px 10px;
-      border-left: 1px solid #eee;
+      padding: 20px 10px 20px 0;
     }
 
     .header {
-      position: sticky;
-      top: 0;
+      width: 100%;
       height: 100px;
-      background: #fff;
-      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
     }
 
     .header img {
@@ -49,23 +45,43 @@
       width: auto;
     }
 
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     .content img {
-      max-width: 100%;
-      display: block;
-      margin-bottom: 20px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
       cursor: pointer;
     }
 
-    .thumbnails {
+    .footer-bar {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+      justify-content: flex-start;
+      background: transparent;
+    }
+
+    .footer-bar span {
+      margin-right: 60px;
+      font-size: 12px;
+    }
+
+    .thumbnail-list {
       display: grid;
       grid-template-columns: repeat(2, 250px);
-      gap: 13px 10px;
-      justify-content: center;
+      column-gap: 10px;
+      row-gap: 13px;
     }
 
     .thumbnail {
       display: flex;
       flex-direction: column;
+      width: 250px;
       text-decoration: none;
       color: inherit;
     }
@@ -74,7 +90,7 @@
       width: 250px;
       height: 250px;
       object-fit: cover;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
     }
 
     .thumbnail:hover img {
@@ -82,90 +98,21 @@
     }
 
     .caption {
-      margin-top: 5px;
-    }
-
-    .caption .title {
-      display: block;
-    }
-
-    .caption .category-year {
       display: flex;
-      gap: 10px;
+      margin-top: 8px;
+      font-size: 12px;
     }
 
-    .footer-bar {
-      position: fixed;
-      bottom: 20px;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      pointer-events: none;
-    }
-
-    .footer-inner {
-      width: 100%;
-      max-width: 1920px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: flex-start;
-      padding: 0 60px;
-    }
-
-    .footer-inner span {
-      margin-right: 60px;
-      pointer-events: auto;
-    }
+    .caption .title { margin-right: 20px; }
+    .caption .category-year { display: flex; gap: 8px; }
 
     @media (max-width: 768px) {
-      .wrap {
-        flex-direction: column;
-      }
-
-      .right {
-        display: none;
-      }
-
-      .left {
-        padding: 80px 20px 100px;
-      }
-
-      .header {
-        height: 80px;
-      }
-
-      .header img {
-        height: 80px;
-      }
+      .wrap { flex-direction: column; }
+      .right { display: none; }
+      .header { height: 80px; }
+      .footer-bar { flex-wrap: wrap; gap: 8px; padding: 0 20px; height: auto; }
     }
   </style>
-  <script defer src="/test/thumbnails.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const modal = document.getElementById("modal");
-      const modalImg = document.getElementById("modal-image");
-      const closeBtn = document.getElementById("modal-close");
-
-      document.querySelectorAll(".content img").forEach((img) => {
-        img.addEventListener("click", function () {
-          modalImg.src = this.src;
-          modal.style.display = "flex";
-        });
-      });
-
-      closeBtn.addEventListener("click", function () {
-        modal.style.display = "none";
-        modalImg.src = "";
-      });
-
-      modal.addEventListener("click", function (e) {
-        if (e.target === modal) {
-          modal.style.display = "none";
-          modalImg.src = "";
-        }
-      });
-    });
-  </script>
 </head>
 <body>
   <div class="header">
@@ -185,22 +132,17 @@
       </div>
     </div>
     <div class="right">
-      <div class="thumbnails" id="thumbnailList"></div>
+      <div class="thumbnail-list" id="thumbnailList"></div>
     </div>
   </div>
 
   <div class="footer-bar">
-    <div class="footer-inner">
-      <span class="text1">Lov</span>
-      <span class="text2">brand design</span>
-      <span class="text3">client work</span>
-      <span class="text4">2025</span>
-    </div>
+    <span class="text1">Lov</span>
+    <span class="text2">brand design</span>
+    <span class="text3">client work</span>
+    <span class="text4">2025</span>
   </div>
 
-  <div id="modal" class="modal" style="display:none;position:fixed;z-index:2000;left:0;top:0;width:100vw;height:100vh;background-color:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
-    <img id="modal-image" src="" alt="" style="max-width:90vw;max-height:90vh;">
-    <span id="modal-close" style="position:absolute;top:30px;right:40px;color:white;font-size:40px;cursor:pointer;">&times;</span>
-  </div>
+  <script src="/test/thumbnails.js"></script>
 </body>
 </html>
