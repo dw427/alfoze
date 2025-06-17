@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfoza1e</title>
+  <title>alfoze</title>
 
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
@@ -11,6 +11,7 @@
 
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
+
     * { box-sizing: border-box; }
 
     body {
@@ -31,47 +32,55 @@
 
     .content {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 0;
-      row-gap: 0;
-      padding: 0;
+      grid-template-columns: repeat(3, 250px);
+      column-gap: 10px;
+      row-gap: 13px;
     }
 
     .thumbnail {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: 250px;
       text-decoration: none;
       color: inherit;
     }
 
     .thumbnail img {
-      width: 100%;
-      height: auto;
+      width: 250px;
+      height: 250px;
       object-fit: cover;
       display: block;
+      transition: transform 0.3s ease;
+    }
+
+    @media (min-width: 769px) {
+      .thumbnail:hover img {
+        transform: scale(1.05);
+      }
     }
 
     .caption {
       display: flex;
-      margin-top: 8px;
+      margin-top: 13px;
       font-size: 12px;
-      flex-direction: column;
       align-items: flex-start;
     }
 
     .caption .title {
-      margin-bottom: 2px;
+      margin-right: 20px;
+    }
+
+    .caption .category {
+      margin-right: 60px;
     }
 
     .caption .category-year {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
     }
 
-    .caption .category {
-      margin-right: 10px;
+    .side {
+      width: 575px;
     }
 
     .header {
@@ -216,7 +225,29 @@
         height: auto;
       }
       .caption {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         margin: 8px 0;
+        font-size: 12px;
+      }
+      .caption .title {
+        display: block;
+        margin-bottom: 2px;
+      }
+      .caption .category-year {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .caption .category {
+        margin-right: 10px;
+      }
+      .caption .year {
+        margin: 0;
+      }
+      .caption .category-year .category::after {
+        content: ",";
       }
       .header { height: 80px; }
       .footer { height: 100px; }
@@ -231,13 +262,13 @@
       .gallery-wrap {
         display: flex;
         width: 100%;
-        min-height: calc(100vh - 200px);
+        min-height: calc(100vh - 100px - 100px);
       }
       .fixed-image {
-        width: 1152px;
+        width: calc(100% - 540px);
         position: sticky;
         top: 100px;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 100px - 100px);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -249,13 +280,13 @@
         object-fit: contain;
       }
       .scroll-area {
-        width: 768px;
-        overflow-y: auto;
+        width: 540px;
+        padding-right: 10px;
       }
       .content {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 0;
-        row-gap: 0;
+        grid-template-columns: repeat(2, 250px);
+        column-gap: 10px;
+        row-gap: 13px;
         padding: 0;
       }
     }
