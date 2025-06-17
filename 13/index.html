@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alfozse</title>
-
+  <title>alfozsce</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -54,27 +53,30 @@
       height: 100px;
       background: transparent;
       z-index: 1000;
+      pointer-events: none;
+    }
+
+    .footer .right-link,
+    .footer .contact-link,
+    .footer #listButton {
+      position: absolute;
+      font-size: 12px;
+      pointer-events: auto;
     }
 
     .footer .right-link {
-      position: absolute;
       bottom: 10px;
       left: 30px;
-      font-size: 12px;
     }
 
     .footer .contact-link {
-      position: absolute;
       bottom: 10px;
       left: 170px;
-      font-size: 12px;
     }
 
     .footer #listButton {
-      position: absolute;
       bottom: 10px;
       right: 800px;
-      font-size: 12px;
       cursor: pointer;
       transition: color 0.3s;
     }
@@ -103,7 +105,6 @@
     .main-content {
       width: 500px;
       margin: 0 auto;
-      padding: 0;
     }
 
     .main-content img {
@@ -210,7 +211,6 @@
 
     .text1 {
       margin-left: 10px;
-      transition: color 0.3s;
     }
 
     .text1 a {
@@ -368,10 +368,10 @@
         for (let i = titles.length; i >= 1; i--) {
           const index = i;
           const item = document.createElement('a');
-          item.href = `${index}/`;
+          item.href = `/test/${index}/`;
           item.className = `thumbnail thumb${index}`;
           item.innerHTML = `
-            <img src="images/thumb${index}.png" alt="썸네일${index}" />
+            <img src="/test/images/thumb${index}.png" alt="썸네일${index}" />
             <div class="caption caption-thumb${index}">
               <span class="title">${titles[i - 1]}</span>
               <span class="category-year">
@@ -383,28 +383,14 @@
         }
       }
 
-      const slideData = [
-        ["te cura", "brand design", "2022"],
-        ["a generation that has lost romance", "graphic design", "2023"],
-        ["blish", "brand design", "2023"],
-        ["An inverted realtionship", "editorial", "2023"],
-        ["Immortality : The Death of Death", "brand design", "2024"],
-        ["Heaven", "graphic design", "2024"],
-        ["Everybody", "graphic design", "2024"],
-        ["Monster", "graphic design", "2024"],
-        ["Ideal Expression", "graphic design", "2024"],
-        ["alfoze", "brand design", "2025"],
-        ["Valentine", "graphic design", "2025"],
-        ["Forever", "graphic design", "2025"],
-        ["Lov", "graphic design", "2025"]
-      ];
-
+      const slideData = titles.map((title, i) => [title, categories[i], years[i]]);
       const slideContent = document.getElementById("slideContent");
+
       slideData.forEach(([text1, text2, text3], index) => {
         const group = document.createElement("div");
         group.className = "text-group";
         group.innerHTML = `
-          <div class="text1"><a href="${index + 1}/">${text1}</a></div>
+          <div class="text1"><a href="/test/${index + 1}/">${text1}</a></div>
           <div class="text2">${text2}</div>
           <div class="text3">${text3}</div>
         `;
