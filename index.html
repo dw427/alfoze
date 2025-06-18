@@ -173,9 +173,21 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const titles = ["te cura","lost romance","blish","An inverted realtionship","Immortality : The Death of Death","Heaven","Everybody","Monster","Ideal Expression","alfoze","Valentine","Forever","Lov"];
-      const categories = ["brand design","graphic design","brand design","editorial","brand design","graphic design","graphic design","graphic design","graphic design","brand design","graphic design","graphic design","brand design"];
-      const years = ["2022","2023","2023","2023","2024","2024","2024","2024","2024","2025","2025","2025","2025"];
+      const titles = ["te cura","lost romance","blish",
+                      "An inverted realtionship","Immortality : The Death of Death","Heaven",
+                      "Everybody","Monster","Ideal Expression",
+                      "alfoze","Valentine","Forever",
+                      "Lov"];
+      const categories = ["brand design","graphic design","brand design",
+                          "editorial","brand design","graphic design",
+                          "graphic design","graphic design","graphic design",
+                          "brand design","graphic design","graphic design",
+                          "brand design"];
+      const years = ["2022","2023","2023",
+                     "2023","2024","2024",
+                     "2024","2024","2024",
+                     "2025","2025","2025",
+                     "2025"];
       const gallery = document.getElementById('gallery');
       for (let i = titles.length; i >= 1; i--) {
         const item = document.createElement('a');
@@ -185,10 +197,13 @@
         gallery.append(item);
       }
       const slideData = [
-        ["te cura","brand design","2022"],["a generation that has lost romance","graphic design","2023"],["blish","brand design","2023"],
-        ["An inverted realtionship","editorial","2023"],["Immortality : The Death of Death","brand design","2024"],["Heaven","graphic design","2024"],
-        ["Everybody","graphic design","2024"],["Monster","graphic design","2024"],["Ideal Expression","graphic design","2024"],
-        ["alfoze","brand design","2025"],["Valentine","graphic design","2025"],["Forever","graphic design","2025"],["Lov","graphic design","2025"]
+        ["te cura","brand design","2022"],["a generation that has lost romance","graphic design","2023"],
+        ["blish","brand design","2023"],["An inverted realtionship","editorial","2023"],
+        ["Immortality : The Death of Death","brand design","2024"],
+        ["Heaven","graphic design","2024"],["Everybody","graphic design","2024"],
+        ["Monster","graphic design","2024"],["Ideal Expression","graphic design","2024"],
+        ["alfoze","brand design","2025"],["Valentine","graphic design","2025"],
+        ["Forever","graphic design","2025"],["Lov","graphic design","2025"]
       ];
       const slideContent = document.getElementById('slideContent');
       slideData.forEach(([t,c,y], idx)=>{
