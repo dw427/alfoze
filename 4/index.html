@@ -2,215 +2,237 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>alfoze</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>An inverted realtionship</title>
+  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
+  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
+  <meta name="theme-color" content="#ffffff" />
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "minion-pro", serif; background: #fff; }
 
-    * { box-sizing: border-box; }
-    html {
-      scrollbar-gutter: stable;
-    }
-    
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      font-family: "minion-pro", serif;
-      font-size: 12px;
-      color: #a3a3a3;
-      overflow-x: hidden;
-    }
+    a { color: inherit; text-decoration: none; transition: color .3s; }
+    a:hover { color: #a3a3a3; }
 
-    .header-wrap, .container {
-      max-width: 1920px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .header {
-      width: 100%;
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 0;
+    .footer {
+      position: fixed; bottom: 0; left: 0;
+      width: 100%; height: 100px; background: transparent;
       z-index: 1000;
-      background: #ffffff;
+      color: #a3a3a3;
+    }
+    .footer .right-link,
+    .footer #listButton {
+      position: absolute; bottom: 10px; font-size: 12px;
+    }
+    .footer .right-link { left: 30px; }
+    .footer #listButton { right: 30px; cursor: pointer; }
+    .footer #listButton:hover { color: #7a7a7a; }
+
+    .slide-box {
+      position: fixed; top: 0; right: 0;
+      width: 331px !important; max-width: 100%; height: 100%;
+      background: #fff; z-index: 3000;
+      transform: translateX(100%); transition: transform .3s;
+      overflow-y: auto;
+      padding: 10px 10px;
+    }
+    .slide-box.active { transform: translateX(0); }
+
+    .slide-box .slide-list {
+      position: fixed;
+      bottom: 10px;
+      right: 30px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color .3s;
+      z-index: 4001;
+      color: #a3a3a3;
+    }
+    .slide-box .slide-list:hover { color: #7a7a7a; }
+
+    .caption-group {
+      display: flex; flex-direction: column; font-size: 12px;
+    }
+    .caption1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .caption2 {
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .caption3 {
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .caption4 {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .caption5 {
+      font-size: 12px;
     }
 
-    .header img {
-      height: 100%;
-      width: auto;
-      max-height: 100%;
-      display: block;
-      margin: 0 auto;
-      image-rendering: auto;
+    .text-group {
+      display: flex; align-items: center;
+      font-size: 12px; padding: 10px 0; white-space: nowrap;
     }
+    .text1 { margin-left: 10px; }
+    .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
+    .text3 { margin-right: 10px; flex-shrink: 0; }
 
     .content {
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
     }
-
-    .content img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      cursor: pointer;
+    .thumbnail {
+      display: flex; flex-direction: column; color: inherit;
     }
-
-    .footer-bar {
-      position: fixed;
-      bottom: 20px;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      pointer-events: none;
+    .thumbnail img {
+      width: 100%; height: auto; object-fit: cover; display: block;
     }
-
-    .footer-inner {
-      width: 100%;
-      max-width: 1920px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      box-sizing: border-box;
-      padding-left: 0;
-      padding-right: 80px;
+    .caption {
+      display: flex; flex-direction: column;
+      margin-top: 8px; font-size: 12px;
+      align-items: flex-start;
     }
-
-    .footer-inner a { pointer-events: auto; }
-    .footer-inner img {
-      width: 10px;
-      margin-left: 20px;
-      margin-right: 100px;
-      pointer-events: auto;
+    .caption .title { margin-bottom: 0; }
+    .caption .category-year {
+      display: flex; align-items: center;
     }
+    .caption .category { margin-right: 10px; }
 
-    .footer-inner .text1 { margin-right: 50px; pointer-events: auto; }
-    .footer-inner .text2 { margin-right: 260px; pointer-events: auto; }
-    .footer-inner .text3 { margin-right: auto; pointer-events: auto; }
-    .footer-inner .text4 { margin-right: 0; pointer-events: auto; }
+    ::-webkit-scrollbar { display: none; }
 
-    @media (max-width: 768px) {
-      .header { height: 80px; }
-      .header img { height: 80px; }
-
-      .footer-inner {
-        width: 100vw;
-        padding: 0 20px;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .footer-inner img {
-        margin-left: 0;
-        margin-right: 10px;
-      }
-
-      .footer-inner .text1,
-      .footer-inner .text2,
-      .footer-inner .text3,
-      .footer-inner .text4 {
-        margin-right: 0;
-        font-size: 10px;
-        color: #a3a3a3;
-      }
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal img {
-      max-width: 90vw;
-      max-height: 90vh;
+    .scroll-area, .fixed-image {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
     @media (max-width: 768px) {
-      .modal img {
-        max-width: 100vw;
-        max-height: 100vh;
+      .gallery-wrap {
+        display: block;
+      }
+      .fixed-image {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .fixed-image img {
         width: 100%;
         height: auto;
+        display: block;
+      }
+      .scroll-area {
+        display: none;
+      }
+      .footer { height: 100px; }
+      .footer .right-link { bottom: 20px; left: 20px; }
+      .footer #listButton { bottom: 20px; right: 20px; }
+      .slide-box { width: 100% !important; padding: 40px 20px; }
+      .slide-box .slide-list { bottom: 20px; right: 20px; }
+    }
+
+    @media (min-width: 769px) {
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .gallery-wrap {
+        width: 850px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+      }
+      .fixed-image {
+        width: 600px;
+        height: 100%;
+        overflow-y: scroll;
+        padding-bottom: 0;
+      }
+      .fixed-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .scroll-area {
+        width: 250px;
+        height: 100vh;
+        overflow-y: scroll;
+      }
+      .thumbnail {
+        margin-bottom: 8px;
       }
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-image');
-      const closeBtn = document.getElementById('modal-close');
-
-      document.querySelectorAll('.content img').forEach(img => {
-        img.addEventListener('click', function () {
-          modalImg.src = this.src;
-          modal.style.display = 'flex';
-        });
-      });
-
-      closeBtn.addEventListener('click', function () {
-        modal.style.display = 'none';
-        modalImg.src = '';
-      });
-
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-          modalImg.src = '';
-        }
-      });
-    });
-  </script>
 </head>
-
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-  <div class="header-wrap">
-    <div class="header">
-      <a href="/test/" style="display:block; height:100%;">
-        <img src="/test/images/header0.png" alt="header" />
-      </a>
+  <div class="gallery-wrap">
+    <div class="fixed-image">
+      <img src="/test/images/4-inverted/inverted1.png" alt="inverted1" />
+      <img src="/test/images/4-inverted/inverted2.png" alt="inverted2" />
+      <img src="/test/images/4-inverted/inverted3.png" alt="inverted3" />
+      <img src="/test/images/4-inverted/inverted4.png" alt="inverted4" />
+      <img src="/test/images/4-inverted/inverted5.png" alt="inverted5" />
+      <img src="/test/images/4-inverted/inverted6.png" alt="inverted6" />
+      <img src="/test/images/4-inverted/inverted7.png" alt="inverted7" />
+    </div>
+    <div class="scroll-area">
+      <div class="content" id="gallery"></div>
     </div>
   </div>
-
-  <div class="container">
-    <div class="content">
-      <img src="/test/images/thumb4.png" alt="상세 이미지 2" />
+  <div class="footer">
+    <div class="right-link"><a href="/alfoze/">back</a></div>
+    <div id="listButton" onclick="toggleSlideBox()">info</div>
+  </div>
+  <div class="slide-box" id="slideBox">
+    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
+    <div class="caption-group">
+      <div class="caption1">Forever</div>
+      <div class="caption2">2025.02, graphic design </div>
+      <div class="caption3">-</div>
+      <div class="caption4">interview task</div>
+      <div class="caption5">out box, photo book, ornament, cdr</div>
     </div>
   </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const titles = ["te cura","lost romance","blish",
+                    "An inverted realtionship","Immortality : The Death of Death","Heaven",
+                    "Everybody","Monster","Ideal Expression",
+                    "alfoze","Valentine","Forever",
+                    "Lov"];
+    const categories = ["brand design","graphic design","brand design",
+                        "editorial","brand design","graphic design",
+                        "graphic design","graphic design","graphic design",
+                        "brand design","graphic design","graphic design",
+                        "brand design"];
+    const years = ["2022","2023","2023",
+                   "2023","2024","2024",
+                   "2024","2024","2024",
+                   "2025","2025","2025",
+                   "2025"];
+    const gallery = document.getElementById('gallery');
+    for (let i = titles.length; i >= 1; i--) {
+      const item = document.createElement('a');
+      item.href = `/alfoze/${i}/`;
+      item.className = 'thumbnail thumb'+i;
+      item.innerHTML = `<img src="/test/images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
+      gallery.append(item);
+    }
 
-  <div class="footer-bar">
-    <div class="footer-inner">
-      <a href="/test/">
-        <img src="/test/images/back.png" alt="back" draggable="false" />
-      </a>
-      <span class="text1">2023</span>
-      <span class="text2">editorial</span>
-      <span class="text3">interview task</span>
-      <span class="text4">An inverted realtionship</span>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <img id="modal-image" src="" alt="">
-    <span id="modal-close" style="position:absolute;top:30px;right:40px;color:white;font-size:40px;cursor:pointer;">&times;</span>
-  </div>
+    window.toggleSlideBox = ()=>{
+      const sb = document.getElementById('slideBox');
+      const txt = document.getElementById('slideToggleText');
+      sb.classList.toggle('active');
+      txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
+    };
+  });
+</script>
 </body>
 </html>
