@@ -165,54 +165,54 @@
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
     <div id="slideContent"></div>
   </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const titles = ["te cura","lost romance","blish",
-                      "An inverted realtionship","Immortality : The Death of Death","Heaven",
-                      "Everybody","Monster","Ideal Expression",
-                      "alfoze","Valentine","Forever",
-                      "Lov"];
-      const categories = ["brand design","graphic design","brand design",
-                          "editorial","brand design","graphic design",
-                          "graphic design","graphic design","graphic design",
-                          "brand design","graphic design","graphic design",
-                          "brand design"];
-      const years = ["2022","2023","2023",
-                     "2023","2024","2024",
-                     "2024","2024","2024",
-                     "2025","2025","2025",
-                     "2025"];
-      const gallery = document.getElementById('gallery');
-      for (let i = titles.length; i >= 1; i--) {
-        const item = document.createElement('a');
-        item.href = `${i}/`;
-        item.className = 'thumbnail thumb'+i;
-        item.innerHTML = `<img src="/test/images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
-        gallery.append(item);
-      }
-      const slideData = [
-        ["te cura","brand design","2022"],["a generation that has lost romance","graphic design","2023"],
-        ["blish","brand design","2023"],["An inverted realtionship","editorial","2023"],
-        ["Immortality : The Death of Death","brand design","2024"],["Heaven","graphic design","2024"],
-        ["Everybody","graphic design","2024"],["Monster","graphic design","2024"],
-        ["Ideal Expression","graphic design","2024"],["alfoze","brand design","2025"],
-        ["Valentine","graphic design","2025"],["Forever","graphic design","2025"],
-        ["Lov","graphic design","2025"]
-      ];
-      const slideContent = document.getElementById('slideContent');
-      slideData.forEach(([t,c,y], idx)=>{
-        const g = document.createElement('div');
-        g.className = 'text-group';
-        g.innerHTML = `<div class="text1"><a href="${idx+1}/">${t}</a></div><div class="text2">${c}</div><div class="text3">${y}</div>`;
-        slideContent.append(g);
-      });
-      window.toggleSlideBox = ()=>{
-        const sb = document.getElementById('slideBox');
-        const txt = document.getElementById('slideToggleText');
-        sb.classList.toggle('active');
-        txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
-      };
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const titles = ["te cura","lost romance","blish",
+                    "An inverted realtionship","Immortality : The Death of Death","Heaven",
+                    "Everybody","Monster","Ideal Expression",
+                    "alfoze","Valentine","Forever",
+                    "Lov"];
+    const categories = ["brand design","graphic design","brand design",
+                        "editorial","brand design","graphic design",
+                        "graphic design","graphic design","graphic design",
+                        "brand design","graphic design","graphic design",
+                        "brand design"];
+    const years = ["2022","2023","2023",
+                   "2023","2024","2024",
+                   "2024","2024","2024",
+                   "2025","2025","2025",
+                   "2025"];
+    const gallery = document.getElementById('gallery');
+    for (let i = titles.length; i >= 1; i--) {
+      const item = document.createElement('a');
+      item.href = `/alfoze/${i}/`; // ✅ 절대경로로 수정
+      item.className = 'thumbnail thumb'+i;
+      item.innerHTML = `<img src="/test/images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
+      gallery.append(item);
+    }
+    const slideData = [
+      ["te cura","brand design","2022"],["a generation that has lost romance","graphic design","2023"],
+      ["blish","brand design","2023"],["An inverted realtionship","editorial","2023"],
+      ["Immortality : The Death of Death","brand design","2024"],["Heaven","graphic design","2024"],
+      ["Everybody","graphic design","2024"],["Monster","graphic design","2024"],
+      ["Ideal Expression","graphic design","2024"],["alfoze","brand design","2025"],
+      ["Valentine","graphic design","2025"],["Forever","graphic design","2025"],
+      ["Lov","graphic design","2025"]
+    ];
+    const slideContent = document.getElementById('slideContent');
+    slideData.forEach(([t,c,y], idx)=>{
+      const g = document.createElement('div');
+      g.className = 'text-group';
+      g.innerHTML = `<div class="text1"><a href="/alfoze/${idx+1}/">${t}</a></div><div class="text2">${c}</div><div class="text3">${y}</div>`;
+      slideContent.append(g);
     });
-  </script>
+    window.toggleSlideBox = ()=>{
+      const sb = document.getElementById('slideBox');
+      const txt = document.getElementById('slideToggleText');
+      sb.classList.toggle('active');
+      txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
+    };
+  });
+</script>
 </body>
 </html>
