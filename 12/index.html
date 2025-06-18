@@ -34,13 +34,38 @@
       background: #fff; z-index: 3000;
       transform: translateX(100%); transition: transform .3s;
       overflow-y: auto;
+      padding: 10px 10px;
     }
     .slide-box.active { transform: translateX(0); }
+
     .slide-box .slide-list {
-      position: absolute; bottom: 10px; right: 30px;
+      position: absolute; bottom: 20px; right: 30px;
       font-size: 12px; cursor: pointer; transition: color .3s; z-index: 4001;
     }
     .slide-box .slide-list:hover { color: #a3a3a3; }
+
+    .caption-group {
+      display: flex; flex-direction: column; font-size: 12px;
+    }
+    .caption1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .caption2 {
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .caption3 {
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .caption4 {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .caption5 {
+      font-size: 12px;
+    }
 
     .text-group {
       display: flex; align-items: center;
@@ -101,7 +126,7 @@
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer #listButton { bottom: 20px; right: 20px; }
-      .slide-box { width: 100% !important; }
+      .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
     }
 
@@ -134,8 +159,8 @@
         overflow-y: scroll;
       }
       .thumbnail {
-    margin-bottom: 8px;
-  }
+        margin-bottom: 8px;
+      }
     }
   </style>
 </head>
@@ -159,7 +184,13 @@
   </div>
   <div class="slide-box" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
-    <div id="slideContent"></div>
+    <div class="caption-group">
+      <div class="caption1">Forever</div>
+      <div class="caption2">2025.02, graphic design </div>
+      <div class="caption3">-</div>
+      <div class="caption4">interview task</div>
+      <div class="caption5">out box, photo book, ornament, cdr</div>
+    </div>
   </div>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -181,27 +212,12 @@
     const gallery = document.getElementById('gallery');
     for (let i = titles.length; i >= 1; i--) {
       const item = document.createElement('a');
-      item.href = `/alfoze/${i}/`; // ✅ 절대경로로 수정
+      item.href = `/alfoze/${i}/`;
       item.className = 'thumbnail thumb'+i;
       item.innerHTML = `<img src="/test/images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
       gallery.append(item);
     }
-    const slideData = [
-      ["te cura","brand design","2022"],["a generation that has lost romance","graphic design","2023"],
-      ["blish","brand design","2023"],["An inverted realtionship","editorial","2023"],
-      ["Immortality : The Death of Death","brand design","2024"],["Heaven","graphic design","2024"],
-      ["Everybody","graphic design","2024"],["Monster","graphic design","2024"],
-      ["Ideal Expression","graphic design","2024"],["alfoze","brand design","2025"],
-      ["Valentine","graphic design","2025"],["Forever","graphic design","2025"],
-      ["Lov","graphic design","2025"]
-    ];
-    const slideContent = document.getElementById('slideContent');
-    slideData.forEach(([t,c,y], idx)=>{
-      const g = document.createElement('div');
-      g.className = 'text-group';
-      g.innerHTML = `<div class="text1"><a href="/alfoze/${idx+1}/">${t}</a></div><div class="text2">${c}</div><div class="text3">${y}</div>`;
-      slideContent.append(g);
-    });
+
     window.toggleSlideBox = ()=>{
       const sb = document.getElementById('slideBox');
       const txt = document.getElementById('slideToggleText');
