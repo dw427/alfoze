@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2ㄴalfoze</title>
+  <title>ㄴㅇㄹalfoze</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -15,11 +15,14 @@
     a { color: inherit; text-decoration: none; transition: color .3s; }
     a:hover { color: #a3a3a3; }
 
-    .footer {
-      position: fixed; bottom: 0; left: 0;
-      width: 100%; height: 100px; background: transparent;
-      z-index: 1000;
-    }
+  .footer {
+    position: static;  /* ✅ 스크롤에 따라 같이 올라가도록 */
+    width: 100%;
+    height: 100px;
+    background: transparent;
+    z-index: 1000;
+    margin-top: 20px;
+  }
     .footer .right-link,
     .footer .contact-link,
     .footer #listButton {
