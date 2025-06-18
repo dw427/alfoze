@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forㄴever</title>
+  <title>Forever</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -33,8 +33,7 @@
       width: 331px !important; max-width: 100%; height: 100%;
       background: #fff; z-index: 3000;
       transform: translateX(100%); transition: transform .3s;
-      overflow-y: auto;
-      padding: 40px 30px 100px;
+      overflow-y: auto; padding: 30px;
     }
     .slide-box.active { transform: translateX(0); }
     .slide-box .slide-list {
@@ -43,16 +42,28 @@
     }
     .slide-box .slide-list:hover { color: #a3a3a3; }
 
-    .slide-box .caption-text {
+    .slide-caption {
+      display: flex; flex-direction: column;
       font-size: 12pt;
-      margin-bottom: 8px;
     }
-    .slide-box .caption-text:first-child {
+    .slide-caption .cap1 {
       font-size: 20pt;
       margin-bottom: 8px;
     }
-    .slide-box .caption-text:nth-child(4) {
+    .slide-caption .cap2 {
+      font-size: 12pt;
+      margin-bottom: 12px;
+    }
+    .slide-caption .cap3 {
+      font-size: 12pt;
+      margin-bottom: 12px;
+    }
+    .slide-caption .cap4 {
+      font-size: 12pt;
       margin-bottom: 8px;
+    }
+    .slide-caption .cap5 {
+      font-size: 12pt;
     }
 
     .text-group {
@@ -155,10 +166,12 @@
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
   <div class="gallery-wrap">
     <div class="fixed-image">
-      <img src="/test/images/11-valentine/valen5.png" alt="valentine1" />
-      <img src="/test/images/11-valentine/valen2-1.png" alt="valentine2" />
-      <img src="/test/images/11-valentine/valen1-1.png" alt="valentine5" />
-      <img src="/test/images/11-valentine/valen9.png" alt="valentine3" />
+      <img src="/test/images/12-Forever/forever1.png" alt="forever1" />
+      <img src="/test/images/12-Forever/forever2.gif" alt="forever2" />
+      <img src="/test/images/12-Forever/forever3.png" alt="forever3" />
+      <img src="/test/images/12-Forever/forever4.png" alt="forever4" />
+      <img src="/test/images/12-Forever/forever5.png" alt="forever5" />
+      <img src="/test/images/12-Forever/forever6.png" alt="forever6" />
     </div>
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
@@ -171,11 +184,13 @@
   <div class="slide-box" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
     <div id="slideContent">
-      <div class="caption-text">캡션1 (20pt)</div>
-      <div class="caption-text">캡션2 (12pt)</div>
-      <div class="caption-text">캡션3 (12pt)</div>
-      <div class="caption-text">캡션4 (12pt)</div>
-      <div class="caption-text">캡션5 (12pt)</div>
+      <div class="slide-caption">
+        <div class="cap1">캡션1</div>
+        <div class="cap2">캡션2</div>
+        <div class="cap3">캡션3</div>
+        <div class="cap4">캡션4</div>
+        <div class="cap5">캡션5</div>
+      </div>
     </div>
   </div>
 <script>
@@ -203,7 +218,7 @@
       item.innerHTML = `<img src="/test/images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
       gallery.append(item);
     }
-    window.toggleSlideBox = () => {
+    window.toggleSlideBox = ()=>{
       const sb = document.getElementById('slideBox');
       const txt = document.getElementById('slideToggleText');
       sb.classList.toggle('active');
