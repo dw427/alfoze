@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lov</title>
+  <title>Loㄴv</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -16,17 +16,19 @@
     a:hover { color: #a3a3a3; }
 
     .footer {
-      position: fixed; bottom: 0; left: 0;
-      width: 100%; height: 100px; background: transparent;
-      z-index: 1000;
+      width: 100%; height: 100px;
+      background: transparent;
       color: #a3a3a3;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 12px;
+      padding: 0 30px 10px 30px;
     }
-    .footer .right-link,
+    .footer .right-link a,
     .footer #listButton {
-      position: absolute; bottom: 10px; font-size: 12px;
+      cursor: pointer;
     }
-    .footer .right-link { left: 30px; }
-    .footer #listButton { right: 30px; cursor: pointer; }
     .footer #listButton:hover { color: #7a7a7a; }
 
     .slide-box {
@@ -130,9 +132,10 @@
       .scroll-area {
         display: none;
       }
-      .footer { height: 100px; }
-      .footer .right-link { bottom: 20px; left: 20px; }
-      .footer #listButton { bottom: 20px; right: 20px; }
+      .footer {
+        height: 100px;
+        padding: 0 20px 20px 20px;
+      }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
     }
@@ -153,7 +156,6 @@
         width: 600px;
         height: 100%;
         overflow-y: auto;
-        padding-bottom: 120px;
       }
       .fixed-image img {
         width: 100%;
@@ -181,14 +183,14 @@
         <img src="/test/images/13-lov/lov4.png" alt="lov4" />
         <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
         <img src="/test/images/13-lov/lov6.png" alt="lov6" />
+        <div class="footer">
+          <div class="right-link"><a href="/alfoze/">back</a></div>
+          <div id="listButton" onclick="toggleSlideBox()">info</div>
+        </div>
     </div>
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
     </div>
-  </div>
-  <div class="footer">
-    <div class="right-link"><a href="/alfoze/">back</a></div>
-    <div id="listButton" onclick="toggleSlideBox()">info</div>
   </div>
   <div class="slide-box" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
