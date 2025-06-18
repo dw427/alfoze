@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forefever</title>
+  <title>Lowcv</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -19,6 +19,7 @@
       position: fixed; bottom: 0; left: 0;
       width: 100%; height: 100px; background: transparent;
       z-index: 1000;
+      color: #a3a3a3;
     }
     .footer .right-link,
     .footer #listButton {
@@ -26,7 +27,7 @@
     }
     .footer .right-link { left: 30px; }
     .footer #listButton { right: 30px; cursor: pointer; }
-    .footer #listButton:hover { color: #a3a3a3; }
+    .footer #listButton:hover { color: #7a7a7a; }
 
     .slide-box {
       position: fixed; top: 0; right: 0;
@@ -39,33 +40,25 @@
     .slide-box.active { transform: translateX(0); }
 
     .slide-box .slide-list {
-      position: absolute; bottom: 20px; right: 30px;
-      font-size: 12px; cursor: pointer; transition: color .3s; z-index: 4001;
+      position: fixed;
+      bottom: 10px;
+      right: 30px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color .3s;
+      z-index: 4001;
+      color: #a3a3a3;
     }
-    .slide-box .slide-list:hover { color: #a3a3a3; }
+    .slide-box .slide-list:hover { color: #7a7a7a; }
 
     .caption-group {
       display: flex; flex-direction: column; font-size: 12px;
     }
-    .caption1 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-    .caption2 {
-      font-size: 12px;
-      margin-bottom: 12px;
-    }
-    .caption3 {
-      font-size: 12px;
-      margin-bottom: 12px;
-    }
-    .caption4 {
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-    .caption5 {
-      font-size: 12px;
-    }
+    .caption1 { font-size: 20px; margin-bottom: 8px; }
+    .caption2 { font-size: 12px; margin-bottom: 12px; }
+    .caption3 { font-size: 12px; margin-bottom: 12px; }
+    .caption4 { font-size: 12px; margin-bottom: 8px; }
+    .caption5 { font-size: 12px; }
 
     .text-group {
       display: flex; align-items: center;
@@ -98,16 +91,13 @@
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
-
     .scroll-area, .fixed-image {
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
 
     @media (max-width: 768px) {
-      .gallery-wrap {
-        display: block;
-      }
+      .gallery-wrap { display: block; }
       .fixed-image {
         width: 100%;
         padding: 0;
@@ -120,9 +110,7 @@
         height: auto;
         display: block;
       }
-      .scroll-area {
-        display: none;
-      }
+      .scroll-area { display: none; }
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer #listButton { bottom: 20px; right: 20px; }
@@ -146,33 +134,34 @@
         width: 600px;
         height: 100%;
         overflow-y: auto;
-        padding-bottom: 120px;
       }
       .fixed-image img {
         width: 100%;
         height: auto;
         display: block;
       }
+      .fixed-image img:last-child {
+        margin-bottom: 100px;
+      }
       .scroll-area {
         width: 250px;
         height: 100vh;
         overflow-y: scroll;
       }
-      .thumbnail {
-        margin-bottom: 8px;
-      }
+      .thumbnail { margin-bottom: 8px; }
     }
   </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
   <div class="gallery-wrap">
     <div class="fixed-image">
-      <img src="/test/images/12-Forever/forever1.png" alt="forever1" />
-      <img src="/test/images/12-Forever/forever2.gif" alt="forever2" />
-      <img src="/test/images/12-Forever/forever3.png" alt="forever3" />
-      <img src="/test/images/12-Forever/forever4.png" alt="forever4" />
-      <img src="/test/images/12-Forever/forever5.png" alt="forever5" />
-      <img src="/test/images/12-Forever/forever6.png" alt="forever6" />
+      <img src="/test/images/13-lov/lov1-1.png" alt="lov1" />
+      <img src="/test/images/13-lov/lov2.png" alt="lov2" />
+      <img src="/test/images/13-lov/lov3-2.png" alt="lov3" />
+      <img src="/test/images/13-lov/lov8-1.png" alt="lov8" />
+      <img src="/test/images/13-lov/lov4.png" alt="lov4" />
+      <img src="/test/images/13-lov/lov5-1.png" alt="lov5" />
+      <img src="/test/images/13-lov/lov6.png" alt="lov6" />
     </div>
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
