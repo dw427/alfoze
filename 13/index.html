@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lsov</title>
+  <title>Loㄴv</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -16,9 +16,8 @@
     a:hover { color: #a3a3a3; }
 
     .footer {
-      width: 100%;
-      height: 50px;
-      background: transparent;
+      position: fixed; bottom: 0; left: 0;
+      width: 100%; height: 100px; background: transparent;
       z-index: 1000;
       color: #a3a3a3;
     }
@@ -141,18 +140,20 @@
     @media (min-width: 769px) {
       html, body {
         width: 100%;
-        height: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
+        height: 100%;
+        overflow: hidden;
       }
       .gallery-wrap {
         width: 850px;
+        height: 100%;
         margin: 0 auto;
         display: flex;
-        align-items: flex-start;
       }
       .fixed-image {
         width: 600px;
+        height: 100%;
+        overflow-y: auto;
+        padding-bottom: 120px;
       }
       .fixed-image img {
         width: 100%;
