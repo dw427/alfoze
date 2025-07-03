@@ -111,6 +111,10 @@
       -ms-overflow-style: none;
     }
 
+    .header {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .gallery-wrap {
         display: block;
@@ -135,6 +139,23 @@
       .footer #listButton { bottom: 20px; right: 20px; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
+
+      .header {
+        width: 100%;
+        height: 60px;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header img {
+        height: 100%;
+        width: auto;
+      }
     }
 
     @media (min-width: 769px) {
@@ -172,6 +193,13 @@
   </style>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+  <div class="header">
+      <a href="/alfoze/" style="display:block; height:100%;">
+        <img src="/test/images/header0.png" alt="header" />
+      </a>
+    </div>
+  </div>
+
   <div class="gallery-wrap">
     <div class="fixed-image">
       <img src="/test/images/4-inverted/inverted1.png" alt="inverted1" />
@@ -186,10 +214,12 @@
       <div class="content" id="gallery"></div>
     </div>
   </div>
+
   <div class="footer">
     <div class="right-link"><a href="/alfoze/">back</a></div>
     <div id="listButton" onclick="toggleSlideBox()">info</div>
   </div>
+
   <div class="slide-box" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
     <div class="caption-group">
@@ -200,39 +230,40 @@
       <div class="caption5">research book</div>
     </div>
   </div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const titles = ["te cura","lost romance","blish",
-                    "An inverted realtionship","Immortality : The Death of Death","Heaven",
-                    "Everybody","Monster","Ideal Expression",
-                    "alfoze","Valentine","Forever",
-                    "Lov"];
-    const categories = ["brand design","graphic design","brand design",
-                        "editorial","brand design","graphic design",
-                        "graphic design","graphic design","graphic design",
-                        "brand design","graphic design","graphic design",
-                        "brand design"];
-    const years = ["2022","2023","2023",
-                   "2023","2024","2024",
-                   "2024","2024","2024",
-                   "2025","2025","2025",
-                   "2025"];
-    const gallery = document.getElementById('gallery');
-    for (let i = titles.length; i >= 1; i--) {
-      const item = document.createElement('a');
-      item.href = `/alfoze/${i}/`;
-      item.className = 'thumbnail thumb'+i;
-      item.innerHTML = `<img src="/test/images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
-      gallery.append(item);
-    }
 
-    window.toggleSlideBox = ()=>{
-      const sb = document.getElementById('slideBox');
-      const txt = document.getElementById('slideToggleText');
-      sb.classList.toggle('active');
-      txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
-    };
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const titles = ["te cura","lost romance","blish",
+                      "An inverted realtionship","Immortality : The Death of Death","Heaven",
+                      "Everybody","Monster","Ideal Expression",
+                      "alfoze","Valentine","Forever",
+                      "Lov"];
+      const categories = ["brand design","graphic design","brand design",
+                          "editorial","brand design","graphic design",
+                          "graphic design","graphic design","graphic design",
+                          "brand design","graphic design","graphic design",
+                          "brand design"];
+      const years = ["2022","2023","2023",
+                     "2023","2024","2024",
+                     "2024","2024","2024",
+                     "2025","2025","2025",
+                     "2025"];
+      const gallery = document.getElementById('gallery');
+      for (let i = titles.length; i >= 1; i--) {
+        const item = document.createElement('a');
+        item.href = `/alfoze/${i}/`;
+        item.className = 'thumbnail thumb'+i;
+        item.innerHTML = `<img src="/test/images/thumb${i}.png" alt="썸네일${i}"/><div class="caption"><span class="title">${titles[i-1]}</span><span class="category-year"><span class="category">${categories[i-1]}</span><span class="year">${years[i-1]}</span></span></div>`;
+        gallery.append(item);
+      }
+
+      window.toggleSlideBox = ()=>{
+        const sb = document.getElementById('slideBox');
+        const txt = document.getElementById('slideToggleText');
+        sb.classList.toggle('active');
+        txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
+      };
+    });
+  </script>
 </body>
 </html>
