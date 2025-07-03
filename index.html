@@ -82,6 +82,10 @@
       -ms-overflow-style: none;
     }
 
+    .header {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .side { display: none; }
       .fixed-image { display: none; }
@@ -111,6 +115,23 @@
       .footer #listButton { bottom: 20px; right: 20px; }
       .slide-box { width: 100% !important; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
+
+      .header {
+        width: 100%;
+        height: 80px;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header img {
+        height: 100%;
+        width: auto;
+      }
     }
 
     @media (min-width: 769px) {
@@ -158,6 +179,10 @@
   </style>
 </head>
 <body>
+  <div class="header">
+    <img src="images/header0.png" alt="header" />
+  </div>
+
   <div class="gallery-wrap">
     <div class="fixed-image">
       <img src="images/index2.png" alt="index" />
@@ -166,15 +191,18 @@
       <div class="content" id="gallery"></div>
     </div>
   </div>
+
   <div class="footer">
     <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
     <div class="contact-link"><a href="mailto:uxxwd9@gmail.com">contact</a></div>
     <div id="listButton" onclick="toggleSlideBox()">list</div>
   </div>
+
   <div class="slide-box" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
     <div id="slideContent"></div>
   </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const titles = ["te cura","lost romance","blish",
