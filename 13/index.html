@@ -78,6 +78,7 @@
     }
     .thumbnail img {
       width: 100%; height: auto; object-fit: cover; display: block;
+      cursor: pointer;
     }
     .caption {
       display: flex; flex-direction: column;
@@ -91,32 +92,43 @@
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
-
-    .scroll-area, .fixed-image {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
+    .scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
 
     .header { display: none; }
 
-    /* 🔥 이미지 클릭 확대용 스타일 */
+    /* 🔥 이미지 상세보기 모달 */
     .image-viewer {
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.3s;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease;
       z-index: 5000;
     }
     .image-viewer.active {
       opacity: 1;
-      pointer-events: all;
+      visibility: visible;
     }
     .image-viewer img {
       max-width: 90%;
       max-height: 90%;
       object-fit: contain;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .image-viewer::after {
+      content: '×';
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      font-family: sans-serif;
     }
 
     @media (max-width: 768px) {
@@ -156,7 +168,7 @@
       .fixed-image {
         width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0;
       }
-      .fixed-image img { width: 100%; height: auto; display: block; }
+      .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
       .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
       .thumbnail { margin-bottom: 8px; }
     }
@@ -192,9 +204,9 @@
 
   <div class="slide-box" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
-    <div class="caption-group" id="captionBox"><!-- JSON 데이터로 채워짐 --></div>
+    <div class="caption-group" id="captionBox"></div>
   </div>
-
+  
   <div class="image-viewer" id="imageViewer">
     <img src="" alt="viewer image" />
   </div>
@@ -247,7 +259,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       loadData();
-
       const viewer = document.getElementById("imageViewer");
       const viewerImg = viewer.querySelector("img");
 
@@ -258,11 +269,7 @@
         });
       });
 
-      viewer.addEventListener("click", () => {
-        viewer.classList.remove("active");
-        viewerImg.src = "";
-      });
-
+      viewer.addEventListener("click", () => viewer.classList.remove("active"));
       document.addEventListener("keydown", e => {
         if (e.key === "Escape") viewer.classList.remove("active");
       });
