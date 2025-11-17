@@ -78,6 +78,7 @@
     }
     .thumbnail img {
       width: 100%; height: auto; object-fit: cover; display: block;
+      cursor: pointer;
     }
     .caption {
       display: flex; flex-direction: column;
@@ -91,13 +92,44 @@
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
-
-    .scroll-area, .fixed-image {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
+    .scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
 
     .header { display: none; }
+
+    /* 🔥 이미지 상세보기 모달 */
+    .image-viewer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease;
+      z-index: 5000;
+    }
+    .image-viewer.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .image-viewer img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .image-viewer::after {
+      content: '×';
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
 
     @media (max-width: 768px) {
       .gallery-wrap { display: block; }
@@ -136,7 +168,7 @@
       .fixed-image {
         width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0;
       }
-      .fixed-image img { width: 100%; height: auto; display: block; }
+      .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
       .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
       .thumbnail { margin-bottom: 8px; }
     }
@@ -156,6 +188,7 @@
       <img src="/test/images/1-te cura/tecura3.png" alt="tecura3" />
       <img src="/test/images/1-te cura/tecura5-2.png" alt="tecura4" />
       <img src="/test/images/1-te cura/tecura4.png" alt="tecura5" />
+
     </div>
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
@@ -169,7 +202,11 @@
 
   <div class="slide-box" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
-    <div class="caption-group" id="captionBox"><!-- JSON 데이터로 채워짐 --></div>
+    <div class="caption-group" id="captionBox"></div>
+  </div>
+  
+  <div class="image-viewer" id="imageViewer">
+    <img src="" alt="viewer image" />
   </div>
 
   <script>
@@ -177,17 +214,15 @@
       const res = await fetch("../data.json");
       const data = await res.json();
 
-      // 현재 폴더 번호 (예: /1/ → 1)
       const pathParts = window.location.pathname.split("/");
       const idx = parseInt(pathParts[pathParts.length-2], 10);
       const item = data[idx-1];
       if (!item) return;
 
-      // 썸네일 리스트 영역 (최신순)
       const gallery = document.getElementById('gallery');
       gallery.innerHTML = "";
       data.slice().reverse().forEach((d, revIdx) => {
-        const i = data.length - 1 - revIdx; // 원래 index
+        const i = data.length - 1 - revIdx;
         const a = document.createElement('a');
         a.href = `/alfoze/${i+1}/`;
         a.className = 'thumbnail thumb' + (i+1);
@@ -203,7 +238,6 @@
         gallery.appendChild(a);
       });
 
-      // info 박스 채우기
       const captionBox = document.getElementById("captionBox");
       captionBox.innerHTML = `
         <div class="caption1">${item.title}</div>
@@ -221,7 +255,23 @@
       txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
     }
 
-    document.addEventListener("DOMContentLoaded", loadData);
+    document.addEventListener("DOMContentLoaded", () => {
+      loadData();
+      const viewer = document.getElementById("imageViewer");
+      const viewerImg = viewer.querySelector("img");
+
+      document.querySelectorAll(".fixed-image img").forEach(img => {
+        img.addEventListener("click", () => {
+          viewerImg.src = img.src;
+          viewer.classList.add("active");
+        });
+      });
+
+      viewer.addEventListener("click", () => viewer.classList.remove("active"));
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") viewer.classList.remove("active");
+      });
+    });
   </script>
 </body>
 </html>
