@@ -24,9 +24,7 @@
     .footer .right-link,
     .footer .contact-link,
     .footer #listButton {
-      position: absolute;
-      bottom: 10px;
-      font-size: 12px;
+      position: absolute; bottom: 10px; font-size: 12px;
     }
     .footer .right-link { left: 30px; }
     .footer .contact-link { left: 170px; }
@@ -34,77 +32,52 @@
     .footer #listButton:hover { color: #a3a3a3; }
 
     .slide-box {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 373px !important;
-      max-width: 100%;
-      height: 100%;
-      background: #fff;
-      z-index: 3000;
-      transform: translateX(100%);
-      transition: transform .3s;
+      position: fixed; top: 0; right: 0;
+      width: 373px !important; max-width: 100%; height: 100%;
+      background: #fff; z-index: 3000;
+      transform: translateX(100%); transition: transform .3s;
       overflow-y: auto;
     }
     .slide-box.active { transform: translateX(0); }
     .slide-box .slide-list {
-      position: absolute;
-      bottom: 10px;
-      right: 30px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: color .3s;
-      z-index: 4001;
+      position: absolute; bottom: 10px; right: 30px;
+      font-size: 12px; cursor: pointer; transition: color .3s; z-index: 4001;
     }
     .slide-box .slide-list:hover { color: #a3a3a3; }
 
     .text-group {
-      display: flex;
-      align-items: center;
-      font-size: 12px;
-      padding: 10px 0;
-      white-space: nowrap;
+      display: flex; align-items: center;
+      font-size: 12px; padding: 10px 0; white-space: nowrap;
     }
     .text1 { margin-left: 10px; }
     .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
     .text3 { margin-right: 10px; flex-shrink: 0; }
 
-    /* 기본 (모바일 기준) */
+    /* 모바일 기본 — 2열 그대로 */
     .content {
       display: grid;
-      grid-template-columns: repeat(2, min-content);
-      justify-content: center;
+      grid-template-columns: repeat(2, 1fr);
       gap: 0;
     }
-
     .thumbnail {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: auto;
+      display: flex; flex-direction: column; color: inherit;
     }
     .thumbnail img {
-      width: auto;
-      height: auto;
-      display: block;
-      object-fit: none;
+      width: 100%; height: auto; object-fit: cover; display: block;
     }
-
     .caption {
-      display: flex;
-      flex-direction: column;
-      margin-top: 8px;
-      font-size: 12px;
+      display: flex; flex-direction: column;
+      margin-top: 8px; font-size: 12px;
       align-items: flex-start;
     }
     .caption .title { margin-bottom: 0; }
     .caption .category-year {
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
     }
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
+
     .scroll-area, .fixed-image {
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -112,41 +85,34 @@
 
     .header { display: none; }
 
-    /* 모바일 / 태블릿 (max-width: 768px) */
     @media (max-width: 768px) {
       .side { display: none; }
       .fixed-image { display: none; }
-
       .content {
-        grid-template-columns: repeat(2, min-content);
+        grid-template-columns: repeat(2, 1fr);
       }
+      .thumbnail { width: 100%; margin-bottom: 0; }
+      .thumbnail img { width: 100%; height: auto; }
+      .caption { margin: 8px 0; }
 
       .footer {
-        position: relative;
-        height: 100px;
+        position: relative; height: 100px;
       }
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer .contact-link { bottom: 20px; left: 160px; }
       .footer #listButton { bottom: 20px; right: 20px; }
-
       .slide-box { width: 100% !important; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
 
       .header {
-        width: 100%;
-        height: 60px;
-        background: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+        width: 100%; height: 60px; background: #ffffff;
+        display: flex; align-items: center; justify-content: center;
+        position: sticky; top: 0; z-index: 1000;
       }
       .header img { height: 100%; width: auto; }
     }
 
-    /* 웹형 (min-width: 769px) — 3열, center 정렬 */
+    /* ★★★ 웹형: 3열 + 중앙 정렬 ★★★ */
     @media (min-width: 769px) {
       body, html {
         width: 100%;
@@ -154,19 +120,18 @@
         overflow: hidden;
       }
 
+      /* 중앙 정렬 */
       .gallery-wrap {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        column-gap: 40px;
-        max-width: 1200px;
-        margin: 0 auto;
+        width: 900px;          /* 500px + 3열 썸네일폭 고려해서 넓게 조정 */
+        margin: 0 auto;        /* ← 양쪽 여백 동일 */
+        display: flex;
+        gap: 0;
         height: 100vh;
-        align-items: center;
       }
 
       .fixed-image {
-        width: auto;
-        height: auto;
+        width: 500px;
+        height: 100%;
         position: sticky;
         top: 0;
         display: flex;
@@ -181,19 +146,24 @@
       }
 
       .scroll-area {
-        width: 100%;
+        width: calc(100% - 500px);
         height: 100vh;
         overflow-y: scroll;
       }
 
+      /* ★ 2열 → 3열 변환 (썸네일 크기 그대로) */
       .content {
-        grid-template-columns: repeat(3, min-content);
-        justify-content: center;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+
+      .thumbnail {
+        width: 100%;
+        margin-bottom: 8px;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="header">
     <img src="images/header0.png" alt="header" />
@@ -223,16 +193,17 @@
     async function loadData() {
       const res = await fetch("data.json");
       const data = await res.json();
-      const gallery = document.getElementById("gallery");
+
+      const gallery = document.getElementById('gallery');
       gallery.innerHTML = "";
 
       for (let i = data.length; i >= 1; i--) {
-        const d = data[i - 1];
-        const item = document.createElement("a");
+        const d = data[i-1];
+        const item = document.createElement('a');
         item.href = `${i}/`;
-        item.className = "thumbnail thumb" + i;
+        item.className = 'thumbnail thumb'+i;
         item.innerHTML = `
-          <img src="images/thumb${i}.png" alt="썸네일${i}" />
+          <img src="images/thumb${i}.png" alt="썸네일${i}"/>
           <div class="caption">
             <span class="title">${d.title}</span>
             <span class="category-year">
@@ -243,13 +214,13 @@
         gallery.append(item);
       }
 
-      const slideContent = document.getElementById("slideContent");
+      const slideContent = document.getElementById('slideContent');
       slideContent.innerHTML = "";
-      data.forEach((d, idx) => {
-        const g = document.createElement("div");
-        g.className = "text-group";
+      data.forEach((d, idx)=>{
+        const g = document.createElement('div');
+        g.className = 'text-group';
         g.innerHTML = `
-          <div class="text1"><a href="${idx + 1}/">${d.title}</a></div>
+          <div class="text1"><a href="${idx+1}/">${d.title}</a></div>
           <div class="text2">${d.category}</div>
           <div class="text3">${d.year}</div>`;
         slideContent.append(g);
@@ -257,13 +228,13 @@
     }
 
     function toggleSlideBox() {
-      const sb = document.getElementById("slideBox");
-      const txt = document.getElementById("slideToggleText");
-      sb.classList.toggle("active");
-      txt.textContent = sb.classList.contains("active") ? "close" : "list";
+      const sb = document.getElementById('slideBox');
+      const txt = document.getElementById('slideToggleText');
+      sb.classList.toggle('active');
+      txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
     }
 
-    document.addEventListener("DOMContentLoaded", loadData);
+    document.addEventListener('DOMContentLoaded', loadData);
   </script>
 </body>
 </html>
