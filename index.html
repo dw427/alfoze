@@ -53,7 +53,6 @@
     .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
     .text3 { margin-right: 10px; flex-shrink: 0; }
 
-    /* 모바일 기본 — 2열 그대로 */
     .content {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -83,20 +82,33 @@
       -ms-overflow-style: none;
     }
 
-    .header { display: none; }
+    .header {
+      display: none;
+    }
 
     @media (max-width: 768px) {
       .side { display: none; }
       .fixed-image { display: none; }
       .content {
         grid-template-columns: repeat(2, 1fr);
+        column-gap: 0;
+        row-gap: 0;
+        padding: 0;
       }
-      .thumbnail { width: 100%; margin-bottom: 0; }
-      .thumbnail img { width: 100%; height: auto; }
-      .caption { margin: 8px 0; }
-
+      .thumbnail {
+        width: 100%;
+        margin-bottom: 0;
+      }
+      .thumbnail img {
+        width: 100%;
+        height: auto;
+      }
+      .caption {
+        margin: 8px 0;
+      }
       .footer {
-        position: relative; height: 100px;
+        position: relative;
+        height: 100px;
       }
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer .contact-link { bottom: 20px; left: 160px; }
@@ -105,30 +117,35 @@
       .slide-box .slide-list { bottom: 20px; right: 20px; }
 
       .header {
-        width: 100%; height: 60px; background: #ffffff;
-        display: flex; align-items: center; justify-content: center;
-        position: sticky; top: 0; z-index: 1000;
+        width: 100%;
+        height: 60px;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
       }
-      .header img { height: 100%; width: auto; }
+
+      .header img {
+        height: 100%;
+        width: auto;
+      }
     }
 
-    /* ★★★ 웹형: 3열 + 중앙 정렬 ★★★ */
     @media (min-width: 769px) {
       body, html {
         width: 100%;
         height: 100%;
         overflow: hidden;
       }
-
-      /* 중앙 정렬 */
       .gallery-wrap {
-        width: 900px;          /* 500px + 3열 썸네일폭 고려해서 넓게 조정 */
-        margin: 0 auto;        /* ← 양쪽 여백 동일 */
+        width: 765px;
+        height: 100%;
+        margin: 0 auto;
         display: flex;
-        gap: 0;
-        height: 100vh;
       }
-
       .fixed-image {
         width: 500px;
         height: 100%;
@@ -144,22 +161,19 @@
         max-height: 100%;
         object-fit: contain;
       }
-
       .scroll-area {
-        width: calc(100% - 500px);
+        width: 265px;
         height: 100vh;
         overflow-y: scroll;
       }
-
-      /* ★ 2열 → 3열 변환 (썸네일 크기 그대로) */
       .content {
-        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 0;
       }
-
       .thumbnail {
-        width: 100%;
         margin-bottom: 8px;
+        width: 100%;
       }
     }
   </style>
@@ -197,6 +211,7 @@
       const gallery = document.getElementById('gallery');
       gallery.innerHTML = "";
 
+      // 최신순으로 출력
       for (let i = data.length; i >= 1; i--) {
         const d = data[i-1];
         const item = document.createElement('a');
