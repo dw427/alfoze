@@ -53,17 +53,28 @@
     .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
     .text3 { margin-right: 10px; flex-shrink: 0; }
 
+    /* 기본(모바일 기준) — 2열 유지 */
     .content {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0;
     }
+
+    /* 썸네일 — 원본 크기/비율 유지 */
     .thumbnail {
-      display: flex; flex-direction: column; color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
     .thumbnail img {
-      width: 100%; height: auto; object-fit: cover; display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      object-fit: none;
     }
+
     .caption {
       display: flex; flex-direction: column;
       margin-top: 8px; font-size: 12px;
@@ -76,37 +87,19 @@
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
+    .scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
 
-    .scroll-area, .fixed-image {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
+    .header { display: none; }
 
-    .header {
-      display: none;
-    }
-
-    /* ---------------------- 모바일/태블릿 유지 ---------------------- */
+    /* ---------------- 모바일(~768px) 그대로 유지 ---------------- */
     @media (max-width: 768px) {
       .side { display: none; }
       .fixed-image { display: none; }
+
       .content {
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 0;
-        row-gap: 0;
-        padding: 0;
       }
-      .thumbnail {
-        width: 100%;
-        margin-bottom: 0;
-      }
-      .thumbnail img {
-        width: 100%;
-        height: auto;
-      }
-      .caption {
-        margin: 8px 0;
-      }
+
       .footer {
         position: relative;
         height: 100px;
@@ -114,28 +107,20 @@
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer .contact-link { bottom: 20px; left: 160px; }
       .footer #listButton { bottom: 20px; right: 20px; }
+
       .slide-box { width: 100% !important; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
 
       .header {
-        width: 100%;
-        height: 60px;
+        width: 100%; height: 60px;
         background: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+        display: flex; align-items: center; justify-content: center;
+        position: sticky; top: 0; z-index: 1000;
       }
-
-      .header img {
-        height: 100%;
-        width: auto;
-      }
+      .header img { height: 100%; width: auto; }
     }
 
-    /* ---------------------- 웹형 변경 (3열 + 중앙정렬) ---------------------- */
+    /* ---------------- 웹형(769px↑) — 3열 + 중앙 정렬 ---------------- */
     @media (min-width: 769px) {
       body, html {
         width: 100%;
@@ -143,7 +128,6 @@
         overflow: hidden;
       }
 
-      /* 전체 가운데 정렬 및 폭 조정 */
       .gallery-wrap {
         max-width: 1200px;
         margin: 0 auto;
@@ -157,18 +141,12 @@
       .fixed-image {
         width: 100%;
         height: 100%;
-        position: sticky;
-        top: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        position: sticky; top: 0;
+        display: flex; justify-content: center; align-items: center;
         overflow: hidden;
       }
-
       .fixed-image img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+        max-width: 100%; max-height: 100%; object-fit: contain;
       }
 
       .scroll-area {
@@ -179,18 +157,12 @@
 
       /* 🔥 웹형에서만 3열 */
       .content {
-        display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 0;
-      }
-
-      .thumbnail {
-        margin-bottom: 8px;
-        width: 100%;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="header">
     <img src="images/header0.png" alt="header" />
@@ -200,6 +172,7 @@
     <div class="fixed-image">
       <img src="images/index2.png" alt="index" />
     </div>
+
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
     </div>
@@ -224,33 +197,34 @@
       const gallery = document.getElementById('gallery');
       gallery.innerHTML = "";
 
-      // 최신순 출력
       for (let i = data.length; i >= 1; i--) {
         const d = data[i-1];
         const item = document.createElement('a');
         item.href = `${i}/`;
         item.className = 'thumbnail thumb'+i;
         item.innerHTML = `
-          <img src="images/thumb${i}.png" alt="썸네일${i}"/>
+          <img src="images/thumb${i}.png" alt="썸네일${i}" />
           <div class="caption">
             <span class="title">${d.title}</span>
             <span class="category-year">
               <span class="category">${d.category}</span>
               <span class="year">${d.year}</span>
             </span>
-          </div>`;
+          </div>
+        `;
         gallery.append(item);
       }
 
       const slideContent = document.getElementById('slideContent');
       slideContent.innerHTML = "";
-      data.forEach((d, idx)=>{
+      data.forEach((d, idx) => {
         const g = document.createElement('div');
         g.className = 'text-group';
         g.innerHTML = `
           <div class="text1"><a href="${idx+1}/">${d.title}</a></div>
           <div class="text2">${d.category}</div>
-          <div class="text3">${d.year}</div>`;
+          <div class="text3">${d.year}</div>
+        `;
         slideContent.append(g);
       });
     }
