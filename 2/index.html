@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>a generation that has lost romance</title>
-  <link rel="icon" type="image/png" href="/alfoze/images/fav.png" />
-  <link rel="apple-touch-icon" href="/alfoze/images/fav.png" />
+  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
+  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
@@ -96,6 +96,7 @@
 
     .header { display: none; }
 
+    /* 🔥 이미지 상세보기 모달 */
     .image-viewer {
       position: fixed;
       top: 0; left: 0;
@@ -132,23 +133,25 @@
 
     @media (max-width: 768px) {
       .gallery-wrap { display: block; }
-      .left-image { display: none; }
       .fixed-image {
         width: 100%;
         padding: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border-left: none;
-        border-right: none;
       }
-      .fixed-image img { width: 100%; height: auto; display: block; }
+      .fixed-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
       .scroll-area { display: none; }
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer #listButton { bottom: 20px; right: 20px; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
+
       .header {
         width: 100%; height: 60px; background: #ffffff;
         display: flex; align-items: center; justify-content: center;
@@ -159,70 +162,37 @@
 
     @media (min-width: 769px) {
       html, body { width: 100%; height: 100%; overflow: hidden; }
-      .gallery-wrap { display: flex; height: 100%; }
-
-      .left-image {
-        flex-shrink: 0;
-        width: 373px;
-        height: 100%;
+      .gallery-wrap {
+        width: 765px; height: 100%; margin: 0 auto; display: flex;
       }
-      .left-image img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
       .fixed-image {
-        width: 500px;
-        height: 100%;
-        overflow-y: scroll;
-        padding-bottom: 0;
-        border-left: 1px solid #9fa0a0;
-        border-right: 1px solid #9fa0a0;
+        width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0;
       }
       .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
-
-      .scroll-area {
-        width: 265px;
-        height: 100vh;
-        overflow-y: scroll;
-        border-right: 1px solid #9fa0a0;
-      }
+      .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
       .thumbnail { margin-bottom: 8px; }
-    }
-
-    /* 🔥 모바일은 기본 닫힘 */
-    @media (max-width: 768px) {
-      .slide-box { transform: translateX(100%) !important; }
-      .slide-box.active { transform: translateX(0) !important; }
     }
   </style>
 </head>
-
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
   <div class="header">
     <a href="/alfoze/" style="display:block; height:100%;">
-      <img src="/alfoze/images/header.png" alt="header" />
+      <img src="/test/images/header0.png" alt="header" />
     </a>
   </div>
 
   <div class="gallery-wrap">
-    <div class="left-image">
-      <img src="/alfoze/images/leftimage.png" alt="left image" />
-    </div>
-
     <div class="fixed-image">
-      <img src="/alfoze/images/2-romance/romance1.png" alt="romance1" />
-      <img src="/alfoze/images/2-romance/romance2.png" alt="romance2" />
-      <img src="/alfoze/images/2-romance/romance3.png" alt="romance3" />
-      <img src="/alfoze/images/2-romance/romance4.png" alt="romance4" />
-      <img src="/alfoze/images/2-romance/romance5.png" alt="romance5" />
-      <img src="/alfoze/images/2-romance/romance6.png" alt="romance6" />
+      <img src="/test/images/2-romance/romance1.png" alt="romance1" />
+      <img src="/test/images/2-romance/romance2.png" alt="romance2" />
+      <img src="/test/images/2-romance/romance3.png" alt="romance3" />
+      <img src="/test/images/2-romance/romance4.png" alt="romance4" />
+      <img src="/test/images/2-romance/romance5.png" alt="romance5" />
+      <img src="/test/images/2-romance/romance6.png" alt="romance6" />
       <img src="/test/images/2-romance/romance8-1.gif" alt="romance7" />
-      <img src="/alfoze/images/2-romance/romance7.png" alt="romance8" />
-    </div>
+      <img src="/test/images/2-romance/romance7.png" alt="romance8" />
 
+    </div>
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
     </div>
@@ -230,12 +200,11 @@
 
   <div class="footer">
     <div class="right-link"><a href="/alfoze/">back</a></div>
-    <div id="listButton" onclick="toggleSlideBox()">close</div>
+    <div id="listButton" onclick="toggleSlideBox()">info</div>
   </div>
 
-  <!-- 🔥 active 추가 (웹형 로딩 애니메이션 제거) -->
-  <div class="slide-box active" id="slideBox">
-    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">close</div>
+  <div class="slide-box" id="slideBox">
+    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
     <div class="caption-group" id="captionBox"></div>
   </div>
   
@@ -261,7 +230,7 @@
         a.href = `/alfoze/${i+1}/`;
         a.className = 'thumbnail thumb' + (i+1);
         a.innerHTML = `
-          <img src="/alfoze/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
+          <img src="/test/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
           <div class="caption">
             <span class="title">${d.title}</span>
             <span class="category-year">
@@ -287,12 +256,10 @@
       const txt = document.getElementById('slideToggleText');
       sb.classList.toggle('active');
       txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
-      document.getElementById('listButton').textContent = txt.textContent;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       loadData();
-
       const viewer = document.getElementById("imageViewer");
       const viewerImg = viewer.querySelector("img");
 
