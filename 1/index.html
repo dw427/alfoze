@@ -31,7 +31,7 @@
 
     .slide-box {
       position: fixed; top: 0; right: 0;
-      width: 400px !important; max-width: 100%; height: 100%;
+      width: 373px !important; max-width: 100%; height: 100%;
       background: #fff; z-index: 3000;
       transform: translateX(100%); transition: transform .3s;
       overflow-y: auto; padding: 10px 10px;
@@ -62,7 +62,6 @@
     ::-webkit-scrollbar { display: none; }
     .scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
 
-    /* 썸네일 좌우 1px 선 추가 */
     .scroll-area {
       border-left: 1px solid #9fa0a0;
       border-right: 1px solid #9fa0a0;
@@ -102,7 +101,7 @@
       .gallery-wrap { display: flex; width: 100%; height: 100%; margin: 0; }
 
       /* 좌측 fixed-image, 중앙 썸네일, 우측 슬라이드박스 */
-      .fixed-image { width: calc(100% - 265px - 400px); height: 100%; overflow-y: scroll; padding: 0; }
+      .fixed-image { width: calc(100% - 265px - 373px); height: 100%; overflow-y: scroll; padding: 0; }
       .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
 
       .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
