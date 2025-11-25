@@ -34,8 +34,7 @@
       width: 400px !important; max-width: 100%; height: 100%;
       background: #fff; z-index: 3000;
       transform: translateX(100%); transition: transform .3s;
-      overflow-y: auto;
-      padding: 10px 10px;
+      overflow-y: auto; padding: 10px 10px;
     }
     .slide-box.active { transform: translateX(0); }
     .slide-box .slide-list {
@@ -94,14 +93,10 @@
 
     @media (min-width: 769px) {
       html, body { width: 100%; height: 100%; overflow: hidden; }
-      .gallery-wrap { display: flex; width: 100%; height: 100%; margin: 0; padding: 0; }
+      .gallery-wrap { display: flex; width: 100%; height: 100%; margin: 0; }
 
-      .fixed-image {
-        height: 100%;
-        overflow-y: scroll;
-        padding: 0;
-        flex: 1 1 auto; /* 좌측 여백 없이 최대한 확장 */
-      }
+      /* 좌측 fixed-image, 중앙 썸네일, 우측 슬라이드박스 */
+      .fixed-image { width: calc(100% - 265px - 400px); height: 100%; overflow-y: scroll; padding: 0; }
       .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
 
       .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
