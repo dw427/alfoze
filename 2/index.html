@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>a generation that has lost romance</title>
+  <title>1a generation that has lost romance</title>
   <link rel="icon" type="image/png" href="/test/images/fav2.png" />
   <link rel="apple-touch-icon" href="/test/images/fav1.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -140,6 +140,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        border-left: none;
+        border-right: none;
       }
       .fixed-image img { width: 100%; height: auto; display: block; }
       .scroll-area { display: none; }
@@ -162,25 +164,35 @@
 
       /* 좌측 정렬 이미지 */
       .left-image {
-  flex-shrink: 0;
-  width: 373px;
-  height: 100%;
-}
-.left-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+        flex-shrink: 0;
+        width: 373px;
+        height: 100%;
+      }
+      .left-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
+      /* fixed-image 좌우 1px 선 추가 */
       .fixed-image {
         width: 500px;
         height: 100%;
         overflow-y: scroll;
         padding-bottom: 0;
+        border-left: 1px solid #9fa0a0;
+        border-right: 1px solid #9fa0a0;
       }
       .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
-      .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
+
+      /* scroll-area 우측 1px 선 추가 */
+      .scroll-area {
+        width: 265px;
+        height: 100vh;
+        overflow-y: scroll;
+        border-right: 1px solid #9fa0a0;
+      }
       .thumbnail { margin-bottom: 8px; }
     }
   </style>
