@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>a generation that has lost romance</title>
+  <title>1a generation that has lost romance</title>
   <link rel="icon" type="image/png" href="/alfoze/images/fav.png" />
   <link rel="apple-touch-icon" href="/alfoze/images/fav.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -31,7 +31,7 @@
 
     .slide-box {
       position: fixed; top: 0; right: 0;
-      width: clamp(180px, 25vw, 373px); /* 화면 줄어들면 줄어들게 */
+      width: clamp(180px, 25vw, 373px);
       max-width: 100%;
       height: 100%;
       background: #fff; z-index: 3000;
@@ -150,10 +150,9 @@
       html, body { width: 100%; height: 100%; overflow: hidden; }
       .gallery-wrap { display: flex; height: 100%; }
 
-      /* ← 여기서 left-image 반응형 처리 */
       .left-image {
         flex-shrink: 0;
-        width: clamp(180px, 22vw, 373px); /* 최소 180px, 최대 373px */
+        width: clamp(180px, 22vw, 373px); /* ← 반응형 적용 */
         height: 100%;
       }
       .left-image img {
@@ -183,7 +182,117 @@
     }
   </style>
 </head>
+
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-<!-- body 내용은 기존 그대로 유지 -->
+  <div class="header">
+    <a href="/alfoze/" style="display:block; height:100%;">
+      <img src="/alfoze/images/header.png" alt="header" />
+    </a>
+  </div>
+
+  <div class="gallery-wrap">
+    <div class="left-image">
+      <img src="/alfoze/images/leftimage.png" alt="left image" />
+    </div>
+
+    <div class="fixed-image">
+      <img src="/alfoze/images/2-romance/romance1.png" alt="romance1" />
+      <img src="/alfoze/images/2-romance/romance2.png" alt="romance2" />
+      <img src="/alfoze/images/2-romance/romance3.png" alt="romance3" />
+      <img src="/alfoze/images/2-romance/romance4.png" alt="romance4" />
+      <img src="/alfoze/images/2-romance/romance5.png" alt="romance5" />
+      <img src="/alfoze/images/2-romance/romance6.png" alt="romance6" />
+      <img src="/test/images/2-romance/romance8-1.gif" alt="romance7" />
+      <img src="/alfoze/images/2-romance/romance7.png" alt="romance8" />
+    </div>
+
+    <div class="scroll-area">
+      <div class="content" id="gallery"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="right-link"><a href="/alfoze/">back</a></div>
+    <div id="listButton" onclick="toggleSlideBox()">info</div>
+  </div>
+
+  <div class="slide-box" id="slideBox">
+    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
+    <div class="caption-group" id="captionBox"></div>
+  </div>
+  
+  <div class="image-viewer" id="imageViewer">
+    <img src="" alt="viewer image" />
+  </div>
+
+  <script>
+    async function loadData() {
+      const res = await fetch("../data.json");
+      const data = await res.json();
+
+      const pathParts = window.location.pathname.split("/");
+      const idx = parseInt(pathParts[pathParts.length-2], 10);
+      const item = data[idx-1];
+      if (!item) return;
+
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = "";
+      data.slice().reverse().forEach((d, revIdx) => {
+        const i = data.length - 1 - revIdx;
+        const a = document.createElement('a');
+        a.href = `/alfoze/${i+1}/`;
+        a.className = 'thumbnail thumb' + (i+1);
+        a.innerHTML = `
+          <img src="/alfoze/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
+          <div class="caption">
+            <span class="title">${d.title}</span>
+            <span class="category-year">
+              <span class="category">${d.category}</span>
+              <span class="year">${d.year}</span>
+            </span>
+          </div>`;
+        gallery.appendChild(a);
+      });
+
+      const captionBox = document.getElementById("captionBox");
+      captionBox.innerHTML = `
+        <div class="caption1">${item.title}</div>
+        <div class="caption2">${item.year}, ${item.category}</div>
+        <div class="caption3">-</div>
+        <div class="caption4">2023 graduation exhibition</div>
+        <div class="caption5">package, book, poster, postcard, cd</div>
+      `;
+    }
+
+    function toggleSlideBox() {
+      const sb = document.getElementById('slideBox');
+      const txt = document.getElementById('slideToggleText');
+      sb.classList.toggle('active');
+      txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadData();
+      const viewer = document.getElementById("imageViewer");
+      const viewerImg = viewer.querySelector("img");
+
+      if (window.innerWidth >= 769) {
+        document.getElementById("slideBox").classList.add("active");
+        document.getElementById("slideToggleText").textContent = "close";
+      }
+
+      document.querySelectorAll(".fixed-image img").forEach(img => {
+        img.addEventListener("click", () => {
+          viewerImg.src = img.src;
+          viewer.classList.add("active");
+        });
+      });
+
+      viewer.addEventListener("click", () => viewer.classList.remove("active"));
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") viewer.classList.remove("active");
+      });
+    });
+  </script>
 </body>
 </html>
