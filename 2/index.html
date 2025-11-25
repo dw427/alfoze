@@ -38,6 +38,7 @@
       padding: 10px 10px;
     }
     .slide-box.active { transform: translateX(0); }
+
     .slide-box .slide-list {
       position: fixed;
       bottom: 10px;
@@ -50,14 +51,19 @@
     }
     .slide-box .slide-list:hover { color: #7a7a7a; }
 
-    .caption-group { display: flex; flex-direction: column; font-size: 12px; }
+    .caption-group {
+      display: flex; flex-direction: column; font-size: 12px;
+    }
     .caption1 { font-size: 20px; margin-bottom: 3px; }
     .caption2 { font-size: 12px; margin-bottom: 20px; }
     .caption3 { font-size: 12px; margin-bottom: 3px; }
     .caption4 { font-size: 12px; margin-bottom: 3px; }
     .caption5 { font-size: 12px; }
 
-    .text-group { display: flex; align-items: center; font-size: 12px; padding: 10px 0; white-space: nowrap; }
+    .text-group {
+      display: flex; align-items: center;
+      font-size: 12px; padding: 10px 0; white-space: nowrap;
+    }
     .text1 { margin-left: 10px; }
     .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
     .text3 { margin-right: 10px; flex-shrink: 0; }
@@ -74,9 +80,15 @@
       width: 100%; height: auto; object-fit: cover; display: block;
       cursor: pointer;
     }
-    .caption { display: flex; flex-direction: column; margin-top: 8px; font-size: 12px; align-items: flex-start; }
+    .caption {
+      display: flex; flex-direction: column;
+      margin-top: 8px; font-size: 12px;
+      align-items: flex-start;
+    }
     .caption .title { margin-bottom: 0; }
-    .caption .category-year { display: flex; align-items: center; }
+    .caption .category-year {
+      display: flex; align-items: center;
+    }
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
@@ -98,18 +110,36 @@
       transition: opacity .3s ease;
       z-index: 5000;
     }
-    .image-viewer.active { opacity: 1; visibility: visible; }
-    .image-viewer img { max-width: 90%; max-height: 90%; object-fit: contain; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+    .image-viewer.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .image-viewer img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
     .image-viewer::after {
       content: '×';
-      position: fixed; top: 20px; right: 30px;
-      font-size: 28px; color: #fff; cursor: pointer; font-family: sans-serif;
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      font-family: sans-serif;
     }
 
     @media (max-width: 768px) {
       .gallery-wrap { display: block; }
+      .left-image { display: none; }
       .fixed-image {
-        width: 100%; padding: 0; display: flex; flex-direction: column; align-items: center;
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .fixed-image img { width: 100%; height: auto; display: block; }
       .scroll-area { display: none; }
@@ -118,30 +148,35 @@
       .footer #listButton { bottom: 20px; right: 20px; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
-
-      .header { width: 100%; height: 60px; background: #ffffff; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 1000; }
+      .header {
+        width: 100%; height: 60px; background: #ffffff;
+        display: flex; align-items: center; justify-content: center;
+        position: sticky; top: 0; z-index: 1000;
+      }
       .header img { height: 100%; width: auto; }
     }
 
     @media (min-width: 769px) {
       html, body { width: 100%; height: 100%; overflow: hidden; }
-      .gallery-wrap {
-        display: flex;
-        width: 1138px; /* 373 + 500 + 265 */
-        height: 100%;
-        margin: 0 auto;
-      }
+      .gallery-wrap { display: flex; height: 100%; }
 
-      /* 좌측 이미지 영역 */
+      /* 좌측 정렬 이미지 */
       .left-image {
-        width: 373px;
-        height: 100%;
         flex-shrink: 0;
       }
-      .left-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .left-image img {
+        display: block;
+        width: auto;
+        height: 100%;
+        object-fit: cover;
+      }
 
-      /* 기존 영역 건드리지 않음 */
-      .fixed-image { width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0; }
+      .fixed-image {
+        width: 500px;
+        height: 100%;
+        overflow-y: scroll;
+        padding-bottom: 0;
+      }
       .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
       .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
       .thumbnail { margin-bottom: 8px; }
@@ -156,12 +191,12 @@
   </div>
 
   <div class="gallery-wrap">
-    <!-- 좌측 이미지 영역 추가 -->
+    <!-- 좌측 정렬 이미지 -->
     <div class="left-image">
       <img src="/test/images/leftimage.png" alt="left image" />
     </div>
 
-    <!-- 기존 fixed-image -->
+    <!-- 기존 fixed-image 영역 그대로 -->
     <div class="fixed-image">
       <img src="/test/images/2-romance/romance1.png" alt="romance1" />
       <img src="/test/images/2-romance/romance2.png" alt="romance2" />
@@ -173,7 +208,7 @@
       <img src="/test/images/2-romance/romance7.png" alt="romance8" />
     </div>
 
-    <!-- 기존 scroll-area -->
+    <!-- 기존 scroll-area 영역 그대로 -->
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
     </div>
@@ -188,7 +223,7 @@
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
     <div class="caption-group" id="captionBox"></div>
   </div>
-
+  
   <div class="image-viewer" id="imageViewer">
     <img src="" alt="viewer image" />
   </div>
