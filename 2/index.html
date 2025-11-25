@@ -92,11 +92,10 @@
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
-    .scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
+    .scroll-area, .fixed-image, .left-image { scrollbar-width: none; -ms-overflow-style: none; }
 
     .header { display: none; }
 
-    /* 🔥 이미지 상세보기 모달 */
     .image-viewer {
       position: fixed;
       top: 0; left: 0;
@@ -133,18 +132,7 @@
 
     @media (max-width: 768px) {
       .gallery-wrap { display: block; }
-      .fixed-image {
-        width: 100%;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .fixed-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
+      .fixed-image, .left-image { display: none; }
       .scroll-area { display: none; }
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
@@ -163,8 +151,15 @@
     @media (min-width: 769px) {
       html, body { width: 100%; height: 100%; overflow: hidden; }
       .gallery-wrap {
-        width: 765px; height: 100%; margin: 0 auto; display: flex;
+        width: 1138px; /* 373 + 500 + 265 */
+        height: 100%;
+        margin: 0 auto; display: flex;
       }
+      .left-image {
+        width: 373px; height: 100%;
+        flex-shrink: 0;
+      }
+      .left-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
       .fixed-image {
         width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0;
       }
@@ -182,6 +177,9 @@
   </div>
 
   <div class="gallery-wrap">
+    <div class="left-image">
+      <img src="/test/images/leftimage.png" alt="leftimage" />
+    </div>
     <div class="fixed-image">
       <img src="/test/images/2-romance/romance1.png" alt="romance1" />
       <img src="/test/images/2-romance/romance2.png" alt="romance2" />
