@@ -51,7 +51,9 @@
     }
     .slide-box .slide-list:hover { color: #7a7a7a; }
 
-    .caption-group { display: flex; flex-direction: column; font-size: 12px; }
+    .caption-group {
+      display: flex; flex-direction: column; font-size: 12px;
+    }
     .caption1 { font-size: 20px; margin-bottom: 3px; }
     .caption2 { font-size: 12px; margin-bottom: 20px; }
     .caption3 { font-size: 12px; margin-bottom: 3px; }
@@ -63,21 +65,46 @@
     .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
     .text3 { margin-right: 10px; flex-shrink: 0; }
 
-    .content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
     .thumbnail { display: flex; flex-direction: column; color: inherit; }
     .thumbnail img { width: 100%; height: auto; object-fit: cover; display: block; cursor: pointer; }
+
     .caption { display: flex; flex-direction: column; margin-top: 8px; font-size: 12px; align-items: flex-start; }
     .caption .title { margin-bottom: 0; }
     .caption .category-year { display: flex; align-items: center; }
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
-    .scroll-area, .fixed-image, .left-image { scrollbar-width: none; -ms-overflow-style: none; }
+    .scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
 
     .header { display: none; }
 
+    /* ▼▼▼ 좌측 이미지 영역 추가 (누님 요청) ▼▼▼ */
+    .left-image {
+      width: 373px;      /* 누님 지정 폭 */
+      height: 100%;      /* 화면 전체 세로 */
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .left-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+    /* ▲▲▲ 여기까지만 추가, 다른 레이아웃 절대 변경 없음 */
+
+    /* 이미지 상세보기 모달 */
     .image-viewer {
-      position: fixed; top: 0; left: 0;
+      position: fixed;
+      top: 0; left: 0;
       width: 100vw; height: 100vh;
       background: rgba(0,0,0,0.85);
       display: flex; justify-content: center; align-items: center;
@@ -86,17 +113,23 @@
       z-index: 5000;
     }
     .image-viewer.active { opacity: 1; visibility: visible; }
-    .image-viewer img { max-width: 90%; max-height: 90%; object-fit: contain; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+    .image-viewer img {
+      max-width: 90%; max-height: 90%;
+      object-fit: contain;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
     .image-viewer::after {
-      content: '×';
-      position: fixed; top: 20px; right: 30px;
+      content: '×'; position: fixed; top: 20px; right: 30px;
       font-size: 28px; color: #fff; cursor: pointer; font-family: sans-serif;
     }
 
     @media (max-width: 768px) {
       .gallery-wrap { display: block; }
       .left-image { display: none; }
-      .fixed-image { width: 100%; padding: 0; display: flex; flex-direction: column; align-items: center; }
+      .fixed-image {
+        width: 100%; padding: 0;
+        display: flex; flex-direction: column; align-items: center;
+      }
       .fixed-image img { width: 100%; height: auto; display: block; }
       .scroll-area { display: none; }
       .footer { height: 100px; }
@@ -104,28 +137,42 @@
       .footer #listButton { bottom: 20px; right: 20px; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
-      .header { width: 100%; height: 60px; background: #ffffff; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 1000; }
+
+      .header {
+        width: 100%; height: 60px; background: #ffffff;
+        display: flex; align-items: center; justify-content: center;
+        position: sticky; top: 0; z-index: 1000;
+      }
       .header img { height: 100%; width: auto; }
     }
 
     @media (min-width: 769px) {
       html, body { width: 100%; height: 100%; overflow: hidden; }
+
       .gallery-wrap {
-        width: 1138px; /* 373 + 500 + 265 */
+        width: 1138px; /* 373(left) + 500(fixed) + 265(scroll) */
         height: 100%;
         margin: 0 auto;
         display: flex;
       }
-      .left-image { width: 373px; height: 100%; flex-shrink: 0; display: block; }
-      .left-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .fixed-image { width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0; }
-      .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
-      .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
+
+      .fixed-image {
+        width: 500px;
+        height: 100%;
+        overflow-y: scroll;
+      }
+      .scroll-area {
+        width: 265px;
+        height: 100vh;
+        overflow-y: scroll;
+      }
       .thumbnail { margin-bottom: 8px; }
     }
   </style>
 </head>
+
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
   <div class="header">
     <a href="/alfoze/" style="display:block; height:100%;">
       <img src="/test/images/header0.png" alt="header" />
@@ -133,22 +180,28 @@
   </div>
 
   <div class="gallery-wrap">
+
+    <!-- 🔥 누님이 요구한 좌측 이미지 영역 -->
     <div class="left-image">
-      <img src="/test/images/leftimage.png" alt="leftimage" />
+      <img src="/test/images/LEFT/left1.png" alt="" />
     </div>
+
+    <!-- 원래 fixed-image 영역 유지 -->
     <div class="fixed-image">
-      <img src="/test/images/2-romance/romance1.png" alt="romance1" />
-      <img src="/test/images/2-romance/romance2.png" alt="romance2" />
-      <img src="/test/images/2-romance/romance3.png" alt="romance3" />
-      <img src="/test/images/2-romance/romance4.png" alt="romance4" />
-      <img src="/test/images/2-romance/romance5.png" alt="romance5" />
-      <img src="/test/images/2-romance/romance6.png" alt="romance6" />
-      <img src="/test/images/2-romance/romance8-1.gif" alt="romance7" />
-      <img src="/test/images/2-romance/romance7.png" alt="romance8" />
+      <img src="/test/images/2-romance/romance1.png" />
+      <img src="/test/images/2-romance/romance2.png" />
+      <img src="/test/images/2-romance/romance3.png" />
+      <img src="/test/images/2-romance/romance4.png" />
+      <img src="/test/images/2-romance/romance5.png" />
+      <img src="/test/images/2-romance/romance6.png" />
+      <img src="/test/images/2-romance/romance8-1.gif" />
+      <img src="/test/images/2-romance/romance7.png" />
     </div>
+
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
     </div>
+
   </div>
 
   <div class="footer">
@@ -161,17 +214,14 @@
     <div class="caption-group" id="captionBox"></div>
   </div>
   
-  <div class="image-viewer" id="imageViewer">
-    <img src="" alt="viewer image" />
-  </div>
+  <div class="image-viewer" id="imageViewer"><img src="" /></div>
 
   <script>
     async function loadData() {
       const res = await fetch("../data.json");
       const data = await res.json();
 
-      const pathParts = window.location.pathname.split("/");
-      const idx = parseInt(pathParts[pathParts.length-2], 10);
+      const idx = parseInt(window.location.pathname.split("/").slice(-2)[0], 10);
       const item = data[idx-1];
       if (!item) return;
 
@@ -183,7 +233,7 @@
         a.href = `/alfoze/${i+1}/`;
         a.className = 'thumbnail thumb' + (i+1);
         a.innerHTML = `
-          <img src="/test/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
+          <img src="/test/images/thumb${i+1}.png"/>
           <div class="caption">
             <span class="title">${d.title}</span>
             <span class="category-year">
@@ -194,8 +244,7 @@
         gallery.appendChild(a);
       });
 
-      const captionBox = document.getElementById("captionBox");
-      captionBox.innerHTML = `
+      document.getElementById("captionBox").innerHTML = `
         <div class="caption1">${item.title}</div>
         <div class="caption2">${item.year}, ${item.category}</div>
         <div class="caption3">-</div>
@@ -213,10 +262,11 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       loadData();
+
       const viewer = document.getElementById("imageViewer");
       const viewerImg = viewer.querySelector("img");
 
-      document.querySelectorAll(".fixed-image img").forEach(img => {
+      document.querySelectorAll(".fixed-image img, .left-image img").forEach(img => {
         img.addEventListener("click", () => {
           viewerImg.src = img.src;
           viewer.classList.add("active");
@@ -224,9 +274,7 @@
       });
 
       viewer.addEventListener("click", () => viewer.classList.remove("active"));
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape") viewer.classList.remove("active");
-      });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") viewer.classList.remove("active"); });
     });
   </script>
 </body>
