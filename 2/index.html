@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>a generation that has lost romance</title>
+  <title>1a generation that has lost romance</title>
   <link rel="icon" type="image/png" href="/alfoze/images/fav.png" />
   <link rel="apple-touch-icon" href="/alfoze/images/fav.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -18,11 +18,9 @@
     .footer {
       position: fixed; bottom: 0; left: 0;
       width: 100%; height: 100px; background: transparent;
-      z-index: 1000;
-      color: #a3a3a3;
+      z-index: 1000; color: #a3a3a3;
     }
-    .footer .right-link,
-    .footer #listButton {
+    .footer .right-link, .footer #listButton {
       position: absolute; bottom: 10px; font-size: 12px;
     }
     .footer .right-link { left: 30px; }
@@ -62,7 +60,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0;
-      padding: 10px;
+      margin: 0;
     }
     .thumbnail { display: flex; flex-direction: column; color: inherit; margin-bottom: 8px; }
     .thumbnail img { width: 100%; height: auto; object-fit: cover; cursor: pointer; }
@@ -75,16 +73,17 @@
       width: clamp(180px, 25vw, 373px);
       overflow-y: auto;
       padding: 10px;
+      transform: translateX(0);
       transition: transform .3s ease;
-      transform: translateX(100%);
+      display: flex; flex-direction: column;
     }
-    .slide-box.active { transform: translateX(0); }
     .slide-box .slide-list {
+      font-size: 12px;
       cursor: pointer;
       color: #a3a3a3;
-      transition: color .3s;
-      font-size: 12px;
       margin-bottom: 10px;
+      align-self: flex-end;
+      transition: color .3s;
     }
     .slide-box .slide-list:hover { color: #7a7a7a; }
     .caption-group { display: flex; flex-direction: column; font-size: 12px; }
@@ -117,7 +116,7 @@
       .fixed-image { width: 100%; border-left: none; border-right: none; }
       .scroll-area { display: none; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
-      .slide-box .slide-list { bottom: 20px; right: 20px; }
+      .slide-box .slide-list { align-self: flex-end; margin-bottom: 20px; }
     }
   </style>
 </head>
@@ -143,8 +142,8 @@
       <div class="content" id="gallery"></div>
     </div>
 
-    <div class="slide-box" id="slideBox">
-      <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
+    <div class="slide-box active" id="slideBox">
+      <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">close</div>
       <div class="caption-group" id="captionBox"></div>
     </div>
   </div>
@@ -208,11 +207,6 @@
       loadData();
       const viewer = document.getElementById("imageViewer");
       const viewerImg = viewer.querySelector("img");
-
-      if (window.innerWidth >= 769) {
-        document.getElementById("slideBox").classList.add("active");
-        document.getElementById("slideToggleText").textContent = "close";
-      }
 
       document.querySelectorAll(".fixed-image img").forEach(img => {
         img.addEventListener("click", () => {
