@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6a generation that has lost romance</title>
+  <title>a generation that has lost romance</title>
   <link rel="icon" type="image/png" href="/alfoze/images/fav.png" />
   <link rel="apple-touch-icon" href="/alfoze/images/fav.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -30,40 +30,65 @@
     .footer #listButton:hover { color: #7a7a7a; }
 
     .slide-box {
-      position: relative;
-      width: 20%; /* 웹형에서 비율로 조정 */
-      max-width: 373px;
-      height: 100%;
-      background: #fff;
+      position: fixed; top: 0; right: 0;
+      width: 373px !important; max-width: 100%; height: 100%;
+      background: #fff; z-index: 3000;
+      transform: translateX(100%); transition: transform .3s;
       overflow-y: auto;
-      padding: 10px;
-      transition: transform .3s, width .3s;
+      padding: 10px 10px;
     }
     .slide-box.active { transform: translateX(0); }
 
     .slide-box .slide-list {
-      position: absolute;
-      top: 10px; right: 10px;
+      position: fixed;
+      bottom: 10px;
+      right: 30px;
       font-size: 12px;
       cursor: pointer;
       transition: color .3s;
+      z-index: 4001;
       color: #a3a3a3;
     }
     .slide-box .slide-list:hover { color: #7a7a7a; }
 
-    .caption-group { display: flex; flex-direction: column; font-size: 12px; }
+    .caption-group {
+      display: flex; flex-direction: column; font-size: 12px;
+    }
     .caption1 { font-size: 20px; margin-bottom: 3px; }
     .caption2 { font-size: 12px; margin-bottom: 20px; }
     .caption3 { font-size: 12px; margin-bottom: 3px; }
     .caption4 { font-size: 12px; margin-bottom: 3px; }
     .caption5 { font-size: 12px; }
 
-    .content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
-    .thumbnail { display: flex; flex-direction: column; color: inherit; }
-    .thumbnail img { width: 100%; height: auto; object-fit: cover; display: block; cursor: pointer; }
-    .caption { display: flex; flex-direction: column; margin-top: 8px; font-size: 12px; align-items: flex-start; }
+    .text-group {
+      display: flex; align-items: center;
+      font-size: 12px; padding: 10px 0; white-space: nowrap;
+    }
+    .text1 { margin-left: 10px; }
+    .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
+    .text3 { margin-right: 10px; flex-shrink: 0; }
+
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+    .thumbnail {
+      display: flex; flex-direction: column; color: inherit;
+    }
+    .thumbnail img {
+      width: 100%; height: auto; object-fit: cover; display: block;
+      cursor: pointer;
+    }
+    .caption {
+      display: flex; flex-direction: column;
+      margin-top: 8px; font-size: 12px;
+      align-items: flex-start;
+    }
     .caption .title { margin-bottom: 0; }
-    .caption .category-year { display: flex; align-items: center; }
+    .caption .category-year {
+      display: flex; align-items: center;
+    }
     .caption .category { margin-right: 10px; }
 
     ::-webkit-scrollbar { display: none; }
@@ -72,22 +97,51 @@
     .header { display: none; }
 
     .image-viewer {
-      position: fixed; top: 0; left: 0;
+      position: fixed;
+      top: 0; left: 0;
       width: 100vw; height: 100vh;
       background: rgba(0,0,0,0.85);
-      display: flex; justify-content: center; align-items: center;
-      opacity: 0; visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
       transition: opacity .3s ease;
       z-index: 5000;
     }
-    .image-viewer.active { opacity: 1; visibility: visible; }
-    .image-viewer img { max-width: 90%; max-height: 90%; object-fit: contain; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-    .image-viewer::after { content: '×'; position: fixed; top: 20px; right: 30px; font-size: 28px; color: #fff; cursor: pointer; font-family: sans-serif; }
+    .image-viewer.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .image-viewer img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .image-viewer::after {
+      content: '×';
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
 
     @media (max-width: 768px) {
       .gallery-wrap { display: block; }
       .left-image { display: none; }
-      .fixed-image { width: 100%; padding: 0; display: flex; flex-direction: column; align-items: center; border: none; }
+      .fixed-image {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: none;
+        border-right: none;
+      }
       .fixed-image img { width: 100%; height: auto; display: block; }
       .scroll-area { display: none; }
       .footer { height: 100px; }
@@ -95,7 +149,11 @@
       .footer #listButton { bottom: 20px; right: 20px; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
-      .header { width: 100%; height: 60px; background: #fff; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 1000; }
+      .header {
+        width: 100%; height: 60px; background: #ffffff;
+        display: flex; align-items: center; justify-content: center;
+        position: sticky; top: 0; z-index: 1000;
+      }
       .header img { height: 100%; width: auto; }
     }
 
@@ -105,36 +163,43 @@
 
       .left-image {
         flex-shrink: 0;
-        width: 15%; /* 비율로 줄어듦 */
-        min-width: 200px;
+        width: 373px;
         height: 100%;
-        transition: width .3s;
       }
-      .left-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .left-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
       .fixed-image {
-        flex: 1 1 auto; /* 남는 영역을 유연하게 채움 */
+        width: 500px;
         height: 100%;
         overflow-y: scroll;
         padding-bottom: 0;
         border-left: 1px solid #9fa0a0;
         border-right: 1px solid #9fa0a0;
-        transition: width .3s;
       }
       .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
 
       .scroll-area {
-        width: 20%; /* 웹형에서 비율로 */
-        min-width: 200px;
+        width: 265px;
         height: 100vh;
         overflow-y: scroll;
         border-right: 1px solid #9fa0a0;
-        transition: width .3s;
       }
       .thumbnail { margin-bottom: 8px; }
     }
+
+    /* 🔥 모바일은 기본 닫힘 */
+    @media (max-width: 768px) {
+      .slide-box { transform: translateX(100%) !important; }
+      .slide-box.active { transform: translateX(0) !important; }
+    }
   </style>
 </head>
+
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
   <div class="header">
     <a href="/alfoze/" style="display:block; height:100%;">
@@ -168,6 +233,7 @@
     <div id="listButton" onclick="toggleSlideBox()">close</div>
   </div>
 
+  <!-- 🔥 active 추가 (웹형 로딩 애니메이션 제거) -->
   <div class="slide-box active" id="slideBox">
     <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">close</div>
     <div class="caption-group" id="captionBox"></div>
@@ -181,6 +247,7 @@
     async function loadData() {
       const res = await fetch("../data.json");
       const data = await res.json();
+
       const pathParts = window.location.pathname.split("/");
       const idx = parseInt(pathParts[pathParts.length-2], 10);
       const item = data[idx-1];
@@ -225,6 +292,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       loadData();
+
       const viewer = document.getElementById("imageViewer");
       const viewerImg = viewer.querySelector("img");
 
