@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1a generation that has lost romance</title>
+  <title>a generation that has lost romance</title>
   <link rel="icon" type="image/png" href="/alfoze/images/fav.png" />
   <link rel="apple-touch-icon" href="/alfoze/images/fav.png" />
   <meta name="theme-color" content="#ffffff" />
@@ -37,6 +37,9 @@
       transition: transform .3s;
       overflow-y: auto;
       padding: 10px 10px;
+
+      /* 초기 애니메이션 제거용 */
+      will-change: transform;
     }
     .slide-box.active { transform: translateX(0); }
 
@@ -111,20 +114,59 @@
     }
 
     @media (max-width: 768px) {
+      .gallery-wrap { display: block; }
+      .left-image { display: none; }
+      .fixed-image {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .fixed-image img { width: 100%; height: auto; display: block; }
+      .scroll-area { display: none; }
+      .footer { height: 100px; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
+
+      .header {
+        width: 100%; height: 60px; background: #ffffff;
+        display: flex; align-items: center; justify-content: center;
+        position: sticky; top: 0; z-index: 1000;
+      }
     }
 
     @media (min-width: 769px) {
       html, body { width: 100%; height: 100%; overflow: hidden; }
+      .gallery-wrap { display: flex; height: 100%; }
+
+      .left-image { flex-shrink: 0; width: 373px; height: 100%; }
+      .left-image img { width: 100%; height: 100%; object-fit: cover; }
+
+      .fixed-image {
+        width: 500px;
+        height: 100%;
+        overflow-y: scroll;
+        border-left: 1px solid #9fa0a0;
+        border-right: 1px solid #9fa0a0;
+      }
+      .fixed-image img { width: 100%; height: auto; cursor: pointer; }
+
+      .scroll-area {
+        width: 265px;
+        height: 100vh;
+        overflow-y: scroll;
+        border-right: 1px solid #9fa0a0;
+      }
     }
   </style>
 </head>
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
+  <!-- 🔥 PC 기본 open 상태로 시작 -->
   <div class="slide-box active" id="slideBox">
-    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">close</div>
+    <div class="slide-list" id="slideToggleText">close</div>
     <div class="caption-group" id="captionBox"></div>
   </div>
 
@@ -158,12 +200,16 @@
     document.addEventListener("DOMContentLoaded", () => {
       loadData();
 
+      // 🔥 모바일만 기본 닫힘
       if (window.innerWidth < 769) {
         const sb = document.getElementById("slideBox");
         sb.classList.remove("active");
         document.getElementById("slideToggleText").textContent = "list";
       }
+
+      document.getElementById("slideToggleText").onclick = toggleSlideBox;
     });
   </script>
+
 </body>
 </html>
