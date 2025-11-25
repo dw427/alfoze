@@ -31,7 +31,7 @@
 
     .slide-box {
       position: fixed; top: 0; right: 0;
-      width: 400px !important; max-width: 100%; height: 100%;
+      width: 373px !important; max-width: 100%; height: 100%;
       background: #fff; z-index: 3000;
       transform: translateX(100%); transition: transform .3s;
       overflow-y: auto;
@@ -140,13 +140,18 @@
         flex-direction: column;
         align-items: center;
       }
-      .fixed-image img { width: 100%; height: auto; display: block; }
+      .fixed-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
       .scroll-area { display: none; }
       .footer { height: 100px; }
       .footer .right-link { bottom: 20px; left: 20px; }
       .footer #listButton { bottom: 20px; right: 20px; }
       .slide-box { width: 100% !important; padding: 40px 20px; }
       .slide-box .slide-list { bottom: 20px; right: 20px; }
+
       .header {
         width: 100%; height: 60px; background: #ffffff;
         display: flex; align-items: center; justify-content: center;
@@ -158,25 +163,13 @@
     @media (min-width: 769px) {
       html, body { width: 100%; height: 100%; overflow: hidden; }
       .gallery-wrap {
-        width: 765px;
-        height: 100%;
-        margin: 0 auto;
-        display: flex;
+        width: 765px; height: 100%; margin: 0 auto; display: flex;
       }
       .fixed-image {
-        width: calc(100% - 265px - 400px); /* 본문 영역 = gallery-wrap 전체 - 썸네일 - 슬라이드박스 */
-        height: 100%;
-        overflow-y: scroll;
-        padding-bottom: 0;
-        border-right: 1px solid #9fa0a0; /* 본문 오른쪽 라인 */
+        width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0;
       }
       .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
-      .scroll-area {
-        width: 265px;
-        height: 100vh;
-        overflow-y: scroll;
-        border-left: 1px solid #9fa0a0; /* 썸네일 왼쪽 라인 */
-      }
+      .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
       .thumbnail { margin-bottom: 8px; }
     }
   </style>
@@ -195,6 +188,7 @@
       <img src="/test/images/1-te cura/tecura3.png" alt="tecura3" />
       <img src="/test/images/1-te cura/tecura5-2.png" alt="tecura4" />
       <img src="/test/images/1-te cura/tecura4.png" alt="tecura5" />
+
     </div>
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
