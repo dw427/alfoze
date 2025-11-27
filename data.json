@@ -3,6 +3,7 @@
     "title": "te cura",
     "category": "brand design",
     "year": "2022",
+    "thumbnail": "/alfoze/images/thumb1.png",
     "images": [
       "/test/images/1-tecura/tecura1.png",
       "/test/images/1-tecura/tecura2.png"
@@ -19,6 +20,7 @@
     "title": "lost romance",
     "category": "graphic design",
     "year": "2023",
+    "thumbnail": "/alfoze/images/thumb2.png",
     "images": [
       "/test/images/2-romance/romance1.png",
       "/test/images/2-romance/romance2.png",
@@ -41,6 +43,7 @@
     "title": "blish",
     "category": "brand design",
     "year": "2023",
+    "thumbnail": "/alfoze/images/thumb3.png",
     "images": [
       "/test/images/3-blish/1.png",
       "/test/images/3-blish/2.png"
@@ -57,6 +60,7 @@
     "title": "An inverted realtionship",
     "category": "editorial",
     "year": "2023",
+    "thumbnail": "/alfoze/images/thumb4.png",
     "images": [
       "/test/images/4-inverted/1.png",
       "/test/images/4-inverted/2.png"
@@ -73,6 +77,7 @@
     "title": "Immortality : The Death of Death",
     "category": "brand design",
     "year": "2024",
+    "thumbnail": "/alfoze/images/thumb5.png",
     "images": [
       "/test/images/5-immortality/1.png",
       "/test/images/5-immortality/2.png"
@@ -89,6 +94,7 @@
     "title": "Heaven",
     "category": "graphic design",
     "year": "2024",
+    "thumbnail": "/alfoze/images/thumb6.png",
     "images": [
       "/test/images/6-heaven/1.png",
       "/test/images/6-heaven/2.png"
@@ -105,6 +111,7 @@
     "title": "Everybody",
     "category": "graphic design",
     "year": "2024",
+    "thumbnail": "/alfoze/images/thumb7.png",
     "images": [
       "/test/images/7-everybody/1.png",
       "/test/images/7-everybody/2.png"
@@ -121,6 +128,7 @@
     "title": "Monster",
     "category": "graphic design",
     "year": "2024",
+    "thumbnail": "/alfoze/images/thumb8.png",
     "images": [
       "/test/images/8-monster/1.png",
       "/test/images/8-monster/2.png"
@@ -137,6 +145,7 @@
     "title": "Ideal Expression",
     "category": "graphic design",
     "year": "2024",
+    "thumbnail": "/alfoze/images/thumb9.png",
     "images": [
       "/test/images/9-ideal/1.png",
       "/test/images/9-ideal/2.png"
@@ -153,6 +162,7 @@
     "title": "alfoze",
     "category": "brand design",
     "year": "2025",
+    "thumbnail": "/alfoze/images/thumb10.png",
     "images": [
       "/test/images/10-alfoze/1.png",
       "/test/images/10-alfoze/2.png"
@@ -169,6 +179,7 @@
     "title": "Valentine",
     "category": "graphic design",
     "year": "2025",
+    "thumbnail": "/alfoze/images/thumb11.png",
     "images": [
       "/test/images/11-valentine/1.png",
       "/test/images/11-valentine/2.png"
@@ -185,6 +196,7 @@
     "title": "Forever",
     "category": "graphic design",
     "year": "2025",
+    "thumbnail": "/alfoze/images/thumb12.png",
     "images": [
       "/test/images/12-forever/1.png",
       "/test/images/12-forever/2.png"
@@ -201,6 +213,7 @@
     "title": "Lov",
     "category": "brand design",
     "year": "2025",
+    "thumbnail": "/alfoze/images/thumb13.png",
     "images": [
       "/test/images/13-lov/1.png",
       "/test/images/13-lov/2.png"
@@ -217,6 +230,7 @@
     "title": "Dreamscape",
     "category": "graphic design",
     "year": "2025",
+    "thumbnail": "/alfoze/images/thumb14.png",
     "images": [
       "/test/images/14-dreamscape/1.png",
       "/test/images/14-dreamscape/2.png"
