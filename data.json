@@ -5,8 +5,8 @@
     "year": "2022",
     "thumbnail": "/alfoze/images/thumb1.png",
     "images": [
-      "/test/images/1-tecura/tecura1.png",
-      "/test/images/1-tecura/tecura2.png"
+      "/alfoze/images/1-tecura/tecura1.png",
+      "/alfoze/images/1-tecura/tecura2.png"
     ],
     "captions": {
       "caption1": "te cura",
