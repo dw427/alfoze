@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>alfoze</title>
-<link rel="icon" type="image/png" href="/test/images/fav2.png" />
-<link rel="apple-touch-icon" href="/test/images/fav1.png" />
+<title>ㄴalfoze</title>
+<link rel="icon" type="image/png" href="/alfoze/images/fav2.png" />
+<link rel="apple-touch-icon" href="/alfoze/images/fav1.png" />
 <meta name="theme-color" content="#ffffff" />
 <style>
 @import url("https://use.typekit.net/zuk4pzv.css");
@@ -69,10 +69,10 @@ a:hover { color: #a3a3a3; }
 </style>
 </head>
 <body>
-<div class="header"><img src="alfoze/images/header.png" alt="header" /></div>
+<div class="header"><img src="/alfoze/images/header.png" alt="header" /></div>
 
 <div class="gallery-wrap">
-  <div class="fixed-image"><img src="images/index.png" alt="index" /></div>
+  <div class="fixed-image"><img src="/alfoze/images/index.png" alt="index" /></div>
   <div class="scroll-area"><div class="content" id="gallery"></div></div>
 </div>
 
@@ -99,8 +99,8 @@ async function loadData() {
     item.href = `${i}/`;
     item.className = 'thumbnail thumb'+i;
 
-    // 썸네일 첫 이미지 경로로 설정
-    const thumbPath = d.images[0];
+    // 썸네일 첫 이미지 경로를 /alfoze/images/...로 통일
+    const thumbPath = d.images[0].replace('/test/images/', '/alfoze/images/');
 
     item.innerHTML = `<img src="${thumbPath}" alt="썸네일${i}"/>
       <div class="caption"><span class="title">${d.title}</span>
@@ -121,8 +121,8 @@ async function loadData() {
 }
 
 function toggleSlideBox() {
-  const sb = document.getElementById('slideBox');
-  const txt = document.getElementById('slideToggleText');
+  const sb = document.getElementById("slideBox");
+  const txt = document.getElementById("slideToggleText");
   sb.classList.toggle('active');
   txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
   document.getElementById('listButton').textContent = txt.textContent;
