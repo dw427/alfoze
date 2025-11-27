@@ -1,128 +1,349 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>alfoze</title>
-<link rel="icon" type="image/png" href="/test/images/fav2.png" />
-<link rel="apple-touch-icon" href="/test/images/fav1.png" />
-<meta name="theme-color" content="#ffffff" />
-<style>
-@import url("https://use.typekit.net/zuk4pzv.css");
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: "minion-pro", serif; background: #fff; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ㅂalfoze</title>
 
-a { color: inherit; text-decoration: none; transition: color .3s; }
-a:hover { color: #a3a3a3; }
+  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
+  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
+  <meta name="theme-color" content="#ffffff" />
 
-.footer { width: 100%; height: 100px; background: transparent; z-index: 1000; }
-.footer .right-link, .footer #listButton { position: absolute; bottom: 10px; font-size: 12px; }
-.footer .right-link { left: 30px; }
-.footer #listButton { right: 30px; cursor: pointer; }
-.footer #listButton:hover { color: #a3a3a3; }
+  <style>
+    @import url("https://use.typekit.net/zuk4pzv.css");
 
-.slide-box { position: fixed; top: 0; right: 0; width: 373px !important; max-width: 100%; height: 100%; background: #fff; z-index: 3000; transform: translateX(100%); transition: transform .3s; overflow-y: auto; }
-.slide-box.active { transform: translateX(0); }
-.slide-box .slide-list { position: absolute; bottom: 10px; right: 30px; font-size: 12px; cursor: pointer; transition: color .3s; z-index: 4001; }
-.slide-box .slide-list:hover { color: #a3a3a3; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.text-group { display: flex; align-items: center; font-size: 12px; padding: 10px 0; white-space: nowrap; }
-.text1 { margin-left: 10px; }
-.text2 { margin-left: auto; margin-right: 60px; text-align: right; }
-.text3 { margin-right: 10px; flex-shrink: 0; }
+    body {
+      font-family: "minion-pro", serif;
+      background: #fff;
+    }
 
-.content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
-.thumbnail { display: flex; flex-direction: column; color: inherit; }
-.thumbnail img { width: 100%; height: auto; object-fit: cover; display: block; }
-.caption { display: flex; flex-direction: column; margin-top: 8px; font-size: 12px; align-items: flex-start; }
-.caption .title { margin-bottom: 0; }
-.caption .category-year { display: flex; align-items: center; }
-.caption .category { margin-right: 10px; }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .3s;
+    }
 
-::-webkit-scrollbar { display: none; }
-.scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
+    a:hover {
+      color: #a3a3a3;
+    }
 
-.header { display: none; }
+    .footer {
+      width: 100%;
+      height: 100px;
+      background: transparent;
+      z-index: 1000;
+    }
 
-/* 모바일 */
-@media (max-width: 768px) {
-  .side { display: none; }
-  .fixed-image { display: none; }
-  .content { grid-template-columns: repeat(2, 1fr); padding: 0; }
-  .thumbnail { width: 100%; margin-bottom: 0; }
-  .caption { margin: 8px 0; }
-  .footer { position: relative; height: 100px; }
-  .footer .right-link { bottom: 20px; left: 20px; }
-  .footer #listButton { bottom: 20px; right: 20px; }
-  .slide-box { width: 100% !important; }
-  .slide-box .slide-list { bottom: 20px; right: 20px; }
-}
+    .footer .right-link,
+    .footer #listButton {
+      position: absolute;
+      bottom: 10px;
+      font-size: 12px;
+    }
 
-/* 웹형 */
-@media (min-width: 769px) {
-  body, html { width: 100%; height: 100%; overflow: hidden; }
-  .gallery-wrap { width: 765px; height: 100%; margin: 0 auto; display: flex; }
-  .fixed-image { width: 500px; height: 100%; position: sticky; top: 0; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-  .fixed-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
-  .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
-}
-</style>
+    .footer .right-link {
+      left: 30px;
+    }
+
+    .footer #listButton {
+      right: 30px;
+      cursor: pointer;
+    }
+
+    .footer #listButton:hover {
+      color: #a3a3a3;
+    }
+
+    .slide-box {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 373px !important;
+      max-width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 3000;
+      transform: translateX(100%);
+      transition: transform .3s;
+      overflow-y: auto;
+    }
+
+    .slide-box.active {
+      transform: translateX(0);
+    }
+
+    .slide-box .slide-list {
+      position: absolute;
+      bottom: 10px;
+      right: 30px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color .3s;
+      z-index: 4001;
+    }
+
+    .slide-box .slide-list:hover {
+      color: #a3a3a3;
+    }
+
+    .text-group {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      padding: 10px 0;
+      white-space: nowrap;
+    }
+
+    .text1 {
+      margin-left: 10px;
+    }
+
+    .text2 {
+      margin-left: auto;
+      margin-right: 60px;
+      text-align: right;
+    }
+
+    .text3 {
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+
+    .thumbnail {
+      display: flex;
+      flex-direction: column;
+      color: inherit;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .caption {
+      display: flex;
+      flex-direction: column;
+      margin-top: 8px;
+      font-size: 12px;
+      align-items: flex-start;
+    }
+
+    .caption .title {
+      margin-bottom: 0;
+    }
+
+    .caption .category-year {
+      display: flex;
+      align-items: center;
+    }
+
+    .caption .category {
+      margin-right: 10px;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-area,
+    .fixed-image {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .header {
+      display: none;
+    }
+
+    /* 모바일 */
+    @media (max-width: 768px) {
+      .side {
+        display: none;
+      }
+
+      .fixed-image {
+        display: none;
+      }
+
+      .content {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
+      }
+
+      .thumbnail {
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .caption {
+        margin: 8px 0;
+      }
+
+      .footer {
+        position: relative;
+        height: 100px;
+      }
+
+      .footer .right-link {
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .footer #listButton {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .slide-box {
+        width: 100% !important;
+      }
+
+      .slide-box .slide-list {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    /* 웹형 */
+    @media (min-width: 769px) {
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .gallery-wrap {
+        width: 765px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+      }
+
+      .fixed-image {
+        width: 500px;
+        height: 100%;
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .fixed-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .scroll-area {
+        width: 265px;
+        height: 100vh;
+        overflow-y: scroll;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="header"><img src="alfoze/images/header.png" alt="header" /></div>
-<div class="gallery-wrap">
-  <div class="fixed-image"><img src="images/index.png" alt="index" /></div>
-  <div class="scroll-area"><div class="content" id="gallery"></div></div>
-</div>
+  <div class="header">
+    <img src="alfoze/images/header.png" alt="header" />
+  </div>
 
-<div class="footer">
-  <div class="right-link"><a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a></div>
-  <div id="listButton" onclick="toggleSlideBox()">list</div>
-</div>
+  <div class="gallery-wrap">
+    <div class="fixed-image">
+      <img src="images/index.png" alt="index" />
+    </div>
 
-<div class="slide-box" id="slideBox">
-  <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
-  <div id="slideContent"></div>
-</div>
+    <div class="scroll-area">
+      <div class="content" id="gallery"></div>
+    </div>
+  </div>
 
-<script>
-async function loadData() {
-  const res = await fetch("data.json");
-  const data = await res.json();
-  const gallery = document.getElementById('gallery');
-  gallery.innerHTML = "";
-  for (let i = data.length; i >= 1; i--) {
-    const d = data[i-1];
-    const item = document.createElement('a');
-    item.href = `${i}/`;
-    item.className = 'thumbnail thumb'+i;
-    item.innerHTML = `<img src="${d.thumbnail}" alt="썸네일${i}"/>
-      <div class="caption"><span class="title">${d.title}</span>
-      <span class="category-year"><span class="category">${d.category}</span>
-      <span class="year">${d.year}</span></span></div>`;
-    gallery.append(item);
-  }
+  <div class="footer">
+    <div class="right-link">
+      <a href="https://instagram.com/alfoxze" target="_blank">@alfoxze</a>
+    </div>
 
-  const slideContent = document.getElementById('slideContent');
-  slideContent.innerHTML = "";
-  data.forEach((d, idx)=>{
-    const g = document.createElement('div');
-    g.className = 'text-group';
-    g.innerHTML = `<div class="text1"><a href="${idx+1}/">${d.title}</a></div>
-      <div class="text2">${d.category}</div><div class="text3">${d.year}</div>`;
-    slideContent.append(g);
-  });
-}
+    <div id="listButton" onclick="toggleSlideBox()">list</div>
+  </div>
 
-function toggleSlideBox() {
-  const sb = document.getElementById('slideBox');
-  const txt = document.getElementById('slideToggleText');
-  sb.classList.toggle('active');
-  txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
-  document.getElementById('listButton').textContent = txt.textContent;
-}
+  <div class="slide-box" id="slideBox">
+    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
+    <div id="slideContent"></div>
+  </div>
 
-document.addEventListener('DOMContentLoaded', loadData);
-</script>
+  <script>
+    async function loadData() {
+      const res = await fetch("data.json");
+      const data = await res.json();
+
+      const gallery = document.getElementById("gallery");
+      gallery.innerHTML = "";
+
+      for (let i = data.length; i >= 1; i--) {
+        const d = data[i - 1];
+
+        const item = document.createElement("a");
+        item.href = `${i}/`;
+        item.className = `thumbnail thumb${i}`;
+
+        item.innerHTML = `
+          <img src="${d.images[0]}" alt="썸네일${i}" />
+          <div class="caption">
+            <span class="title">${d.title}</span>
+            <span class="category-year">
+              <span class="category">${d.category}</span>
+              <span class="year">${d.year}</span>
+            </span>
+          </div>
+        `;
+
+        gallery.append(item);
+      }
+
+      const slideContent = document.getElementById("slideContent");
+      slideContent.innerHTML = "";
+
+      data.forEach((d, idx) => {
+        const g = document.createElement("div");
+        g.className = "text-group";
+
+        g.innerHTML = `
+          <div class="text1"><a href="${idx + 1}/">${d.title}</a></div>
+          <div class="text2">${d.category}</div>
+          <div class="text3">${d.year}</div>
+        `;
+
+        slideContent.append(g);
+      });
+    }
+
+    function toggleSlideBox() {
+      const sb = document.getElementById("slideBox");
+      const txt = document.getElementById("slideToggleText");
+
+      sb.classList.toggle("active");
+      txt.textContent = sb.classList.contains("active") ? "close" : "list";
+      document.getElementById("listButton").textContent = txt.textContent;
+    }
+
+    document.addEventListener("DOMContentLoaded", loadData);
+  </script>
 </body>
 </html>
