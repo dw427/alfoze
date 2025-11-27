@@ -12,8 +12,11 @@
       "caption5": "package, book, poster, pattern"
     },
     "images": [
-      "/test/images/1-tecura/tecura1.png",
-      "/test/images/1-tecura/tecura2.png"
+      "/test/images/1-te cura/tecura1.png" alt="tecura1",
+      "/test/images/1-te cura/tecura2.png" alt="tecura2",
+      "/test/images/1-te cura/tecura3.png" alt="tecura3",
+      "/test/images/1-te cura/tecura5-2.png" alt="tecura4",
+      "/test/images/1-te cura/tecura4.png" alt="tecura5",
     ]
   },
   {
