@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>2te cura</title>
+<title>te cura</title>
 <link rel="icon" type="image/png" href="/test/images/fav2.png" />
 <link rel="apple-touch-icon" href="/test/images/fav1.png" />
 <meta name="theme-color" content="#ffffff" />
@@ -43,7 +43,7 @@ a:hover { color: #a3a3a3; }
 
 .header { display: none; }
 
-/* fixed-image */
+/* 고친 부분: fixed-image */
 .fixed-image {
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@ a:hover { color: #a3a3a3; }
 .image-viewer img { max-width:90%; max-height:90%; object-fit:contain; box-shadow:0 0 20px rgba(0,0,0,0.5); }
 .image-viewer::after { content:'×'; position:fixed; top:20px; right:30px; font-size:28px; color:#fff; cursor:pointer; font-family:sans-serif; }
 
-/* 모바일 */
+/* 모바일 유지 */
 @media (max-width: 768px) {
   .gallery-wrap { display: block; }
   .left-image { display: none; }
@@ -87,7 +87,7 @@ a:hover { color: #a3a3a3; }
   .slide-box.active { transform: translateX(0) !important; }
 }
 
-/* 웹형 */
+/* 웹형: 반응형 유지 */
 @media (min-width: 769px) {
   html, body { width:100%; height:100%; overflow:hidden; }
   .gallery-wrap { display: grid; height:100%; grid-template-columns: 24.68% 33.10% 17.55% 24.68%; gap:0; }
@@ -102,7 +102,7 @@ a:hover { color: #a3a3a3; }
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 <div class="header">
-  <a href="/alfoze/" style="display:block; height:100%;">
+  <a href="/test/" style="display:block; height:100%;">
     <img src="/images/header.png" alt="header" />
   </a>
 </div>
@@ -135,35 +135,24 @@ a:hover { color: #a3a3a3; }
 
 <script>
 async function loadData() {
-  // 1️⃣ JSON fetch 경로 절대 기준
-  const res = await fetch("/alfoze/data.json");
+  const res = await fetch("../data.json");
   const data = await res.json();
-
-  // 2️⃣ 상세페이지 idx 계산 (폴더 구조 상관없이)
-  const pathParts = window.location.pathname.split("/").filter(p => p);
-  const folder = pathParts[pathParts.length-1] === "index.html" ? pathParts[pathParts.length-2] : pathParts[pathParts.length-1];
-  const idx = parseInt(folder, 10);
+  const pathParts = window.location.pathname.split("/");
+  const idx = parseInt(pathParts[pathParts.length-2], 10);
   const item = data[idx-1];
   if (!item) return;
 
+  // fixed-image 렌더링
   const fixedImages = document.querySelector(".fixed-image");
-  const viewer = document.getElementById("imageViewer");
-  const viewerImg = viewer.querySelector("img");
   fixedImages.innerHTML = "";
-
-  // 3️⃣ fixed-image img 생성 + 클릭 이벤트
   item.images.forEach((imgPath, i) => {
     const img = document.createElement("img");
     img.src = imgPath;
     img.alt = `${item.title} ${i+1}`;
-    img.addEventListener("click", () => {
-      viewerImg.src = img.src;
-      viewer.classList.add("active");
-    });
     fixedImages.appendChild(img);
   });
 
-  // 4️⃣ gallery 썸네일 렌더링
+  // gallery 썸네일 렌더링
   const gallery = document.getElementById("gallery");
   gallery.innerHTML = "";
   data.slice().reverse().forEach((d, revIdx) => {
@@ -172,7 +161,7 @@ async function loadData() {
     a.href = `/alfoze/${i+1}/`;
     a.className = 'thumbnail thumb' + (i+1);
     a.innerHTML = `
-      <img src="${d.thumbnail}" alt="썸네일${i+1}"/>
+      <img src="/alfoze/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
       <div class="caption">
         <span class="title">${d.title}</span>
         <span class="category-year">
@@ -183,7 +172,7 @@ async function loadData() {
     gallery.appendChild(a);
   });
 
-  // 5️⃣ 캡션 렌더링
+  // 캡션 JSON 기반 렌더링
   const captionBox = document.getElementById("captionBox");
   captionBox.innerHTML = `
     <div class="caption1">${item.captions.caption1}</div>
@@ -192,12 +181,6 @@ async function loadData() {
     <div class="caption4">${item.captions.caption4}</div>
     <div class="caption5">${item.captions.caption5}</div>
   `;
-
-  // 이미지 뷰어 닫기
-  viewer.addEventListener("click", () => viewer.classList.remove("active"));
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") viewer.classList.remove("active");
-  });
 }
 
 function toggleSlideBox() {
@@ -210,7 +193,30 @@ function toggleSlideBox() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadData);
+document.addEventListener("DOMContentLoaded", () => {
+  loadData();
+
+  if (window.innerWidth <= 768) {
+    const sb = document.getElementById('slideBox');
+    const txt = document.getElementById('slideToggleText');
+    sb.classList.remove('active');
+    txt.textContent = 'list';
+    document.getElementById('listButton').textContent = 'list';
+  }
+
+  const viewer = document.getElementById("imageViewer");
+  const viewerImg = viewer.querySelector("img");
+  document.querySelectorAll(".fixed-image img").forEach(img => {
+    img.addEventListener("click", () => {
+      viewerImg.src = img.src;
+      viewer.classList.add("active");
+    });
+  });
+  viewer.addEventListener("click", () => viewer.classList.remove("active"));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") viewer.classList.remove("active");
+  });
+});
 </script>
 </body>
 </html>
