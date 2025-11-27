@@ -3,242 +3,230 @@
     "title": "te cura",
     "category": "brand design",
     "year": "2022",
-    "thumbnail": "/test/images/thumb1.png",
+    "images": [
+      "/test/images/1-tecura/tecura1.png",
+      "/test/images/1-tecura/tecura2.png"
+    ],
     "captions": {
       "caption1": "te cura",
       "caption2": "2022, brand design",
       "caption3": "-",
-      "caption4": "personal project",
-      "caption5": "package, book, poster, pattern"
-    },
-    "images": [
-      "/test/images/1-te cura/tecura1.png",
-      "/test/images/1-te cura/tecura2.png",
-      "/test/images/1-te cura/tecura3.png",
-      "/test/images/1-te cura/tecura5-2.png",
-      "/test/images/1-te cura/tecura4.png",
-    ]
+      "caption4": "2023 graduation exhibition",
+      "caption5": "package, book, poster, postcard, cd"
+    }
   },
   {
     "title": "lost romance",
     "category": "graphic design",
     "year": "2023",
-    "thumbnail": "/test/images/thumb2.png",
+    "images": [
+      "/test/images/2-romance/romance1.png",
+      "/test/images/2-romance/romance2.png",
+      "/test/images/2-romance/romance3.png",
+      "/test/images/2-romance/romance4.png",
+      "/test/images/2-romance/romance5.png",
+      "/test/images/2-romance/romance6.png",
+      "/test/images/2-romance/romance7.png",
+      "/test/images/2-romance/romance8.png"
+    ],
     "captions": {
       "caption1": "lost romance",
       "caption2": "2023, graphic design",
       "caption3": "-",
       "caption4": "2023 graduation exhibition",
-      "caption5": "poster, book, package"
-    },
-    "images": [
-      "/test/images/2-romance/romance1.png",
-      "/test/images/2-romance/romance2.png",
-      "/test/images/2-romance/romance3.png"
-    ]
+      "caption5": "poster, booklet, cd, packaging"
+    }
   },
   {
     "title": "blish",
     "category": "brand design",
     "year": "2023",
-    "thumbnail": "/test/images/thumb3.png",
+    "images": [
+      "/test/images/3-blish/1.png",
+      "/test/images/3-blish/2.png"
+    ],
     "captions": {
       "caption1": "blish",
       "caption2": "2023, brand design",
       "caption3": "-",
       "caption4": "2023 graduation exhibition",
-      "caption5": "package, book"
-    },
-    "images": [
-      "/test/images/3-blish/1.png",
-      "/test/images/3-blish/2.png"
-    ]
+      "caption5": "logo, stationery"
+    }
   },
   {
     "title": "An inverted realtionship",
     "category": "editorial",
     "year": "2023",
-    "thumbnail": "/test/images/thumb4.png",
+    "images": [
+      "/test/images/4-inverted/1.png",
+      "/test/images/4-inverted/2.png"
+    ],
     "captions": {
       "caption1": "An inverted realtionship",
       "caption2": "2023, editorial",
       "caption3": "-",
       "caption4": "2023 graduation exhibition",
       "caption5": "book, poster"
-    },
-    "images": [
-      "/test/images/4-inverted/1.png",
-      "/test/images/4-inverted/2.png"
-    ]
+    }
   },
   {
     "title": "Immortality : The Death of Death",
     "category": "brand design",
     "year": "2024",
-    "thumbnail": "/test/images/thumb5.png",
+    "images": [
+      "/test/images/5-immortality/1.png",
+      "/test/images/5-immortality/2.png"
+    ],
     "captions": {
       "caption1": "Immortality : The Death of Death",
       "caption2": "2024, brand design",
       "caption3": "-",
       "caption4": "2024 graduation exhibition",
-      "caption5": "book, package"
-    },
-    "images": [
-      "/test/images/5-immortality/1.png",
-      "/test/images/5-immortality/2.png"
-    ]
+      "caption5": "branding, poster"
+    }
   },
   {
     "title": "Heaven",
     "category": "graphic design",
     "year": "2024",
-    "thumbnail": "/test/images/thumb6.png",
+    "images": [
+      "/test/images/6-heaven/1.png",
+      "/test/images/6-heaven/2.png"
+    ],
     "captions": {
       "caption1": "Heaven",
       "caption2": "2024, graphic design",
       "caption3": "-",
       "caption4": "2024 graduation exhibition",
-      "caption5": "poster, cd"
-    },
-    "images": [
-      "/test/images/6-heaven/1.png",
-      "/test/images/6-heaven/2.png"
-    ]
+      "caption5": "poster, packaging"
+    }
   },
   {
     "title": "Everybody",
     "category": "graphic design",
     "year": "2024",
-    "thumbnail": "/test/images/thumb7.png",
+    "images": [
+      "/test/images/7-everybody/1.png",
+      "/test/images/7-everybody/2.png"
+    ],
     "captions": {
       "caption1": "Everybody",
       "caption2": "2024, graphic design",
       "caption3": "-",
       "caption4": "2024 graduation exhibition",
-      "caption5": "poster, package"
-    },
-    "images": [
-      "/test/images/7-everybody/1.png",
-      "/test/images/7-everybody/2.png"
-    ]
+      "caption5": "poster, book"
+    }
   },
   {
     "title": "Monster",
     "category": "graphic design",
     "year": "2024",
-    "thumbnail": "/test/images/thumb8.png",
+    "images": [
+      "/test/images/8-monster/1.png",
+      "/test/images/8-monster/2.png"
+    ],
     "captions": {
       "caption1": "Monster",
       "caption2": "2024, graphic design",
       "caption3": "-",
       "caption4": "2024 graduation exhibition",
-      "caption5": "poster, cd"
-    },
-    "images": [
-      "/test/images/8-monster/1.png",
-      "/test/images/8-monster/2.png"
-    ]
+      "caption5": "poster, installation"
+    }
   },
   {
     "title": "Ideal Expression",
     "category": "graphic design",
     "year": "2024",
-    "thumbnail": "/test/images/thumb9.png",
+    "images": [
+      "/test/images/9-ideal/1.png",
+      "/test/images/9-ideal/2.png"
+    ],
     "captions": {
       "caption1": "Ideal Expression",
       "caption2": "2024, graphic design",
       "caption3": "-",
       "caption4": "2024 graduation exhibition",
-      "caption5": "poster, book"
-    },
-    "images": [
-      "/test/images/9-ideal/1.png",
-      "/test/images/9-ideal/2.png"
-    ]
+      "caption5": "poster, booklet"
+    }
   },
   {
     "title": "alfoze",
     "category": "brand design",
     "year": "2025",
-    "thumbnail": "/test/images/thumb10.png",
+    "images": [
+      "/test/images/10-alfoze/1.png",
+      "/test/images/10-alfoze/2.png"
+    ],
     "captions": {
       "caption1": "alfoze",
       "caption2": "2025, brand design",
       "caption3": "-",
       "caption4": "2025 graduation exhibition",
-      "caption5": "package, cd"
-    },
-    "images": [
-      "/test/images/10-alfoze/1.png",
-      "/test/images/10-alfoze/2.png"
-    ]
+      "caption5": "logo, branding"
+    }
   },
   {
     "title": "Valentine",
     "category": "graphic design",
     "year": "2025",
-    "thumbnail": "/test/images/thumb11.png",
+    "images": [
+      "/test/images/11-valentine/1.png",
+      "/test/images/11-valentine/2.png"
+    ],
     "captions": {
       "caption1": "Valentine",
       "caption2": "2025, graphic design",
       "caption3": "-",
       "caption4": "2025 graduation exhibition",
-      "caption5": "poster, book"
-    },
-    "images": [
-      "/test/images/11-valentine/1.png",
-      "/test/images/11-valentine/2.png"
-    ]
+      "caption5": "poster, booklet"
+    }
   },
   {
     "title": "Forever",
     "category": "graphic design",
     "year": "2025",
-    "thumbnail": "/test/images/thumb12.png",
+    "images": [
+      "/test/images/12-forever/1.png",
+      "/test/images/12-forever/2.png"
+    ],
     "captions": {
       "caption1": "Forever",
       "caption2": "2025, graphic design",
       "caption3": "-",
       "caption4": "2025 graduation exhibition",
-      "caption5": "poster, cd"
-    },
-    "images": [
-      "/test/images/12-forever/1.png",
-      "/test/images/12-forever/2.png"
-    ]
+      "caption5": "poster, packaging"
+    }
   },
   {
     "title": "Lov",
     "category": "brand design",
     "year": "2025",
-    "thumbnail": "/test/images/thumb13.png",
+    "images": [
+      "/test/images/13-lov/1.png",
+      "/test/images/13-lov/2.png"
+    ],
     "captions": {
       "caption1": "Lov",
       "caption2": "2025, brand design",
       "caption3": "-",
       "caption4": "2025 graduation exhibition",
-      "caption5": "package, poster"
-    },
-    "images": [
-      "/test/images/13-lov/1.png",
-      "/test/images/13-lov/2.png"
-    ]
+      "caption5": "logo, branding"
+    }
   },
   {
     "title": "Dreamscape",
     "category": "graphic design",
     "year": "2025",
-    "thumbnail": "/test/images/thumb14.png",
+    "images": [
+      "/test/images/14-dreamscape/1.png",
+      "/test/images/14-dreamscape/2.png"
+    ],
     "captions": {
       "caption1": "Dreamscape",
       "caption2": "2025, graphic design",
       "caption3": "-",
       "caption4": "2025 graduation exhibition",
-      "caption5": "poster, cd"
-    },
-    "images": [
-      "/test/images/14-dreamscape/1.png",
-      "/test/images/14-dreamscape/2.png"
-    ]
+      "caption5": "poster, book"
+    }
   }
 ]
