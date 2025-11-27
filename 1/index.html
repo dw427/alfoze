@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>wd</title>
+<title>te cura</title>
 <link rel="icon" type="image/png" href="/test/images/fav2.png" />
 <link rel="apple-touch-icon" href="/test/images/fav1.png" />
 <meta name="theme-color" content="#ffffff" />
@@ -125,7 +125,7 @@ a:hover { color: #a3a3a3; }
 </div>
 
 <div class="footer">
-  <div class="right-link"><a href="/test3/">back</a></div>
+  <div class="right-link"><a href="/alfoze/">back</a></div>
   <div id="listButton" onclick="toggleSlideBox()">list</div>
 </div>
 
@@ -158,10 +158,10 @@ async function loadData() {
   data.slice().reverse().forEach((d, revIdx) => {
     const i = data.length - 1 - revIdx;
     const a = document.createElement("a");
-    a.href = `/test3/${i+1}/`;
+    a.href = `/alfoze/${i+1}/`;
     a.className = 'thumbnail thumb' + (i+1);
     a.innerHTML = `
-      <img src="/test3/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
+      <img src="/alfoze/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
       <div class="caption">
         <span class="title">${d.title}</span>
         <span class="category-year">
