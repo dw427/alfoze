@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
 
-  <title>a generation that has lost romance</title>
+  <title>ㅂa generation that has lost romance</title>
 
   <link rel="icon"
         type="image/png"
@@ -165,7 +165,6 @@
       margin-right: 10px;
     }
 
-    /* 스크롤 숨김 */
     ::-webkit-scrollbar {
       display: none;
     }
@@ -180,7 +179,6 @@
       display: none;
     }
 
-    /* fixed-image */
     .fixed-image {
       display: flex;
       flex-direction: column;
@@ -243,7 +241,6 @@
       font-family: sans-serif;
     }
 
-    /* 모바일 */
     @media (max-width: 768px) {
       .gallery-wrap {
         display: block;
@@ -304,7 +301,6 @@
       }
     }
 
-    /* 웹형 */
     @media (min-width: 769px) {
       html,
       body {
@@ -392,7 +388,7 @@
       <div class="slide-list"
            id="slideToggleText"
            onclick="toggleSlideBox()">
-        list
+        info
       </div>
 
       <div class="caption-group"
@@ -407,7 +403,7 @@
 
     <div id="listButton"
          onclick="toggleSlideBox()">
-      list
+      info
     </div>
   </div>
 
@@ -430,7 +426,6 @@
       const item = data[idx - 1];
       if (!item) return;
 
-      /* fixed-image 렌더링 */
       const fixedImages =
         document.querySelector(".fixed-image");
 
@@ -516,7 +511,7 @@
         const v =
           sb.classList.contains("active")
             ? "close"
-            : "list";
+            : "info";
 
         txt.textContent = v;
 
