@@ -78,13 +78,13 @@
       "caption5": "research book"
     },
     "images": [
-      "/test/images/4-inverted/1.png",
-      "/test/images/4-inverted/2.png",
-      "/test/images/4-inverted/3.png",
-      "/test/images/4-inverted/4.png",
-      "/test/images/4-inverted/5.png",
-      "/test/images/4-inverted/6.png",
-      "/test/images/4-inverted/7.png"
+      "/test/images/4-inverted/inverted1.png",
+      "/test/images/4-inverted/inverted2.png",
+      "/test/images/4-inverted/inverted3.png",
+      "/test/images/4-inverted/inverted4.png",
+      "/test/images/4-inverted/inverted5.png",
+      "/test/images/4-inverted/inverted6.png",
+      "/test/images/4-inverted/inverted7.png"
     ]
   },
   {
@@ -100,10 +100,10 @@
       "caption5": "brochure, entrance bracelet, merchandise"
     },
     "images": [
-      "/test/images/5-immortality/1-1.png",
-      "/test/images/5-immortality/2-1.png",
-      "/test/images/5-immortality/3.png",
-      "/test/images/5-immortality/4-1.png"
+      "/test/images/5-immortality/immortality1-1.png",
+      "/test/images/5-immortality/immortality2-1.png",
+      "/test/images/5-immortality/immortality3.png",
+      "/test/images/5-immortality/immortality4-1.png"
     ]
   },
   {
@@ -119,13 +119,13 @@
       "caption5": "2 types album, out box, photo book, cdr, poster"
     },
     "images": [
-      "/test/images/6-heaven/1.png",
-      "/test/images/6-heaven/2.png",
-      "/test/images/6-heaven/3.png",
-      "/test/images/6-heaven/4.png",
-      "/test/images/6-heaven/5.png",
-      "/test/images/6-heaven/6.png",
-      "/test/images/6-heaven/7.png"
+      "/test/images/6-heaven/heaven1.png",
+      "/test/images/6-heaven/heaven2.png",
+      "/test/images/6-heaven/heaven3.png",
+      "/test/images/6-heaven/heaven4.png",
+      "/test/images/6-heaven/heaven5.png",
+      "/test/images/6-heaven/heaven6.png",
+      "/test/images/6-heaven/heaven7.png"
       
     ]
   },
@@ -142,21 +142,21 @@
       "caption5": "3 types album, out box, photo book, cdr, photocard"
     },
     "images": [
-      "/test/images/7-everybody/1.png",
-      "/test/images/7-everybody/2.png",
-      "/test/images/7-everybody/3.png",
-      "/test/images/7-everybody/4.png",
-      "/test/images/7-everybody/5.png",
-      "/test/images/7-everybody/6.png",
-      "/test/images/7-everybody/7.png",
-      "/test/images/7-everybody/8.png",
-      "/test/images/7-everybody/9.png",
-      "/test/images/7-everybody/10.png",
-      "/test/images/7-everybody/11.png",
-      "/test/images/7-everybody/12.png",
-      "/test/images/7-everybody/13.png",
-      "/test/images/7-everybody/14.png",
-      "/test/images/7-everybody/15.png"
+      "/test/images/7-everybody/everybody1.png",
+      "/test/images/7-everybody/everybody2.png",
+      "/test/images/7-everybody/everybody3.png",
+      "/test/images/7-everybody/everybody4.png",
+      "/test/images/7-everybody/everybody5.png",
+      "/test/images/7-everybody/everybody6.png",
+      "/test/images/7-everybody/everybody7.png",
+      "/test/images/7-everybody/everybody8.png",
+      "/test/images/7-everybody/everybody9.png",
+      "/test/images/7-everybody/everybody10.png",
+      "/test/images/7-everybody/everybody11.png",
+      "/test/images/7-everybody/everybody12.png",
+      "/test/images/7-everybody/everybody13.png",
+      "/test/images/7-everybody/everybody14.png",
+      "/test/images/7-everybody/everybody15.png"
     ]
   },
   {
@@ -172,15 +172,15 @@
       "caption5": "3types album, out box, photo book, profile book, cd"
     },
     "images": [
-      "/test/images/8-monster/2-1.png",
-      "/test/images/8-monster/1.png",
-      "/test/images/8-monster/3.png",
-      "/test/images/8-monster/4.png",
-      "/test/images/8-monster/5.png",
-      "/test/images/8-monster/6.png",
-      "/test/images/8-monster/7.png",
-      "/test/images/8-monster/8.png",
-      "/test/images/8-monster/9.png"
+      "/test/images/8-monster/monster2-1.png",
+      "/test/images/8-monster/monster1.png",
+      "/test/images/8-monster/monster3.png",
+      "/test/images/8-monster/monster4.png",
+      "/test/images/8-monster/monster5.png",
+      "/test/images/8-monster/monster6.png",
+      "/test/images/8-monster/monster7.png",
+      "/test/images/8-monster/monster8.png",
+      "/test/images/8-monster/monster9.png"
     ]
   },
   {
@@ -196,9 +196,9 @@
       "caption5": "graphic poster"
     },
     "images": [
-      "/test/images/9-ideal/1.png",
-      "/test/images/9-ideal/2.png",
-      "/test/images/9-ideal/3.png"
+      "/test/images/9-ideal/ideal1.png",
+      "/test/images/9-ideal/ideal2.png",
+      "/test/images/9-ideal/ideal3.png"
     ]
   },
   {
