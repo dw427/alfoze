@@ -1,43 +1,94 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
   <title>te cura</title>
-  <link rel="icon" type="image/png" href="/test/images/fav2.png" />
-  <link rel="apple-touch-icon" href="/test/images/fav1.png" />
+
+  <link rel="icon"
+        type="image/png"
+        href="/alfoze/images/fav.png" />
+  <link rel="apple-touch-icon"
+        href="/alfoze/images/fav.png" />
+
   <meta name="theme-color" content="#ffffff" />
+
   <style>
     @import url("https://use.typekit.net/zuk4pzv.css");
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "minion-pro", serif; background: #fff; }
 
-    a { color: inherit; text-decoration: none; transition: color .3s; }
-    a:hover { color: #a3a3a3; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "minion-pro", serif;
+      background: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    a:hover {
+      color: #a3a3a3;
+    }
 
     .footer {
-      position: fixed; bottom: 0; left: 0;
-      width: 100%; height: 100px; background: transparent;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: transparent;
       z-index: 1000;
       color: #a3a3a3;
     }
+
     .footer .right-link,
     .footer #listButton {
-      position: absolute; bottom: 10px; font-size: 12px;
+      position: absolute;
+      bottom: 10px;
+      font-size: 12px;
     }
-    .footer .right-link { left: 30px; }
-    .footer #listButton { right: 30px; cursor: pointer; }
-    .footer #listButton:hover { color: #7a7a7a; }
+
+    .footer .right-link {
+      left: 30px;
+    }
+
+    .footer #listButton {
+      right: 30px;
+      cursor: pointer;
+    }
+
+    .footer #listButton:hover {
+      color: #7a7a7a;
+    }
 
     .slide-box {
-      position: fixed; top: 0; right: 0;
-      width: 373px !important; max-width: 100%; height: 100%;
-      background: #fff; z-index: 3000;
-      transform: translateX(100%); transition: transform .3s;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 373px !important;
+      max-width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 3000;
+      transform: translateX(100%);
+      transition: transform .3s;
       overflow-y: auto;
-      padding: 10px 10px;
+      padding: 10px;
     }
-    .slide-box.active { transform: translateX(0); }
+
+    .slide-box.active {
+      transform: translateX(0);
+    }
 
     .slide-box .slide-list {
       position: fixed;
@@ -49,77 +100,136 @@
       z-index: 4001;
       color: #a3a3a3;
     }
-    .slide-box .slide-list:hover { color: #7a7a7a; }
+
+    .slide-box .slide-list:hover {
+      color: #7a7a7a;
+    }
 
     .caption-group {
-      display: flex; flex-direction: column; font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
     }
-    .caption1 { font-size: 20px; margin-bottom: 3px; }
-    .caption2 { font-size: 12px; margin-bottom: 20px; }
-    .caption3 { font-size: 12px; margin-bottom: 3px; }
-    .caption4 { font-size: 12px; margin-bottom: 3px; }
-    .caption5 { font-size: 12px; }
 
-    .text-group {
-      display: flex; align-items: center;
-      font-size: 12px; padding: 10px 0; white-space: nowrap;
+    .caption1 {
+      font-size: 20px;
+      margin-bottom: 3px;
     }
-    .text1 { margin-left: 10px; }
-    .text2 { margin-left: auto; margin-right: 60px; text-align: right; }
-    .text3 { margin-right: 10px; flex-shrink: 0; }
+
+    .caption2,
+    .caption3,
+    .caption4,
+    .caption5 {
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
 
     .content {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0;
     }
+
     .thumbnail {
-      display: flex; flex-direction: column; color: inherit;
+      display: flex;
+      flex-direction: column;
+      color: inherit;
     }
+
     .thumbnail img {
-      width: 100%; height: auto; object-fit: cover; display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
       cursor: pointer;
     }
+
     .caption {
-      display: flex; flex-direction: column;
-      margin-top: 8px; font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 8px;
+      font-size: 12px;
       align-items: flex-start;
     }
-    .caption .title { margin-bottom: 0; }
-    .caption .category-year {
-      display: flex; align-items: center;
+
+    .caption .title {
+      margin-bottom: 0;
     }
-    .caption .category { margin-right: 10px; }
 
-    ::-webkit-scrollbar { display: none; }
-    .scroll-area, .fixed-image { scrollbar-width: none; -ms-overflow-style: none; }
+    .caption .category-year {
+      display: flex;
+      align-items: center;
+    }
 
-    .header { display: none; }
+    .caption .category {
+      margin-right: 10px;
+    }
 
-    /* 🔥 이미지 상세보기 모달 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-area,
+    .fixed-image {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .header {
+      display: none;
+    }
+
+    .fixed-image {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      border-left: 1px solid #9fa0a0;
+      border-right: 1px solid #9fa0a0;
+    }
+
+    .fixed-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+
     .image-viewer {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.85);
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
       display: flex;
       justify-content: center;
       align-items: center;
       opacity: 0;
       visibility: hidden;
-      transition: opacity .3s ease;
+      transition: opacity .3s;
       z-index: 5000;
     }
+
     .image-viewer.active {
       opacity: 1;
       visibility: visible;
     }
+
     .image-viewer img {
       max-width: 90%;
       max-height: 90%;
       object-fit: contain;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
+
     .image-viewer::after {
       content: '×';
       position: fixed;
@@ -132,80 +242,173 @@
     }
 
     @media (max-width: 768px) {
-      .gallery-wrap { display: block; }
-      .fixed-image {
-        width: 100%;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .fixed-image img {
-        width: 100%;
-        height: auto;
+      .gallery-wrap {
         display: block;
       }
-      .scroll-area { display: none; }
-      .footer { height: 100px; }
-      .footer .right-link { bottom: 20px; left: 20px; }
-      .footer #listButton { bottom: 20px; right: 20px; }
-      .slide-box { width: 100% !important; padding: 40px 20px; }
-      .slide-box .slide-list { bottom: 20px; right: 20px; }
+
+      .left-image {
+        display: none;
+      }
+
+      .scroll-area {
+        display: none;
+      }
+
+      .footer {
+        height: 100px;
+      }
+
+      .footer .right-link {
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .footer #listButton {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .slide-box {
+        width: 100% !important;
+        padding: 40px 20px;
+        transform: translateX(100%) !important;
+      }
+
+      .slide-box.active {
+        transform: translateX(0) !important;
+      }
+
+      .slide-box .slide-list {
+        bottom: 20px;
+        right: 20px;
+      }
 
       .header {
-        width: 100%; height: 60px; background: #ffffff;
-        display: flex; align-items: center; justify-content: center;
-        position: sticky; top: 0; z-index: 1000;
+        width: 100%;
+        height: 60px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
       }
-      .header img { height: 100%; width: auto; }
+
+      .header img {
+        height: 100%;
+        width: auto;
+      }
     }
 
     @media (min-width: 769px) {
-      html, body { width: 100%; height: 100%; overflow: hidden; }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
       .gallery-wrap {
-        width: 765px; height: 100%; margin: 0 auto; display: flex;
+        display: grid;
+        height: 100%;
+        grid-template-columns:
+          24.68%
+          33.10%
+          17.55%
+          24.68%;
+        gap: 0;
       }
-      .fixed-image {
-        width: 500px; height: 100%; overflow-y: scroll; padding-bottom: 0;
+
+      .left-image {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
       }
-      .fixed-image img { width: 100%; height: auto; display: block; cursor: pointer; }
-      .scroll-area { width: 265px; height: 100vh; overflow-y: scroll; }
-      .thumbnail { margin-bottom: 8px; }
+
+      .scroll-area {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+        border-right: 1px solid #9fa0a0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .slide-box {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        position: relative;
+        transform: none !important;
+      }
+
+      .left-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slide-list,
+      #listButton {
+        display: none;
+      }
     }
   </style>
 </head>
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
+<body
+  oncontextmenu="return false"
+  ondragstart="return false"
+  onselectstart="return false">
+
   <div class="header">
-    <a href="/alfoze/" style="display:block; height:100%;">
-      <img src="/test/images/header0.png" alt="header" />
+    <a href="/test/"
+       style="display:block; height:100%;">
+      <img src="/alfoze/images/header.png"
+           alt="header" />
     </a>
   </div>
 
   <div class="gallery-wrap">
-    <div class="fixed-image">
-      <img src="/test/images/1-te cura/tecura1.png" alt="tecura1" />
-      <img src="/test/images/1-te cura/tecura2.png" alt="tecura2" />
-      <img src="/test/images/1-te cura/tecura3.png" alt="tecura3" />
-      <img src="/test/images/1-te cura/tecura5-2.png" alt="tecura4" />
-      <img src="/test/images/1-te cura/tecura4.png" alt="tecura5" />
 
+    <div class="left-image">
+      <img src="/test/images/leftimage.png"
+           alt="left image" />
     </div>
+
+    <div class="fixed-image"></div>
+
     <div class="scroll-area">
       <div class="content" id="gallery"></div>
+    </div>
+
+    <div class="slide-box" id="slideBox">
+      <div class="slide-list"
+           id="slideToggleText"
+           onclick="toggleSlideBox()">
+        info
+      </div>
+
+      <div class="caption-group"
+           id="captionBox"></div>
     </div>
   </div>
 
   <div class="footer">
-    <div class="right-link"><a href="/alfoze/">back</a></div>
-    <div id="listButton" onclick="toggleSlideBox()">info</div>
+    <div class="right-link">
+      <a href="/alfoze/">back</a>
+    </div>
+
+    <div id="listButton"
+         onclick="toggleSlideBox()">
+      info
+    </div>
   </div>
 
-  <div class="slide-box" id="slideBox">
-    <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">list</div>
-    <div class="caption-group" id="captionBox"></div>
-  </div>
-  
-  <div class="image-viewer" id="imageViewer">
+  <div class="image-viewer"
+       id="imageViewer">
     <img src="" alt="viewer image" />
   </div>
 
@@ -215,63 +418,127 @@
       const data = await res.json();
 
       const pathParts = window.location.pathname.split("/");
-      const idx = parseInt(pathParts[pathParts.length-2], 10);
-      const item = data[idx-1];
+      const idx = parseInt(
+        pathParts[pathParts.length - 2],
+        10
+      );
+
+      const item = data[idx - 1];
       if (!item) return;
 
-      const gallery = document.getElementById('gallery');
-      gallery.innerHTML = "";
-      data.slice().reverse().forEach((d, revIdx) => {
-        const i = data.length - 1 - revIdx;
-        const a = document.createElement('a');
-        a.href = `/alfoze/${i+1}/`;
-        a.className = 'thumbnail thumb' + (i+1);
-        a.innerHTML = `
-          <img src="/test/images/thumb${i+1}.png" alt="썸네일${i+1}"/>
-          <div class="caption">
-            <span class="title">${d.title}</span>
-            <span class="category-year">
-              <span class="category">${d.category}</span>
-              <span class="year">${d.year}</span>
-            </span>
-          </div>`;
-        gallery.appendChild(a);
+      const fixedImages =
+        document.querySelector(".fixed-image");
+
+      fixedImages.innerHTML = "";
+
+      item.images.forEach((imgPath, i) => {
+        const img = document.createElement("img");
+        img.src = imgPath;
+        img.alt = `${item.title} ${i + 1}`;
+        fixedImages.appendChild(img);
       });
 
-      const captionBox = document.getElementById("captionBox");
+      const gallery =
+        document.getElementById("gallery");
+
+      gallery.innerHTML = "";
+
+      data
+        .slice()
+        .reverse()
+        .forEach((d, revIdx) => {
+          const i =
+            data.length - 1 - revIdx;
+
+          const a =
+            document.createElement("a");
+
+          a.href = `/alfoze/${i + 1}/`;
+          a.className =
+            "thumbnail thumb" + (i + 1);
+
+          a.innerHTML = `
+            <img src="/test3/images/thumb${i + 1}.png" />
+            <div class="caption">
+              <span class="title">${d.title}</span>
+              <span class="category-year">
+                <span class="category">${d.category}</span>
+                <span class="year">${d.year}</span>
+              </span>
+            </div>
+          `;
+
+          gallery.appendChild(a);
+        });
+
+      const captionBox =
+        document.getElementById("captionBox");
+
       captionBox.innerHTML = `
-        <div class="caption1">${item.title}</div>
-        <div class="caption2">${item.year}, ${item.category}</div>
-        <div class="caption3">-</div>
-        <div class="caption4">personal project</div>
-        <div class="caption5">package, book, poster, pattern</div>
+        <div class="caption1">${item.captions.caption1}</div>
+        <div class="caption2">${item.captions.caption2}</div>
+        <div class="caption3">${item.captions.caption3}</div>
+        <div class="caption4">${item.captions.caption4}</div>
+        <div class="caption5">${item.captions.caption5}</div>
       `;
+
+      const viewer =
+        document.getElementById("imageViewer");
+
+      const viewerImg =
+        viewer.querySelector("img");
+
+      document
+        .querySelectorAll(".fixed-image img")
+        .forEach(img => {
+          img.addEventListener("click", () => {
+            viewerImg.src = img.src;
+            viewer.classList.add("active");
+          });
+        });
     }
 
     function toggleSlideBox() {
-      const sb = document.getElementById('slideBox');
-      const txt = document.getElementById('slideToggleText');
-      sb.classList.toggle('active');
-      txt.textContent = sb.classList.contains('active') ? 'close' : 'list';
+      if (window.innerWidth <= 768) {
+        const sb =
+          document.getElementById("slideBox");
+
+        const txt =
+          document.getElementById("slideToggleText");
+
+        sb.classList.toggle("active");
+
+        const v =
+          sb.classList.contains("active")
+            ? "close"
+            : "info";
+
+        txt.textContent = v;
+
+        document.getElementById("listButton")
+          .textContent = v;
+      }
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      loadData();
-      const viewer = document.getElementById("imageViewer");
-      const viewerImg = viewer.querySelector("img");
+    document.addEventListener("DOMContentLoaded",
+      () => {
+        loadData();
 
-      document.querySelectorAll(".fixed-image img").forEach(img => {
-        img.addEventListener("click", () => {
-          viewerImg.src = img.src;
-          viewer.classList.add("active");
+        const viewer =
+          document.getElementById("imageViewer");
+
+        viewer.addEventListener("click", () => {
+          viewer.classList.remove("active");
         });
-      });
 
-      viewer.addEventListener("click", () => viewer.classList.remove("active"));
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape") viewer.classList.remove("active");
+        document.addEventListener("keydown",
+          e => {
+            if (e.key === "Escape") {
+              viewer.classList.remove("active");
+            }
+          });
       });
-    });
   </script>
+
 </body>
 </html>
