@@ -3,16 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Dreamscape</title>
+  <title>1Dreamscape</title>
 
-  <link rel="icon"
-        type="image/png"
-        href="/alfoze/images/fav.png" />
-  <link rel="apple-touch-icon"
-        href="/alfoze/images/fav.png" />
+  <link rel="icon" type="image/png" href="/alfoze/images/fav.png" />
+  <link rel="apple-touch-icon" href="/alfoze/images/fav.png" />
 
   <meta name="theme-color" content="#ffffff" />
 
@@ -241,6 +237,7 @@
       font-family: sans-serif;
     }
 
+    /* ===== 모바일 ===== */
     @media (max-width: 768px) {
       .gallery-wrap {
         display: block;
@@ -299,8 +296,14 @@
         height: 100%;
         width: auto;
       }
+      
+      .fixed-image {
+        border-left: none;
+        border-right: none;
+      }
     }
 
+    /* ===== PC ===== */
     @media (min-width: 769px) {
       html,
       body {
@@ -358,24 +361,18 @@
   </style>
 </head>
 
-<body
-  oncontextmenu="return false"
-  ondragstart="return false"
-  onselectstart="return false">
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
   <div class="header">
-    <a href="/test/"
-       style="display:block; height:100%;">
-      <img src="/alfoze/images/header.png"
-           alt="header" />
+    <a href="/test/" style="display:block; height:100%;">
+      <img src="/alfoze/images/header.png" alt="header" />
     </a>
   </div>
 
   <div class="gallery-wrap">
 
     <div class="left-image">
-      <img src="/test/images/leftimage.png"
-           alt="left image" />
+      <img src="/test/images/leftimage.png" alt="left image" />
     </div>
 
     <div class="fixed-image"></div>
@@ -385,14 +382,8 @@
     </div>
 
     <div class="slide-box" id="slideBox">
-      <div class="slide-list"
-           id="slideToggleText"
-           onclick="toggleSlideBox()">
-        info
-      </div>
-
-      <div class="caption-group"
-           id="captionBox"></div>
+      <div class="slide-list" id="slideToggleText" onclick="toggleSlideBox()">info</div>
+      <div class="caption-group" id="captionBox"></div>
     </div>
   </div>
 
@@ -400,15 +391,10 @@
     <div class="right-link">
       <a href="/alfoze/">back</a>
     </div>
-
-    <div id="listButton"
-         onclick="toggleSlideBox()">
-      info
-    </div>
+    <div id="listButton" onclick="toggleSlideBox()">info</div>
   </div>
 
-  <div class="image-viewer"
-       id="imageViewer">
+  <div class="image-viewer" id="imageViewer">
     <img src="" alt="viewer image" />
   </div>
 
@@ -418,17 +404,12 @@
       const data = await res.json();
 
       const pathParts = window.location.pathname.split("/");
-      const idx = parseInt(
-        pathParts[pathParts.length - 2],
-        10
-      );
+      const idx = parseInt(pathParts[pathParts.length - 2], 10);
 
       const item = data[idx - 1];
       if (!item) return;
 
-      const fixedImages =
-        document.querySelector(".fixed-image");
-
+      const fixedImages = document.querySelector(".fixed-image");
       fixedImages.innerHTML = "";
 
       item.images.forEach((imgPath, i) => {
@@ -438,42 +419,31 @@
         fixedImages.appendChild(img);
       });
 
-      const gallery =
-        document.getElementById("gallery");
-
+      const gallery = document.getElementById("gallery");
       gallery.innerHTML = "";
 
-      data
-        .slice()
-        .reverse()
-        .forEach((d, revIdx) => {
-          const i =
-            data.length - 1 - revIdx;
+      data.slice().reverse().forEach((d, revIdx) => {
+        const i = data.length - 1 - revIdx;
 
-          const a =
-            document.createElement("a");
+        const a = document.createElement("a");
+        a.href = `/alfoze/${i + 1}/`;
+        a.className = "thumbnail thumb" + (i + 1);
 
-          a.href = `/alfoze/${i + 1}/`;
-          a.className =
-            "thumbnail thumb" + (i + 1);
+        a.innerHTML = `
+          <img src="/test3/images/thumb${i + 1}.png" />
+          <div class="caption">
+            <span class="title">${d.title}</span>
+            <span class="category-year">
+              <span class="category">${d.category}</span>
+              <span class="year">${d.year}</span>
+            </span>
+          </div>
+        `;
 
-          a.innerHTML = `
-            <img src="/test3/images/thumb${i + 1}.png" />
-            <div class="caption">
-              <span class="title">${d.title}</span>
-              <span class="category-year">
-                <span class="category">${d.category}</span>
-                <span class="year">${d.year}</span>
-              </span>
-            </div>
-          `;
+        gallery.appendChild(a);
+      });
 
-          gallery.appendChild(a);
-        });
-
-      const captionBox =
-        document.getElementById("captionBox");
-
+      const captionBox = document.getElementById("captionBox");
       captionBox.innerHTML = `
         <div class="caption1">${item.captions.caption1}</div>
         <div class="caption2">${item.captions.caption2}</div>
@@ -482,62 +452,45 @@
         <div class="caption5">${item.captions.caption5}</div>
       `;
 
-      const viewer =
-        document.getElementById("imageViewer");
+      const viewer = document.getElementById("imageViewer");
+      const viewerImg = viewer.querySelector("img");
 
-      const viewerImg =
-        viewer.querySelector("img");
-
-      document
-        .querySelectorAll(".fixed-image img")
-        .forEach(img => {
-          img.addEventListener("click", () => {
-            viewerImg.src = img.src;
-            viewer.classList.add("active");
-          });
+      document.querySelectorAll(".fixed-image img").forEach(img => {
+        img.addEventListener("click", () => {
+          viewerImg.src = img.src;
+          viewer.classList.add("active");
         });
+      });
     }
 
     function toggleSlideBox() {
       if (window.innerWidth <= 768) {
-        const sb =
-          document.getElementById("slideBox");
-
-        const txt =
-          document.getElementById("slideToggleText");
+        const sb = document.getElementById("slideBox");
+        const txt = document.getElementById("slideToggleText");
 
         sb.classList.toggle("active");
 
-        const v =
-          sb.classList.contains("active")
-            ? "close"
-            : "info";
-
+        const v = sb.classList.contains("active") ? "close" : "info";
         txt.textContent = v;
-
-        document.getElementById("listButton")
-          .textContent = v;
+        document.getElementById("listButton").textContent = v;
       }
     }
 
-    document.addEventListener("DOMContentLoaded",
-      () => {
-        loadData();
+    document.addEventListener("DOMContentLoaded", () => {
+      loadData();
 
-        const viewer =
-          document.getElementById("imageViewer");
+      const viewer = document.getElementById("imageViewer");
 
-        viewer.addEventListener("click", () => {
-          viewer.classList.remove("active");
-        });
-
-        document.addEventListener("keydown",
-          e => {
-            if (e.key === "Escape") {
-              viewer.classList.remove("active");
-            }
-          });
+      viewer.addEventListener("click", () => {
+        viewer.classList.remove("active");
       });
+
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+          viewer.classList.remove("active");
+        }
+      });
+    });
   </script>
 
 </body>
